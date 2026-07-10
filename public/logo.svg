@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Placeholder OakenIT wordmark: a stylised oak silhouette (trunk + canopy).
+       Replace with real artwork when ready. -->
+  <rect width="400" height="400" fill="#12100c" rx="72"/>
+
+  <!-- Canopy (three overlapping oak leaves as circles) -->
+  <circle cx="160" cy="140" r="72" fill="#a68158"/>
+  <circle cx="240" cy="140" r="72" fill="#8b6d47"/>
+  <circle cx="200" cy="100" r="60" fill="#c19b6c"/>
+  <circle cx="130" cy="180" r="52" fill="#6d5439"/>
+  <circle cx="270" cy="180" r="52" fill="#6d5439"/>
+
+  <!-- Trunk -->
+  <rect x="185" y="200" width="30" height="130" rx="4" fill="#503d29"/>
+
+  <!-- Root ground line -->
+  <path d="M 130 330 Q 200 340 270 330" stroke="#a68158" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+  <!-- Wordmark below -->
+  <text x="200" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="36" font-weight="600">
+    <tspan fill="#a68158">Oaken</tspan><tspan fill="#f2eadb">IT</tspan>
+  </text>
+</svg>

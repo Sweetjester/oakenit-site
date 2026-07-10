@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grain-opacity: 0.025;
+  --scroll-bg: #fbf6ea;
+  --scroll-thumb: #e6d9bd;
+  --scroll-thumb-hover: #8b6d47;
+}
+
+html.dark {
+  --grain-opacity: 0.035;
+  --scroll-bg: #12100c;
+  --scroll-thumb: #2f2a22;
+  --scroll-thumb-hover: #a68158;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--scroll-bg);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #a68158;
+  color: #12100c;
+}
+
+/* Grain overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scroll-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+/* Marquee */
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Magnetic hover */
+.magnetic {
+  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Gradient text — works on both themes */
+.text-oak-gradient {
+  background: linear-gradient(135deg, #8b6d47 0%, #a68158 50%, #6d5439 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.dark .text-oak-gradient {
+  background: linear-gradient(135deg, #ecd6a8 0%, #a68158 50%, #6d5439 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glow */
+.oak-glow {
+  box-shadow:
+    0 0 0 1px rgba(212, 164, 55, 0.2),
+    0 20px 60px -20px rgba(212, 164, 55, 0.35),
+    0 0 80px -20px rgba(212, 164, 55, 0.4);
+}
+
+/* Card hover ring */
+.card-hover {
+  position: relative;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), border-color 400ms, background-color 400ms;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 164, 55, 0.5);
+}
+
+/* Big number underlay */
+.big-numeral {
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Soft divider */
+.hairline {
+  background: linear-gradient(90deg, transparent, rgba(15, 13, 12, 0.18), transparent);
+  height: 1px;
+}
+html.dark .hairline {
+  background: linear-gradient(90deg, transparent, rgba(245, 241, 234, 0.12), transparent);
+}
+
+/* Logo dripping dots animation helper */
+.drop {
+  animation: drip 3s ease-in-out infinite;
+}
+@keyframes drip {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.7; }
+}
+
+/* Reveal on scroll utility */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Focus rings */
+:focus-visible {
+  outline: 2px solid #a68158;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
