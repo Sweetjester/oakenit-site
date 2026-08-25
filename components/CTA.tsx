@@ -39,10 +39,10 @@ export function CTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-semibold text-[clamp(2.4rem,4.6vw,3.9rem)] leading-[1.02] tracking-[-0.02em] text-forest-800 dark:text-cream-100"
+              className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100"
             >
               <span className="whitespace-nowrap">Brief us.</span>{' '}
-              <span className="italic font-medium text-lantern whitespace-nowrap">
+              <span className="text-lantern whitespace-nowrap">
                 We&rsquo;ll plan it.
               </span>
             </motion.h2>

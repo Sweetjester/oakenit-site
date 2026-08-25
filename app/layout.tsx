@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from 'next/font/google';
+import { Prata, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider, themeInitScript } from '@/components/ThemeProvider';
 import { StructuredData } from '@/components/StructuredData';
@@ -7,14 +7,13 @@ import { Analytics } from '@/components/Analytics';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oakenit.com';
 
-// Matches the serif in the OakenIT lockup — high-contrast old-style, set at
-// 600 for headlines so the hairlines don't disappear at display sizes.
-const display = Cormorant_Garamond({
+// The face from the logo lockup. Single weight, no italic — never apply
+// font-bold/font-semibold or italic to display text, the browser will fake it.
+const display = Prata({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: '400',
 });
 
 const sans = Inter({

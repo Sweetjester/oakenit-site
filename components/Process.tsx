@@ -41,12 +41,12 @@ export function Process() {
                       'radial-gradient(circle at 50% 0%, rgba(237,162,27,0.16), transparent 60%)',
                   }}
                 />
-                <span className="relative flex items-center gap-2.5 font-display font-semibold text-lantern-600 dark:text-lantern-300 text-sm tracking-[0.3em] big-numeral">
+                <span className="relative flex items-center gap-2.5 font-display text-lantern-600 dark:text-lantern-300 text-sm tracking-[0.3em] big-numeral">
                   <LanternGlyph className="h-4 w-3 shrink-0" />
                   {s.n}
                 </span>
                 <div className="relative">
-                  <h3 className="font-display font-semibold text-2xl text-forest-800 dark:text-cream-100 mb-1.5">
+                  <h3 className="font-display text-xl text-forest-800 dark:text-cream-100 mb-1.5">
                     {s.title}
                   </h3>
                   <p className="text-forest-800/70 dark:text-cream-100/60 text-sm leading-relaxed">

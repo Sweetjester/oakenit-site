@@ -13,9 +13,8 @@ export default async function OGImage() {
 
   // next/og has no serif of its own — the display face is bundled in the repo
   // (app/fonts) so the card matches the site without a build-time network fetch.
-  const [display, displayItalic, sans] = await Promise.all([
-    readFile(join(process.cwd(), 'app', 'fonts', 'CormorantGaramond-SemiBold.ttf')),
-    readFile(join(process.cwd(), 'app', 'fonts', 'CormorantGaramond-MediumItalic.ttf')),
+  const [display, sans] = await Promise.all([
+    readFile(join(process.cwd(), 'app', 'fonts', 'Prata-Regular.ttf')),
     readFile(join(process.cwd(), 'app', 'fonts', 'Inter-Regular.ttf')),
   ]);
 
@@ -31,7 +30,7 @@ export default async function OGImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '76px',
-          fontFamily: 'Cormorant',
+          fontFamily: 'Prata',
           position: 'relative',
         }}
       >
@@ -82,22 +81,15 @@ export default async function OGImage() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            lineHeight: 0.95,
-            fontSize: '132px',
-            letterSpacing: '-3px',
-            fontWeight: 600,
+            lineHeight: 1.04,
+            fontSize: '108px',
+            letterSpacing: '-2px',
+            fontWeight: 400,
           }}
         >
           <span style={{ color: '#f3ece3', whiteSpace: 'nowrap' }}>Tell us</span>
           <span
-            style={{
-              color: '#f7c04a',
-              fontFamily: 'Cormorant Italic',
-              fontStyle: 'italic',
-              fontWeight: 500,
-              marginTop: '6px',
-              whiteSpace: 'nowrap',
-            }}
+            style={{ color: '#f7c04a', whiteSpace: 'nowrap' }}
           >
             what you need.
           </span>
@@ -109,7 +101,7 @@ export default async function OGImage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={markSrc} alt="" width={64} height={64} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <span style={{ fontSize: '42px', fontWeight: 600, color: '#f3ece3' }}>OakenIT</span>
+              <span style={{ fontSize: '38px', color: '#f3ece3' }}>OakenIT</span>
               <span
                 style={{
                   fontSize: '20px',
@@ -139,8 +131,7 @@ export default async function OGImage() {
     {
       ...size,
       fonts: [
-        { name: 'Cormorant', data: display, weight: 600, style: 'normal' },
-        { name: 'Cormorant Italic', data: displayItalic, weight: 500, style: 'italic' },
+        { name: 'Prata', data: display, weight: 400, style: 'normal' },
         { name: 'Inter', data: sans, weight: 400, style: 'normal' },
       ],
     }

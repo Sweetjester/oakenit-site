@@ -57,9 +57,9 @@ export function Services() {
             <div className="mb-5">
               <SectionLabel>What we do</SectionLabel>
             </div>
-            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.02] tracking-[-0.02em] text-forest-800 dark:text-cream-100">
+            <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
               <span className="whitespace-nowrap">Three disciplines.</span>{' '}
-              <span className="italic font-medium text-lantern whitespace-nowrap">One team.</span>
+              <span className="text-lantern whitespace-nowrap">One team.</span>
             </h2>
           </div>
           <div className="flex items-end">
@@ -99,7 +99,7 @@ export function Services() {
                 </span>
               </div>
 
-              <h3 className="relative font-display font-semibold text-3xl md:text-[2.1rem] leading-tight text-forest-800 dark:text-cream-100 mb-3">
+              <h3 className="relative font-display text-2xl md:text-[1.75rem] leading-snug text-forest-800 dark:text-cream-100 mb-3">
                 {p.title}
               </h3>
               <p className="relative text-forest-800/75 dark:text-cream-100/65 leading-relaxed mb-7">

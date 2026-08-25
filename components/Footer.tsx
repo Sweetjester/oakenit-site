@@ -23,8 +23,8 @@ export function Footer() {
         <div className="absolute top-0 left-[14%] w-9">
           <Lantern cord={30} sway={8} className="w-full h-auto text-lantern-300/70" />
         </div>
-        <div className="absolute top-0 left-[42%] w-7">
-          <Lantern cord={58} sway={10} delay={1.4} className="w-full h-auto text-lantern-300/50" />
+        <div className="absolute top-0 left-[28%] w-7">
+          <Lantern cord={34} sway={10} delay={1.4} className="w-full h-auto text-lantern-300/50" />
         </div>
       </div>
 
@@ -35,7 +35,7 @@ export function Footer() {
               <div className="relative h-9 w-9 shrink-0">
                 <Image src="/mark.png" alt="OakenIT" fill sizes="36px" className="object-contain" />
               </div>
-              <span className="font-display font-semibold text-3xl leading-none tracking-[-0.01em]">
+              <span className="font-display text-2xl leading-none tracking-[-0.01em]">
                 OakenIT
               </span>
             </div>

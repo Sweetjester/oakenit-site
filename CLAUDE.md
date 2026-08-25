@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-25 (lantern-tree rebrand: real logo artwork, forest/lantern palette, Cormorant Garamond)
+> **Last updated**: 2026-08-25 (lantern-tree rebrand: real logo artwork, forest/lantern palette, Prata display face)
 
 ---
 
@@ -40,7 +40,7 @@ Identical to SweetTech:
 - **Styling**: Tailwind v3 with `darkMode: 'class'`
 - **Motion**: Framer Motion 11
 - **Icons**: Lucide React
-- **Fonts** (`next/font/google`): Cormorant Garamond (display serif — matches the logo wordmark), Inter (sans), JetBrains Mono
+- **Fonts** (`next/font/google`): Prata (display serif — the face in the logo lockup), Inter (sans), JetBrains Mono
 - **Email**: Resend (zero-DNS path — see § 7)
 - **Analytics**: Plausible + Microsoft Clarity (both env-gated)
 - **Hosting**: Railway (Nixpacks, Node 20+, `npm start`)
@@ -76,7 +76,8 @@ oakenit/
 │   │                           # Services → WhyUs → Process → Footer
 │   ├── globals.css             # Base styles, theme custom-props, grain,
 │   │                           # scrollbar, marquee, .canopy, .text-lantern
-│   ├── fonts/                  # TTFs for the OG card (satori can't use CSS fonts)
+│   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
+│   │                           # can't use CSS fonts)
 │   ├── icon.png                # Favicon (file convention)
 │   ├── apple-icon.png          # Apple touch icon (file convention)
 │   ├── robots.ts               # Dynamic /robots.txt
@@ -153,9 +154,13 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 
 ### Typography
 
-- **Display (Cormorant Garamond)**: all headlines and "feature" text. Set
-  `font-semibold` at display sizes so the hairlines survive; emphasis words are
-  `italic font-medium` + `.text-lantern` (gold gradient, theme-aware).
+- **Display (Prata)**: all headlines and "feature" text. Prata ships **one
+  weight (400) and no italic** — never put `font-bold`, `font-semibold` or
+  `italic` on `font-display` text or the browser fakes it, which looks cheap on
+  a high-contrast face. Emphasis words are distinguished by `.text-lantern`
+  (gold gradient, theme-aware) **alone**.
+- Prata sets much larger than a Garamond at the same px — headline `clamp()`
+  values are tuned for it. Re-check sizes if the face ever changes.
 - **Sans (Inter)**: body, eyebrow labels, UI.
 - **Mono (JetBrains)**: rare — footer status line only.
 
@@ -173,8 +178,8 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 - Short declarative sentences. Full stops. Confident.
 - Active verbs. "We build" not "we provide building".
 - Pick fights with the alternatives (agencies, MSPs, freelancers).
-- Italic lantern-gold word = the **transformation** or **value**, not the action.
-- Headline pattern: `[plain statement]. [italic gradient promise].`
+- Lantern-gold word = the **transformation** or **value**, not the action.
+- Headline pattern: `[plain statement]. [gold-gradient promise].`
 
 ### Logo
 
@@ -183,8 +188,10 @@ Real artwork, delivered 2026-08-25: a deep-green tree hung with gold lanterns.
 - `public/mark.png` (900px, transparent) — the mark. One file for both themes.
 - `app/icon.png` + `app/apple-icon.png` — favicons, via Next's file conventions
   (there is deliberately **no** `icons` block in `layout.tsx` metadata).
-- The wordmark is **not** an image — it's live text in Cormorant Garamond, so it
-  recolours per theme. See `components/Logo.tsx`.
+- The wordmark is **not** an image — it's live text in Prata, the face the
+  lockup itself uses, so it recolours per theme. See `components/Logo.tsx`.
+  Identified by silhouette-matching candidates against the source crop; Prata
+  overlays the artwork almost exactly.
 
 Andy supplied two files: a full-colour tree illustration and a flat cream
 lockup. The palette is sampled from the **illustration** — the lockup's green
@@ -309,7 +316,7 @@ Andy to decide before Phase 2 content build starts. Ask.
 
 Inherited from SweetTech, all still apply:
 
-1. **OG image fonts are bundled TTFs in `app/fonts/`**, read with `node:fs` (so the route must stay on the Node runtime), along with `public/mark.png` as a base64 data URI. Two gotchas: satori resolves a family name with two styles unpredictably, so the italic is registered under its **own** family name (`Cormorant Italic`); and Google's `css2` response lists the **italic** face first, so verify a downloaded TTF's name table before trusting the filename you gave it.
+1. **OG image fonts are bundled TTFs in `app/fonts/`**, read with `node:fs` (so the route must stay on the Node runtime), along with `public/mark.png` as a base64 data URI. Two gotchas if you ever add faces: satori resolves one family name carrying two styles unpredictably — register each style under its own family name; and Google's `css2` response lists the **italic** face first, so verify a downloaded TTF's name table before trusting the filename you gave it.
 2. **`overflow-y-hidden` on AnimatedLine (Hero)** — not `overflow-hidden` — so italic glyph flourishes extend horizontally freely while the vertical slide-up animation still clips.
 3. **`whitespace-nowrap` on key headline phrases** to prevent mid-phrase wraps. If you change copy, re-evaluate.
 4. **If oakenit.com is at a registrar that blocks apex CNAME**, use domain forwarding or HTTPS records for the apex; only `www` gets the CNAME. Same pattern as SweetTech's Squarespace workaround.

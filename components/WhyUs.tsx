@@ -33,8 +33,8 @@ export function WhyUs() {
             <div className="mb-5">
               <SectionLabel>Why OakenIT</SectionLabel>
             </div>
-            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.02] tracking-[-0.02em] mb-6 text-forest-800 dark:text-cream-100">
-              Why <span className="italic font-medium text-lantern">us.</span>
+            <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] mb-6 text-forest-800 dark:text-cream-100">
+              Why <span className="text-lantern">us.</span>
             </h2>
             <p className="text-forest-800/75 dark:text-cream-100/65 text-lg leading-relaxed max-w-md">
               Most firms sell you complexity. We sell you its absence.
@@ -54,7 +54,7 @@ export function WhyUs() {
                 sway={7}
                 className="absolute left-3 -top-1 w-8 h-auto text-lantern-600/80 dark:text-lantern-300/85"
               />
-              <p className="relative font-display italic text-[1.35rem] leading-snug text-forest-800 dark:text-cream-100/90">
+              <p className="relative font-display text-[1.15rem] leading-snug text-forest-800 dark:text-cream-100/90">
                 &ldquo;The technical team you would hire if you could — by the month.&rdquo;
               </p>
             </div>
@@ -75,7 +75,7 @@ export function WhyUs() {
                 <Check size={18} strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="font-display font-semibold text-[1.7rem] leading-tight text-forest-800 dark:text-cream-100 mb-2">
+                <h3 className="font-display text-[1.4rem] leading-snug text-forest-800 dark:text-cream-100 mb-2">
                   {p.h}
                 </h3>
                 <p className="text-forest-800/75 dark:text-cream-100/65 leading-relaxed">{p.p}</p>

@@ -81,10 +81,10 @@ export function Hero() {
         </motion.div>
 
         {/* Headline */}
-        <h1 className="font-display font-semibold text-[clamp(3rem,8vw,7rem)] leading-[0.94] tracking-[-0.02em] text-forest-800 dark:text-cream-100">
+        <h1 className="font-display text-[clamp(2.5rem,6.2vw,5.4rem)] leading-[1.02] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
           <AnimatedLine delay={0.3}>Tell us</AnimatedLine>
           <AnimatedLine delay={0.45}>
-            <span className="italic font-medium text-lantern">what you need.</span>
+            <span className="text-lantern">what you need.</span>
           </AnimatedLine>
         </h1>
 
@@ -135,7 +135,7 @@ export function Hero() {
               {i > 0 && (
                 <LanternGlyph className="h-3.5 w-2.5 mr-6 text-lantern-500/60 dark:text-lantern-300/50" />
               )}
-              <span className="font-display font-semibold text-forest-600 dark:text-lantern-200 text-xl big-numeral">
+              <span className="font-display text-forest-600 dark:text-lantern-200 text-lg big-numeral">
                 {s.k}
               </span>
               <span className="uppercase tracking-[0.18em] text-xs">{s.v}</span>
