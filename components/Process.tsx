@@ -54,10 +54,10 @@ export function Process() {
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                   style={{
                     background:
-                      'radial-gradient(circle at 50% 0%, rgba(237,162,27,0.16), transparent 60%)',
+                      'radial-gradient(circle at 50% 0%, rgba(127,187,53,0.18), transparent 60%)',
                   }}
                 />
-                <span className="relative flex items-center gap-2.5 font-display text-lantern-600 dark:text-lantern-300 text-sm tracking-[0.3em] big-numeral">
+                <span className="relative flex items-center gap-2.5 font-display text-leaf-600 dark:text-leaf-300 text-sm tracking-[0.3em] big-numeral">
                   <LanternGlyph className="h-4 w-3 shrink-0" />
                   {s.n}
                 </span>

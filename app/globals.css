@@ -19,7 +19,7 @@ html.dark {
   --grain-opacity: 0.04;
   --scroll-bg: #031507;
   --scroll-thumb: #0f3f18;
-  --scroll-thumb-hover: #eda21b;
+  --scroll-thumb-hover: #a0d850;
   --rule: rgba(243, 236, 227, 0.12);
   --glow-warm: rgba(247, 192, 74, 0.16);
   --glow-green: rgba(63, 140, 83, 0.14);
@@ -40,7 +40,7 @@ body {
 }
 
 ::selection {
-  background: #eda21b;
+  background: #a0d850;
   color: #031507;
 }
 
@@ -82,27 +82,27 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-/* Emphasis text — lantern gold. Deeper in light mode so it stays readable
-   against cream; brighter in dark mode so it reads as lit. ------------------ */
-.text-lantern {
-  background: linear-gradient(135deg, #b46000 0%, #d4820c 45%, #8a4a00 100%);
+/* Emphasis text — the logo's leaf green. Deeper in light mode so it stays
+   readable against cream; the raw logo green in dark mode. ----------------- */
+.text-leaf {
+  background: linear-gradient(135deg, #4a761d 0%, #5f9427 45%, #36560f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-html.dark .text-lantern {
-  background: linear-gradient(135deg, #ffdb8a 0%, #f7c04a 45%, #d4820c 100%);
+html.dark .text-leaf {
+  background: linear-gradient(135deg, #c9e894 0%, #a0d850 45%, #7fbb35 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* A lit lantern's halo — used on the primary CTA and the hero mark. -------- */
-.lantern-glow {
+/* Halo on the primary CTA. ------------------------------------------------ */
+.leaf-glow {
   box-shadow:
-    0 0 0 1px rgba(237, 162, 27, 0.25),
-    0 18px 50px -18px rgba(237, 162, 27, 0.45),
-    0 0 70px -24px rgba(247, 192, 74, 0.5);
+    0 0 0 1px rgba(127, 187, 53, 0.25),
+    0 18px 50px -18px rgba(95, 148, 39, 0.4),
+    0 0 70px -24px rgba(160, 216, 80, 0.45);
 }
 
 /* Cards ------------------------------------------------------------------- */
@@ -116,7 +116,7 @@ html.dark .text-lantern {
 }
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(237, 162, 27, 0.45);
+  border-color: rgba(127, 187, 53, 0.5);
   box-shadow: 0 26px 60px -34px rgba(6, 32, 13, 0.45);
 }
 html.dark .card:hover {
@@ -148,7 +148,7 @@ html.dark .card:hover {
 
 /* Focus rings ------------------------------------------------------------- */
 :focus-visible {
-  outline: 2px solid #eda21b;
+  outline: 2px solid #7fbb35;
   outline-offset: 3px;
   border-radius: 4px;
 }

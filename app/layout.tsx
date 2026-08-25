@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: '%s · OakenIT',
   },
   description:
-    'OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems — without the cost and complexity of a traditional consultancy. Senior expertise, plain English.',
+    'OakenIT helps businesses build software and improve infrastructure to solve common and niche business problems. Practical solutions in English, not CLI.',
   keywords: [
     'AI consultancy UK',
     'software development UK',
@@ -59,15 +59,15 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: SITE_URL,
     siteName: 'OakenIT',
-    title: 'OakenIT — Technology that makes your business easier to run',
+    title: 'OakenIT — Practical solutions in English, not CLI',
     description:
-      'We build software, improve infrastructure and solve difficult IT problems for UK businesses. Senior expertise without the consultancy overhead.',
+      'We help businesses build software and improve infrastructure to solve common and niche business problems.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OakenIT — Technology that makes your business easier to run',
+    title: 'OakenIT — Practical solutions in English, not CLI',
     description:
-      'Software, infrastructure and difficult IT problems, solved for UK businesses.',
+      'Software and infrastructure for common and niche business problems.',
   },
   robots: {
     index: true,

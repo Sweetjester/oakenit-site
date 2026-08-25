@@ -22,9 +22,9 @@ export function InquiryForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="rounded-2xl border border-lantern-500/30 dark:border-lantern-300/25 bg-lantern-400/10 dark:bg-lantern-300/[0.06] p-10 md:p-14 text-center"
+        className="rounded-2xl border border-leaf-500/30 dark:border-leaf-300/25 bg-leaf-400/10 dark:bg-leaf-300/[0.06] p-10 md:p-14 text-center"
       >
-        <div className="mx-auto h-14 w-14 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mb-6">
+        <div className="mx-auto h-14 w-14 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mb-6">
           <Check size={26} strokeWidth={2.5} />
         </div>
         <h3 className="font-display text-3xl md:text-4xl text-forest-800 dark:text-cream-100 mb-3">
@@ -104,7 +104,7 @@ Free initial conversation. We reply within one business day — no newsletter,
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-lantern-300 hover:bg-forest-600 dark:hover:bg-lantern-200 disabled:opacity-60 disabled:cursor-not-allowed text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium transition-colors"
+          className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-leaf-300 hover:bg-forest-600 dark:hover:bg-leaf-200 disabled:opacity-60 disabled:cursor-not-allowed text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium transition-colors"
         >
           {pending ? (
             <>
@@ -124,7 +124,7 @@ Free initial conversation. We reply within one business day — no newsletter,
         <span>or email us directly:</span>
         <a
           href="mailto:hello@oakenit.com"
-          className="inline-flex items-center gap-1 text-forest-600 dark:text-lantern-200 hover:text-lantern-600 dark:hover:text-lantern-100 transition-colors"
+          className="inline-flex items-center gap-1 text-forest-600 dark:text-leaf-200 hover:text-leaf-600 dark:hover:text-leaf-100 transition-colors"
         >
           <Mail size={12} />
           hello@oakenit.com
@@ -146,7 +146,7 @@ type FieldProps = {
 
 function Field({ label, name, type = 'text', placeholder, as = 'input', rows = 4, error }: FieldProps) {
   const baseClasses =
-    'w-full bg-cream-50 dark:bg-forest-950/60 border border-forest-900/15 dark:border-cream-100/15 rounded-lg px-4 py-3 text-forest-900 dark:text-cream-100 placeholder:text-forest-800/35 dark:placeholder:text-cream-100/30 focus:outline-none focus:border-lantern-500 dark:focus:border-lantern-300 focus:ring-1 focus:ring-lantern-500/40 dark:focus:ring-lantern-300/40 transition-all';
+    'w-full bg-cream-50 dark:bg-forest-950/60 border border-forest-900/15 dark:border-cream-100/15 rounded-lg px-4 py-3 text-forest-900 dark:text-cream-100 placeholder:text-forest-800/35 dark:placeholder:text-cream-100/30 focus:outline-none focus:border-leaf-500 dark:focus:border-leaf-300 focus:ring-1 focus:ring-leaf-500/40 dark:focus:ring-leaf-300/40 transition-all';
 
   return (
     <label className="block">

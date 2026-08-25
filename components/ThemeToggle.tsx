@@ -16,7 +16,7 @@ export function ThemeToggle({ className = '' }: Props) {
       onClick={toggle}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      className={`relative h-10 w-10 rounded-full border border-forest-900/15 dark:border-cream-100/15 hover:border-lantern-500 dark:hover:border-lantern-300 text-forest-800 dark:text-cream-100/80 hover:text-lantern-600 dark:hover:text-lantern-200 transition-colors flex items-center justify-center ${className}`}
+      className={`relative h-10 w-10 rounded-full border border-forest-900/15 dark:border-cream-100/15 hover:border-leaf-500 dark:hover:border-leaf-300 text-forest-800 dark:text-cream-100/80 hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors flex items-center justify-center ${className}`}
     >
       <AnimatePresence mode="wait" initial={false}>
         {theme === 'dark' ? (

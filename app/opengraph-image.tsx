@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-export const alt = 'OakenIT — Technology that makes your business easier to run.';
+export const alt = 'OakenIT — Practical solutions in English, not CLI.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -43,7 +43,7 @@ export default async function OGImage() {
             transform: 'translateX(-50%)',
             width: '1000px',
             height: '560px',
-            background: 'radial-gradient(ellipse, rgba(237,162,27,0.30), transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(127,187,53,0.26), transparent 70%)',
             display: 'flex',
           }}
         />
@@ -67,12 +67,12 @@ export default async function OGImage() {
             fontSize: '20px',
             letterSpacing: '5px',
             textTransform: 'uppercase',
-            color: '#f7c04a',
+            color: '#a0d850',
             fontFamily: 'Inter',
             fontWeight: 500,
           }}
         >
-          <div style={{ width: '50px', height: '2px', background: '#f7c04a', display: 'flex' }} />
+          <div style={{ width: '50px', height: '2px', background: '#a0d850', display: 'flex' }} />
           <span>Software · Infrastructure · Automation</span>
         </div>
 
@@ -88,11 +88,8 @@ export default async function OGImage() {
             color: '#f3ece3',
           }}
         >
-          <span>Technology that makes</span>
-          <div style={{ display: 'flex' }}>
-            <span>your business&nbsp;</span>
-            <span style={{ color: '#f7c04a' }}>easier to run.</span>
-          </div>
+          <span>Practical solutions in English,</span>
+          <span style={{ color: '#a0d850' }}>not CLI.</span>
         </div>
 
         {/* Lockup + URL */}
@@ -110,14 +107,14 @@ export default async function OGImage() {
                   fontWeight: 400,
                 }}
               >
-                Senior expertise without the consultancy overhead.
+                Software and infrastructure for common and niche business problems.
               </span>
             </div>
           </div>
           <div
             style={{
               fontSize: '22px',
-              color: '#f7c04a',
+              color: '#a0d850',
               fontFamily: 'Inter',
               fontWeight: 500,
               letterSpacing: '1px',

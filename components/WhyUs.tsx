@@ -33,7 +33,7 @@ export function WhyUs() {
               <SectionLabel>Why OakenIT</SectionLabel>
             </div>
             <h2 className="font-display text-[clamp(1.7rem,2.7vw,2.4rem)] leading-[1.14] tracking-[-0.01em] mb-6 text-forest-800 dark:text-cream-100">
-Senior expertise, without the <span className="text-lantern">consultancy overhead.</span>
+Senior expertise, without the <span className="text-leaf">consultancy overhead.</span>
             </h2>
             <p className="text-forest-800/75 dark:text-cream-100/65 text-lg leading-relaxed max-w-md">
 No layers of account management. No unnecessary platforms. No deliberately
@@ -50,9 +50,9 @@ No layers of account management. No unnecessary platforms. No deliberately
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative flex gap-5 p-8 rounded-2xl border border-forest-900/12 dark:border-cream-100/10 hover:border-lantern-500/50 dark:hover:border-lantern-300/40 bg-cream-100/60 dark:bg-forest-900/40 transition-colors duration-500"
+              className="group relative flex gap-5 p-8 rounded-2xl border border-forest-900/12 dark:border-cream-100/10 hover:border-leaf-500/50 dark:hover:border-leaf-300/40 bg-cream-100/60 dark:bg-forest-900/40 transition-colors duration-500"
             >
-              <div className="shrink-0 h-10 w-10 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mt-1 group-hover:bg-lantern-400 group-hover:text-forest-950 transition-colors duration-500">
+              <div className="shrink-0 h-10 w-10 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mt-1 group-hover:bg-leaf-400 group-hover:text-forest-950 transition-colors duration-500">
                 <Check size={18} strokeWidth={2.5} />
               </div>
               <div>

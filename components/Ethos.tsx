@@ -9,7 +9,7 @@ export function Ethos() {
   return (
     <section className="relative overflow-hidden bg-forest-950 text-cream-100">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-40 left-1/3 w-[900px] h-[500px] bg-lantern-400/10 blur-[140px] rounded-full" />
+        <div className="absolute -top-40 left-1/3 w-[900px] h-[500px] bg-leaf-400/10 blur-[140px] rounded-full" />
         <div className="absolute right-[-8%] -bottom-32 w-[460px] aspect-square opacity-[0.14]">
           <Image src="/mark.png" alt="" fill sizes="460px" className="object-contain" />
         </div>
@@ -27,7 +27,7 @@ export function Ethos() {
       <div className="relative max-w-4xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <p className="font-display text-[clamp(1.9rem,4.2vw,3.4rem)] leading-[1.14] tracking-[-0.015em]">
           Most firms sell you complexity.{' '}
-          <span className="text-lantern">We sell you its absence.</span>
+          <span className="text-leaf">We sell you its absence.</span>
         </p>
 
         <div className="mt-10 grid md:grid-cols-2 gap-8 text-cream-100/70 leading-relaxed">

@@ -62,7 +62,7 @@ export function SiteEmbed({ src, label, title, height = 900, mobileHeight = 760 
           href={src}
           target="_blank"
           rel="noreferrer"
-          className="shrink-0 inline-flex items-center gap-1.5 text-xs text-forest-600 dark:text-lantern-200 hover:text-lantern-600 dark:hover:text-lantern-100 transition-colors"
+          className="shrink-0 inline-flex items-center gap-1.5 text-xs text-forest-600 dark:text-leaf-200 hover:text-leaf-600 dark:hover:text-leaf-100 transition-colors"
         >
           Open
           <ArrowUpRight size={13} />

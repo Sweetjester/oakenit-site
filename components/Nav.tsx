@@ -45,10 +45,10 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-forest-800/75 dark:text-cream-100/70 hover:text-forest-600 dark:hover:text-lantern-200 transition-colors duration-300 relative group"
+              className="text-sm text-forest-800/75 dark:text-cream-100/70 hover:text-forest-600 dark:hover:text-leaf-200 transition-colors duration-300 relative group"
             >
               {l.label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-lantern-500 dark:bg-lantern-300 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-leaf-500 dark:bg-leaf-300 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
@@ -57,7 +57,7 @@ export function Nav() {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium hover:bg-forest-600 dark:hover:bg-lantern-200 transition-colors"
+            className="group inline-flex items-center gap-2 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium hover:bg-forest-600 dark:hover:bg-leaf-200 transition-colors"
           >
             Discuss a project
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -99,7 +99,7 @@ export function Nav() {
               <a
                 href="/#contact"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium"
+                className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium"
               >
                 Discuss a project →
               </a>

@@ -12,7 +12,7 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-forest-950 text-cream-100">
       {/* canopy glow + ghosted mark */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-lantern-400/10 blur-[130px] rounded-full" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-leaf-400/10 blur-[130px] rounded-full" />
         <div className="absolute right-[-6%] -bottom-24 w-[420px] aspect-square opacity-[0.13]">
           <Image src="/mark.png" alt="" fill sizes="420px" className="object-contain" />
         </div>
@@ -48,10 +48,10 @@ export function Footer() {
           <div className="md:col-span-2">
             <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">Site</h4>
             <ul className="space-y-3 text-cream-100/75">
-              <li><a href="/#services" className="hover:text-lantern-200 transition-colors">What we do</a></li>
-              <li><a href="/work" className="hover:text-lantern-200 transition-colors">Our work</a></li>
-              <li><a href="/#process" className="hover:text-lantern-200 transition-colors">How we work</a></li>
-              <li><a href="/#contact" className="hover:text-lantern-200 transition-colors">Discuss a project</a></li>
+              <li><a href="/#services" className="hover:text-leaf-200 transition-colors">What we do</a></li>
+              <li><a href="/work" className="hover:text-leaf-200 transition-colors">Our work</a></li>
+              <li><a href="/#process" className="hover:text-leaf-200 transition-colors">How we work</a></li>
+              <li><a href="/#contact" className="hover:text-leaf-200 transition-colors">Discuss a project</a></li>
             </ul>
           </div>
 
@@ -59,12 +59,12 @@ export function Footer() {
             <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">Contact</h4>
             <ul className="space-y-3 text-cream-100/75">
               <li>
-                <a href="mailto:hello@oakenit.com" className="hover:text-lantern-200 transition-colors">
+                <a href="mailto:hello@oakenit.com" className="hover:text-leaf-200 transition-colors">
                   hello@oakenit.com
                 </a>
               </li>
               <li>
-                <a href="https://oakenit.com" className="hover:text-lantern-200 transition-colors">
+                <a href="https://oakenit.com" className="hover:text-leaf-200 transition-colors">
                   oakenit.com
                 </a>
               </li>
@@ -77,7 +77,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-4 text-sm text-cream-100/45">
           <p>© {year} OakenIT. All rights reserved.</p>
           <p className="font-mono text-xs">
-            <span className="text-lantern-300 animate-flicker">●</span> All systems lit
+            <span className="text-leaf-300 animate-flicker">●</span> All systems lit
           </p>
         </div>
       </div>

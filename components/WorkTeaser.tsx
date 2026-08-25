@@ -33,13 +33,13 @@ export function WorkTeaser() {
               <SectionLabel>Our work</SectionLabel>
             </div>
             <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
-              Things we have <span className="text-lantern">actually built.</span>
+              Things we have <span className="text-leaf">actually built.</span>
             </h2>
           </div>
           <div className="flex lg:justify-end">
             <a
               href="/work"
-              className="group inline-flex items-center gap-2 text-forest-600 dark:text-lantern-200 hover:text-lantern-600 dark:hover:text-lantern-100 transition-colors"
+              className="group inline-flex items-center gap-2 text-forest-600 dark:text-leaf-200 hover:text-leaf-600 dark:hover:text-leaf-100 transition-colors"
             >
               See our work
               <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -62,14 +62,14 @@ export function WorkTeaser() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(circle at 90% 0%, rgba(237,162,27,0.18), transparent 62%)',
+                    'radial-gradient(circle at 90% 0%, rgba(127,187,53,0.20), transparent 62%)',
                 }}
               />
               <div className="relative text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
                 {h.tag}
               </div>
               <div className="relative flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
-                <span className="font-display text-5xl leading-none text-lantern big-numeral">
+                <span className="font-display text-5xl leading-none text-leaf big-numeral">
                   {h.metric}
                 </span>
                 <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-[16rem] leading-snug">
@@ -82,7 +82,7 @@ export function WorkTeaser() {
                 </span>
                 <ArrowUpRight
                   size={16}
-                  className="text-forest-800/35 dark:text-cream-100/35 group-hover:text-lantern-600 dark:group-hover:text-lantern-200 transition-colors"
+                  className="text-forest-800/35 dark:text-cream-100/35 group-hover:text-leaf-600 dark:group-hover:text-leaf-200 transition-colors"
                 />
               </div>
             </motion.a>

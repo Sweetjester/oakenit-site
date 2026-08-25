@@ -15,11 +15,6 @@ const strung = [
   { left: '87%', cord: 104, size: 26, sway: 9.5, delay: 0.9 },
 ];
 
-const facts = [
-  { k: '< 1 day', v: 'initial response' },
-  { k: '30 min', v: 'free discovery call' },
-  { k: '2–3 days', v: 'typical proposal' },
-];
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -70,21 +65,12 @@ export function Hero() {
 
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 max-w-7xl w-full mx-auto px-6 lg:px-10 pt-36 pb-16"
+        className="relative z-10 max-w-7xl w-full mx-auto px-6 lg:px-10 pt-32 pb-16"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xs uppercase tracking-[0.25em] text-forest-800/60 dark:text-cream-100/55 mb-8"
-        >
-          Senior expertise · Practical solutions in English, not CLI
-        </motion.div>
-
         <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-5xl">
-          <AnimatedLine delay={0.3}>Technology that makes</AnimatedLine>
+          <AnimatedLine delay={0.3}>Practical solutions in English,</AnimatedLine>
           <AnimatedLine delay={0.45}>
-            your business <span className="text-lantern">easier to run.</span>
+            <span className="text-leaf">not CLI.</span>
           </AnimatedLine>
         </h1>
 
@@ -94,9 +80,8 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 max-w-2xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
         >
-          OakenIT helps UK businesses build software, improve infrastructure and solve
-          difficult IT problems — without the cost and complexity of a traditional
-          consultancy.
+          OakenIT helps businesses build software and improve infrastructure to solve
+          common and niche business problems.
         </motion.p>
 
         <motion.p
@@ -116,34 +101,19 @@ export function Hero() {
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium hover:bg-forest-600 dark:hover:bg-lantern-200 transition-colors lantern-glow"
+            className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium hover:bg-forest-600 dark:hover:bg-leaf-200 transition-colors leaf-glow"
           >
             Discuss a project
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
           <a
-            href="#services"
-            className="inline-flex items-center gap-3 rounded-full border border-forest-900/20 dark:border-cream-100/20 px-7 py-4 text-base text-forest-800 dark:text-cream-100 hover:border-lantern-500 dark:hover:border-lantern-300 hover:text-forest-600 dark:hover:text-lantern-200 transition-colors"
+            href="/work"
+            className="inline-flex items-center gap-3 rounded-full border border-forest-900/20 dark:border-cream-100/20 px-7 py-4 text-base text-forest-800 dark:text-cream-100 hover:border-leaf-500 dark:hover:border-leaf-300 hover:text-forest-600 dark:hover:text-leaf-200 transition-colors"
           >
-            See what we do
+            Check out our work
           </a>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 flex flex-wrap items-baseline gap-x-10 gap-y-4 text-sm text-forest-800/70 dark:text-cream-100/60"
-        >
-          {facts.map((s) => (
-            <div key={s.v} className="flex items-baseline gap-2.5">
-              <span className="font-display text-forest-600 dark:text-lantern-200 text-lg big-numeral">
-                {s.k}
-              </span>
-              <span className="uppercase tracking-[0.18em] text-xs">{s.v}</span>
-            </div>
-          ))}
-        </motion.div>
       </motion.div>
     </section>
   );

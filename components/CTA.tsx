@@ -17,7 +17,7 @@ export function CTA() {
     <section id="contact" className="relative py-16 lg:py-24 overflow-hidden">
       {/* Lantern light pooling behind the form */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-lantern-400/12 dark:bg-lantern-300/10 blur-[160px] rounded-full" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-leaf-400/12 dark:bg-leaf-300/10 blur-[160px] rounded-full" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
@@ -42,7 +42,7 @@ export function CTA() {
               className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100"
             >
               Got a technology{' '}
-              <span className="text-lantern whitespace-nowrap">problem?</span>
+              <span className="text-leaf whitespace-nowrap">problem?</span>
             </motion.h2>
 
             <motion.p

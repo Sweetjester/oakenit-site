@@ -25,7 +25,23 @@ const config: Config = {
           900: '#06200d',
           950: '#031507',
         },
-        // LANTERN — the gold hanging from the branches. The only warm accent.
+        // LEAF — the light green from the logo's leaf highlights (#a0d850).
+        // The accent: emphasis text, buttons, links, rules, numerals.
+        // 600 is the lightest step that clears 4.5:1 on cream; 300 is the raw
+        // logo green and is dark-mode only.
+        leaf: {
+          50: '#f2f9e6',
+          100: '#e2f2c6',
+          200: '#c9e894',
+          300: '#a0d850',
+          400: '#7fbb35',
+          500: '#5f9427',
+          600: '#4a761d',
+          700: '#36560f',
+        },
+        // LANTERN — the gold hanging from the branches. Reserved for the
+        // lantern motif itself (hanging lanterns, glyph bullets); the mark
+        // artwork contains this gold, so it stays as illustration, not accent.
         lantern: {
           50: '#fff8e6',
           100: '#ffedc2',

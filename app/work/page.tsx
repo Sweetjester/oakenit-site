@@ -42,7 +42,7 @@ export default function WorkPage() {
               <SectionLabel>Our work</SectionLabel>
             </div>
             <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-4xl">
-              Things we have <span className="text-lantern">actually built.</span>
+              Things we have <span className="text-leaf">actually built.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg text-forest-800/75 dark:text-cream-100/70 leading-relaxed">
               Most client work sits behind NDAs, or inside businesses that would rather not
@@ -65,7 +65,7 @@ export default function WorkPage() {
                 </h2>
 
                 <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <span className="font-display text-5xl leading-none text-lantern big-numeral">
+                  <span className="font-display text-5xl leading-none text-leaf big-numeral">
                     60s
                   </span>
                   <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
@@ -95,7 +95,7 @@ export default function WorkPage() {
                   {['A CV stuck in a PDF', 'Automated render and deploy', 'Live on its own subdomain'].map(
                     (step, j) => (
                       <span key={step} className="flex items-center gap-3">
-                        {j > 0 && <span className="text-lantern-500 dark:text-lantern-300">→</span>}
+                        {j > 0 && <span className="text-leaf-500 dark:text-leaf-300">→</span>}
                         <span>{step}</span>
                       </span>
                     )
@@ -129,7 +129,7 @@ export default function WorkPage() {
 
             <div className="lg:col-span-7">
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-5">
-                <span className="font-display text-5xl md:text-6xl leading-none text-lantern big-numeral">
+                <span className="font-display text-5xl md:text-6xl leading-none text-leaf big-numeral">
                   90%+
                 </span>
                 <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
@@ -144,7 +144,7 @@ export default function WorkPage() {
                 {['Manual, inconsistent reporting', 'Custom capture platform', 'Near-complete coverage'].map(
                   (step, j) => (
                     <span key={step} className="flex items-center gap-3">
-                      {j > 0 && <span className="text-lantern-500 dark:text-lantern-300">→</span>}
+                      {j > 0 && <span className="text-leaf-500 dark:text-leaf-300">→</span>}
                       <span>{step}</span>
                     </span>
                   )
@@ -159,7 +159,7 @@ export default function WorkPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">
               <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
-                Selected <span className="text-lantern">experience.</span>
+                Selected <span className="text-leaf">experience.</span>
               </h2>
             </div>
             <div className="lg:col-span-7">
@@ -181,7 +181,7 @@ export default function WorkPage() {
 
               <a
                 href="/#contact"
-                className="group mt-8 inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium hover:bg-forest-600 dark:hover:bg-lantern-200 transition-colors"
+                className="group mt-8 inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium hover:bg-forest-600 dark:hover:bg-leaf-200 transition-colors"
               >
                 Discuss a project
                 <span className="transition-transform group-hover:translate-x-1">→</span>

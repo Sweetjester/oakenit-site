@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-25 (designer review implemented: outcome-led positioning, Build/Fix/Improve, proof section, shorter form)
+> **Last updated**: 2026-08-25 (Andy's revisions: leaf-green accent, new hero line, /work page)
 
 ---
 
@@ -20,7 +20,7 @@ Rewritten 2026-08-25 after a commissioned design review. The through-line is
 **outcome first, then specificity, then proof** — the previous site made the
 visitor work out what OakenIT does.
 
-- Headline promise: *technology that makes your business easier to run*
+- Headline promise: *practical solutions in English, not CLI*
 - What we do, stated as problem shapes rather than disciplines:
   **Build / Fix / Improve**
 - Differentiator: *senior expertise without the consultancy overhead* — you
@@ -42,14 +42,13 @@ Build/Fix/Improve. Don't regress it to discipline names.
 consultancy rates for someone to prompt ChatGPT."* It is now one reason among
 four, phrased as "Modern tools, responsible judgement". Keep it there.
 
-**Current hero**:
-- Eyebrow: `SENIOR EXPERTISE · PRACTICAL SOLUTIONS IN ENGLISH, NOT CLI`
-- Headline: `Technology that makes your business` / `easier to run.` (gold)
-- Sub: "OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems — without the cost and complexity of a traditional consultancy."
+**Current hero** (no eyebrow, no response-time promises — both removed at
+Andy's request 2026-08-25; don't reinstate an SLA strip):
+- Headline: `Practical solutions in English,` / `not CLI.` (leaf green)
+- Sub: "OakenIT helps businesses build software and improve infrastructure to solve common and niche business problems."
 - Capability line: `Software · Infrastructure · Automation · Technical consulting`
 - Primary CTA: "Discuss a project" → `#contact`
-- Secondary CTA: "See what we do" → `#services`
-- Facts strip: `< 1 day` initial response · `30 min` free discovery call · `2-3 days` typical proposal
+- Secondary CTA: "Check out our work" → `/work`
 
 ---
 
@@ -100,7 +99,7 @@ oakenit/
 │   │                           # (no custom cursor — removed 2026-08-25,
 │   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
-│   │                           # scrollbar, marquee, .canopy, .text-lantern
+│   │                           # scrollbar, marquee, .canopy, .text-leaf
 │   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
 │   │                           # can't use CSS fonts)
 │   ├── work/page.tsx           # /work — the case studies + live cvlive.io embed
@@ -164,17 +163,26 @@ Sampled directly off the logo mark: the canopy greens and the lantern golds.
 | `forest-700` | `#0f3f18` | **Light-mode primary button**, wordmark |
 | `forest-600` | `#18551f` | Light-mode link hover, stat numerals |
 | `forest-50` | `#eef5ef` | Process section band (light) |
-| `lantern-200` | `#ffdb8a` | Dark-mode link hover |
-| `lantern-300` | `#f7c04a` | **Dark-mode primary button**, lantern fill, glyphs |
-| `lantern-400` | `#eda21b` | Glow colour, focus ring, selection |
-| `lantern-500` | `#d4820c` | Light-mode accent line / glyphs |
-| `lantern-600` | `#b46000` | Light-mode emphasis text (readable on cream) |
+| `leaf-200` | `#c9e894` | Dark-mode link hover |
+| `leaf-300` | `#a0d850` | **The logo's light green.** Dark-mode button/accent |
+| `leaf-400` | `#7fbb35` | Glow, focus ring |
+| `leaf-500` | `#5f9427` | Light-mode rules, arrows (3.4:1 — not body text) |
+| `leaf-600` | `#4a761d` | Light-mode emphasis text (5.1:1 on cream) |
+| `lantern-300` / `-500` | `#f7c04a` / `#d4820c` | **Lantern motif only** — see below |
 | `cream-50` | `#faf7f1` | Light-mode bg |
 | `cream-100` | `#f3ece3` | Light-mode card bg / dark-mode text |
 
-**Rule**: green is the ground, gold is the light. Gold is an *accent* — never a
-large fill on cream (contrast dies). Primary CTA is solid `forest-700` in light
-mode and solid `lantern-300` in dark mode.
+**Rule**: forest green is the ground, **leaf green is the accent**. Andy swapped
+the accent from gold to leaf green on 2026-08-25 — emphasis text, buttons,
+links, rules, numerals and focus rings are all `leaf-*` now.
+
+**Gold survives in exactly one place**: the lantern motif — `<Lantern>`
+decorations and `<LanternGlyph>` bullets. The mark PNG itself contains that
+gold, so it can't be eliminated; it reads as illustration rather than as the UI
+accent. If you touch colours, the test is: *is this element a lantern?* If yes,
+`lantern-*`; if no, `leaf-*`. Don't reintroduce gold for text or buttons.
+
+Primary CTA is solid `forest-700` in light mode, solid `leaf-300` in dark.
 
 Pattern:
 ```tsx
@@ -186,7 +194,7 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 - **Display (Prata)**: all headlines and "feature" text. Prata ships **one
   weight (400) and no italic** — never put `font-bold`, `font-semibold` or
   `italic` on `font-display` text or the browser fakes it, which looks cheap on
-  a high-contrast face. Emphasis words are distinguished by `.text-lantern`
+  a high-contrast face. Emphasis words are distinguished by `.text-leaf`
   (gold gradient, theme-aware) **alone**.
 - Prata sets much larger than a Garamond at the same px — headline `clamp()`
   values are tuned for it. Re-check sizes if the face ever changes.

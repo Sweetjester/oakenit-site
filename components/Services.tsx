@@ -59,7 +59,7 @@ export function Services() {
               <SectionLabel>What we do</SectionLabel>
             </div>
             <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
-              Build. Fix. <span className="text-lantern">Improve.</span>
+              Build. Fix. <span className="text-leaf">Improve.</span>
             </h2>
           </div>
           <div className="flex items-end">
@@ -84,12 +84,12 @@ export function Services() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(circle at 85% 0%, rgba(237,162,27,0.20), transparent 62%)',
+                    'radial-gradient(circle at 85% 0%, rgba(127,187,53,0.22), transparent 62%)',
                 }}
               />
 
               <div className="relative flex items-center gap-4 mb-6">
-                <div className="h-11 w-11 shrink-0 rounded-xl bg-lantern-400/12 border border-lantern-500/30 dark:border-lantern-300/25 flex items-center justify-center text-forest-600 dark:text-lantern-200 group-hover:bg-lantern-300 group-hover:text-forest-950 group-hover:border-lantern-300 transition-colors duration-500">
+                <div className="h-11 w-11 shrink-0 rounded-xl bg-leaf-400/12 border border-leaf-500/30 dark:border-leaf-300/25 flex items-center justify-center text-forest-600 dark:text-leaf-200 group-hover:bg-leaf-300 group-hover:text-forest-950 group-hover:border-leaf-300 transition-colors duration-500">
                   <p.icon size={19} strokeWidth={1.7} />
                 </div>
                 <h3 className="font-display text-3xl leading-none text-forest-800 dark:text-cream-100">
