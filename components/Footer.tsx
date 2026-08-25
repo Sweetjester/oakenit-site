@@ -28,9 +28,9 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-20">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16">
         <div className="grid md:grid-cols-12 gap-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-7">
             <div className="flex items-center gap-2.5">
               <div className="relative h-9 w-9 shrink-0">
                 <Image src="/mark.png" alt="OakenIT" fill sizes="36px" className="object-contain" />
@@ -40,24 +40,12 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-6 text-cream-100/60 max-w-sm leading-relaxed">
-              Senior engineers and architects, on call. We build software, run
-              infrastructure, and answer the hard questions.
+              Senior engineers and architects, on call. Bespoke technical work for UK
+              businesses.
             </p>
           </div>
 
-          <div className="md:col-span-3">
-            <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">
-              What we do
-            </h4>
-            <ul className="space-y-3 text-cream-100/75">
-              <li><a href="#services" className="hover:text-lantern-200 transition-colors">Development</a></li>
-              <li><a href="#services" className="hover:text-lantern-200 transition-colors">Systems &amp; infrastructure</a></li>
-              <li><a href="#services" className="hover:text-lantern-200 transition-colors">Consulting</a></li>
-              <li><a href="#process" className="hover:text-lantern-200 transition-colors">How we work</a></li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-4">
+          <div className="md:col-span-5">
             <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">Contact</h4>
             <ul className="space-y-3 text-cream-100/75">
               <li>
@@ -74,7 +62,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="my-12 h-px bg-gradient-to-r from-transparent via-cream-100/15 to-transparent" />
+        <div className="my-10 h-px bg-gradient-to-r from-transparent via-cream-100/15 to-transparent" />
 
         <div className="flex flex-col md:flex-row justify-between gap-4 text-sm text-cream-100/45">
           <p>© {year} OakenIT. All rights reserved.</p>

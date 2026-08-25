@@ -95,7 +95,7 @@ export function Hero() {
           className="mt-8 max-w-xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
         >
           Quick, bespoke technical work for UK businesses — software, infrastructure, or a
-          sharp answer. Senior team. AI-augmented. Brief us below.
+          sharp answer. Senior team, AI-augmented.
         </motion.p>
 
         <motion.div

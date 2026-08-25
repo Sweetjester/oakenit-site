@@ -1,6 +1,5 @@
 import { Nav } from '@/components/Nav';
 import { Hero } from '@/components/Hero';
-import { Services } from '@/components/Services';
 import { Process } from '@/components/Process';
 import { WhyUs } from '@/components/WhyUs';
 import { CTA } from '@/components/CTA';
@@ -15,7 +14,6 @@ export default function Page() {
       <main>
         <Hero />
         <CTA />
-        <Services />
         <WhyUs />
         <Process />
       </main>

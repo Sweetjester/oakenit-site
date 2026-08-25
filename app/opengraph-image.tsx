@@ -73,7 +73,7 @@ export default async function OGImage() {
           }}
         >
           <div style={{ width: '50px', height: '2px', background: '#f7c04a', display: 'flex' }} />
-          <span>Development · Systems · Consulting</span>
+          <span>Bespoke tech · UK</span>
         </div>
 
         {/* Headline */}

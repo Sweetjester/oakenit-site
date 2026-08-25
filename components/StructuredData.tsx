@@ -69,44 +69,9 @@ export function StructuredData() {
     provider: { '@id': `${SITE_URL}#organization` },
   };
 
-  const offerCatalog = {
-    '@context': 'https://schema.org',
-    '@type': 'OfferCatalog',
-    name: 'OakenIT Services',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Development',
-          description:
-            'Custom software builds, AI agents, internal tools, APIs and mobile applications.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Systems & Infrastructure',
-          description:
-            'Cloud architecture, DevOps, monitoring, cybersecurity, and managed IT.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Consulting',
-          description:
-            'Technical strategy, AI roadmaps, architecture audits, CTO-as-a-service, and technical diligence.',
-        },
-      },
-    ],
-  };
-
   const graph = {
     '@context': 'https://schema.org',
-    '@graph': [organization, website, professionalService, offerCatalog],
+    '@graph': [organization, website, professionalService],
   };
 
   return (

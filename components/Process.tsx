@@ -15,7 +15,7 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative py-20 lg:py-28 border-y border-forest-900/10 dark:border-cream-100/10 bg-forest-50/70 dark:bg-forest-900/40"
+      className="relative py-16 lg:py-24 border-y border-forest-900/10 dark:border-cream-100/10 bg-forest-50/70 dark:bg-forest-900/40"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="mb-10">

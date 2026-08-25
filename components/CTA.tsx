@@ -5,16 +5,11 @@ import { InquiryForm } from './InquiryForm';
 import { SectionLabel } from './SectionLabel';
 import { LanternGlyph } from './Lantern';
 
-const promises = [
-  'Reply within one business day',
-  'Free 30-min scoping call if there is a fit',
-  'One-page proposal within 5 working days',
-  'NDAs welcome',
-];
+const promises = ['Free 30-min scoping call if there is a fit', 'NDAs welcome'];
 
 export function CTA() {
   return (
-    <section id="contact" className="relative py-20 lg:py-28 overflow-hidden">
+    <section id="contact" className="relative py-16 lg:py-24 overflow-hidden">
       {/* Lantern light pooling behind the form */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-lantern-400/12 dark:bg-lantern-300/10 blur-[160px] rounded-full" />

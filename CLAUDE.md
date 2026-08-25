@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-25 (lantern-tree rebrand: real logo artwork, forest/lantern palette, Prata display face)
+> **Last updated**: 2026-08-25 (lantern-tree rebrand + trim: three-pillar section removed at Andy's request)
 
 ---
 
@@ -14,8 +14,16 @@
 
 **Owner**: Andrew Hyslop ("Andy"). Trading email: `hello@oakenit.com` (planned — Google Workspace setup for the oakenit.com domain pending).
 
-**Positioning** (locked, do not drift without permission):
-- Three pillars: **Development · Systems & Infrastructure · Consulting**
+**Positioning** (do not drift without permission):
+- ⚠️ **The three-pillar section was removed on 2026-08-25 at Andy's request**
+  ("too much fluff... remove the 3 discipline stuff"). Do **not** reinstate a
+  Services/Three-disciplines section, a "three skills, one contract" line, or
+  the `Development · Systems · Consulting` triad as on-page furniture without
+  asking. The work itself hasn't changed — it's now stated once, in the hero
+  sub ("software, infrastructure, or a sharp answer") and the JSON-LD
+  `serviceType` list, and nowhere else.
+- Still true, just not sold as a framework: development, systems &
+  infrastructure, consulting
 - Voice: confident, plain English, slight edge, no hedging, no marketing fluff
 - Brand promise: senior team + AI = the work of a much bigger firm, delivered fast and explained clearly
 - Differentiator vs. agencies: faster, simpler, one contract
@@ -73,7 +81,7 @@ oakenit/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
 │   ├── page.tsx                # Composes: Cursor → Nav → Hero → CTA →
-│   │                           # Services → WhyUs → Process → Footer
+│   │                           # WhyUs → Process → Footer
 │   ├── globals.css             # Base styles, theme custom-props, grain,
 │   │                           # scrollbar, marquee, .canopy, .text-lantern
 │   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
@@ -91,9 +99,8 @@ oakenit/
 │   ├── Hero.tsx                # Headline, sub, CTAs, inline stats strip
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
 │   ├── InquiryForm.tsx         # useActionState form with honeypot + time-trap
-│   ├── Services.tsx            # Three-pillar bento
 │   ├── Process.tsx             # 4-step grid (Listen/Scope/Ship/Stay)
-│   ├── WhyUs.tsx               # Sticky-left value points + pull quote
+│   ├── WhyUs.tsx               # Sticky-left value points (3)
 │   ├── Footer.tsx
 │   ├── Logo.tsx                # mark.png + live-text wordmark
 │   ├── Lantern.tsx             # <Lantern> + <LanternGlyph> SVG motifs
@@ -229,8 +236,22 @@ All features carry over from SweetTech identical:
 - Smooth scroll, custom scrollbar
 - `text-oak-gradient` for italic emphasis (differs light/dark)
 
+### ✂️ Deliberately removed (2026-08-25)
+- **Services / "Three disciplines. One team." section** — deleted, along with
+  its nav link, footer column, sitemap anchor and JSON-LD `OfferCatalog`.
+- **WhyUs pull quote** and the "Three skills, one contract" point.
+- **Duplicated promises**: response times were stated three times (hero stats,
+  CTA bullet list, Process bodies). The CTA list is down to the two things
+  nothing else says.
+- Page is ~30% shorter as a result. Keep it that way — Andy's steer is
+  "nice but to the point".
+
+**Open**: the `<title>` still reads "Development, infrastructure, consulting for
+UK businesses" and the metadata description still lists all three. Left alone
+because it's load-bearing for search, but it no longer matches the page. Ask
+Andy before changing it.
+
 ### ❌ Not yet built (Phase 2)
-- Service landing pages (`/services/development`, etc.)
 - Blog (`/insights/...`)
 - Case studies
 - Testimonials section
