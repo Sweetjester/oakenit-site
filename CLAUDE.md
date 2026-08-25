@@ -27,9 +27,11 @@ visitor work out what OakenIT does.
   work directly with the person designing and delivering the thing. For an SME
   buyer, small and senior is the selling point. **Do not** write copy that
   implies agency scale.
-- Brand personality: *technology without the nonsense.* The line "Most firms
-  sell you complexity. We sell you its absence." is the best sentence on the
-  site — it has its own section (`Ethos.tsx`). Keep it.
+- Brand personality: *technology without the nonsense.*
+  ⚠️ The "Most firms sell you complexity. We sell you its absence." band
+  (`Ethos.tsx`) was **removed on 2026-08-25 at Andy's request**. Andy's
+  designer rated that line highly, so it may come back — but don't reinstate
+  the section without asking.
 
 **History worth knowing** — an earlier version sold three *disciplines*
 (Development / Systems / Consulting). Andy killed it as fluff, then the design
@@ -95,7 +97,7 @@ oakenit/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
 │   ├── page.tsx                # Hero → TrustStrip → Services → WorkTeaser →
-│   │                           # Ethos → WhyUs → Process → CTA → Footer
+│   │                           # WhyUs → Process → CTA → Footer
 │   │                           # (no custom cursor — removed 2026-08-25,
 │   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
@@ -118,7 +120,6 @@ oakenit/
 │   ├── Services.tsx            # Build / Fix / Improve
 │   ├── WorkTeaser.tsx          # Homepage band linking to /work
 │   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
-│   ├── Ethos.tsx               # "We sell you its absence" — night-side band
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
 │   ├── InquiryForm.tsx         # 4 fields only — see § 6
 │   ├── Process.tsx             # Understand / Scope / Deliver / Support
@@ -295,7 +296,8 @@ problem, and it is the one thing that cannot be written from the codebase.
 ### ✂️ Stays removed
 - **"Three disciplines. One team."** as a framing — see § 1. Services came back
   as Build/Fix/Improve; the discipline names did not.
-- **The pull quote in WhyUs** — the same sentence now anchors `Ethos.tsx`.
+- **The pull quote in WhyUs**, and later the `Ethos.tsx` band that carried the
+  same sentence.
 - **Duplicated promises.** Response times used to be stated three times over
   (hero stats, contact bullets, process bodies). They appear once, in the hero.
 - **Form fields**: business size, timeline.
