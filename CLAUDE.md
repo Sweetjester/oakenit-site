@@ -43,7 +43,7 @@ consultancy rates for someone to prompt ChatGPT."* It is now one reason among
 four, phrased as "Modern tools, responsible judgement". Keep it there.
 
 **Current hero**:
-- Eyebrow: `SENIOR EXPERTISE · PRACTICAL SOLUTIONS · PLAIN ENGLISH`
+- Eyebrow: `SENIOR EXPERTISE · PRACTICAL SOLUTIONS IN ENGLISH, NOT CLI`
 - Headline: `Technology that makes your business` / `easier to run.` (gold)
 - Sub: "OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems — without the cost and complexity of a traditional consultancy."
 - Capability line: `Software · Infrastructure · Automation · Technical consulting`
@@ -97,6 +97,8 @@ oakenit/
 │   │                           # theme init script, Analytics, ThemeProvider
 │   ├── page.tsx                # Hero → TrustStrip → Services → Proof →
 │   │                           # Ethos → WhyUs → Process → CTA → Footer
+│   │                           # (no custom cursor — removed 2026-08-25,
+│   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
 │   │                           # scrollbar, marquee, .canopy, .text-lantern
 │   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
@@ -124,7 +126,6 @@ oakenit/
 │   ├── Logo.tsx                # mark.png + live-text wordmark
 │   ├── Lantern.tsx             # <Lantern> + <LanternGlyph> SVG motifs
 │   ├── SectionLabel.tsx        # Shared section eyebrow
-│   ├── Cursor.tsx              # Desktop-only magnetic cursor
 │   ├── ThemeProvider.tsx       # Theme context + no-flash init script
 │   ├── ThemeToggle.tsx         # Sun/moon toggle
 │   ├── StructuredData.tsx      # JSON-LD Organization + WebSite + Service
@@ -271,7 +272,6 @@ problem, and it is the one thing that cannot be written from the codebase.
 - Analytics wired, env-gated
 
 ### ✅ Polish
-- Custom magnetic cursor (desktop only)
 - Grain overlay (theme-aware opacity)
 - Smooth scroll, custom scrollbar
 - `text-oak-gradient` for italic emphasis (differs light/dark)

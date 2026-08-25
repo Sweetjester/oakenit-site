@@ -78,7 +78,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-xs uppercase tracking-[0.25em] text-forest-800/60 dark:text-cream-100/55 mb-8"
         >
-          Senior expertise · Practical solutions · Plain English
+          Senior expertise · Practical solutions in English, not CLI
         </motion.div>
 
         <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-5xl">
