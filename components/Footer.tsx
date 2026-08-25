@@ -48,10 +48,10 @@ export function Footer() {
           <div className="md:col-span-2">
             <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">Site</h4>
             <ul className="space-y-3 text-cream-100/75">
-              <li><a href="#services" className="hover:text-lantern-200 transition-colors">What we do</a></li>
-              <li><a href="#work" className="hover:text-lantern-200 transition-colors">Our work</a></li>
-              <li><a href="#process" className="hover:text-lantern-200 transition-colors">How we work</a></li>
-              <li><a href="#contact" className="hover:text-lantern-200 transition-colors">Discuss a project</a></li>
+              <li><a href="/#services" className="hover:text-lantern-200 transition-colors">What we do</a></li>
+              <li><a href="/work" className="hover:text-lantern-200 transition-colors">Our work</a></li>
+              <li><a href="/#process" className="hover:text-lantern-200 transition-colors">How we work</a></li>
+              <li><a href="/#contact" className="hover:text-lantern-200 transition-colors">Discuss a project</a></li>
             </ul>
           </div>
 

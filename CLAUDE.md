@@ -95,7 +95,7 @@ oakenit/
 ├── app/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
-│   ├── page.tsx                # Hero → TrustStrip → Services → Proof →
+│   ├── page.tsx                # Hero → TrustStrip → Services → WorkTeaser →
 │   │                           # Ethos → WhyUs → Process → CTA → Footer
 │   │                           # (no custom cursor — removed 2026-08-25,
 │   │                           #  it sat on top of the copy)
@@ -103,6 +103,7 @@ oakenit/
 │   │                           # scrollbar, marquee, .canopy, .text-lantern
 │   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
 │   │                           # can't use CSS fonts)
+│   ├── work/page.tsx           # /work — the case studies + live cvlive.io embed
 │   ├── icon.png                # Favicon (file convention)
 │   ├── apple-icon.png          # Apple touch icon (file convention)
 │   ├── robots.ts               # Dynamic /robots.txt
@@ -116,7 +117,8 @@ oakenit/
 │   ├── Hero.tsx                # Headline, sub, CTAs, inline stats strip
 │   ├── TrustStrip.tsx          # Capability band under the hero
 │   ├── Services.tsx            # Build / Fix / Improve
-│   ├── Proof.tsx               # Selected experience + case studies
+│   ├── WorkTeaser.tsx          # Homepage band linking to /work
+│   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
 │   ├── Ethos.tsx               # "We sell you its absence" — night-side band
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
 │   ├── InquiryForm.tsx         # 4 fields only — see § 6
@@ -235,7 +237,7 @@ All features carry over from SweetTech identical:
 - Anti-flash inline script reads `localStorage['oakenit-theme']` → `prefers-color-scheme` → dark default
 - Toggle in Nav (animated sun/moon)
 
-### ⚠️ Proof / case studies — read before touching `Proof.tsx`
+### ⚠️ Proof / case studies — read before touching `app/work/page.tsx`
 
 The design review called the credibility gap the site's biggest commercial
 problem, and it is the one thing that cannot be written from the codebase.
@@ -243,9 +245,15 @@ problem, and it is the one thing that cannot be written from the codebase.
 - **Case-study entries are factual claims about real client work.** Never
   invent, embellish, or round a figure to fill the grid. One real case study
   beats three plausible ones.
-- The single entry currently shipped (90%+ field reporting / proof-of-posting
-  platform) came from Andy's designer. **It still needs Andy's explicit
-  sign-off** — flagged to him on 2026-08-25.
+- The 90%+ field-reporting / proof-of-posting entry came from Andy's designer.
+  **It still needs Andy's explicit sign-off** — flagged to him on 2026-08-25.
+- CV Live is *our own product*, not client work, and is labelled as such. It is
+  embedded live via `SiteEmbed` — cvlive.io sends no `X-Frame-Options` or CSP
+  `frame-ancestors`, so it frames cleanly. If that ever changes the frame will
+  go blank; fall back to a screenshot.
+- `SiteEmbed` renders the target at desktop width and scales it down, but
+  switches to the site's *own* mobile layout below a 700px container — a 1280px
+  page shrunk into a phone column is unreadable.
 - "Selected experience" is a list of *domains*, not client claims — safe to
   extend as the work broadens.
 - Still missing, and worth chasing: an About section with a photo and a real

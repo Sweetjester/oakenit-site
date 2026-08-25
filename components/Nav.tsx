@@ -7,10 +7,10 @@ import { ThemeToggle } from './ThemeToggle';
 import { Menu, X } from 'lucide-react';
 
 const links = [
-  { href: '#services', label: 'What we do' },
-  { href: '#work', label: 'Our work' },
-  { href: '#why', label: 'Why OakenIT' },
-  { href: '#process', label: 'How we work' },
+  { href: '/#services', label: 'What we do' },
+  { href: '/work', label: 'Our work' },
+  { href: '/#why', label: 'Why OakenIT' },
+  { href: '/#process', label: 'How we work' },
 ];
 
 export function Nav() {
@@ -36,7 +36,7 @@ export function Nav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#top" aria-label="OakenIT home" className="block">
+        <a href="/" aria-label="OakenIT home" className="block">
           <Logo size={30} />
         </a>
 
@@ -56,7 +56,7 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <a
-            href="#contact"
+            href="/#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium hover:bg-forest-600 dark:hover:bg-lantern-200 transition-colors"
           >
             Discuss a project
@@ -97,7 +97,7 @@ export function Nav() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium"
               >

@@ -2,7 +2,7 @@ import { Nav } from '@/components/Nav';
 import { Hero } from '@/components/Hero';
 import { TrustStrip } from '@/components/TrustStrip';
 import { Services } from '@/components/Services';
-import { Proof } from '@/components/Proof';
+import { WorkTeaser } from '@/components/WorkTeaser';
 import { Ethos } from '@/components/Ethos';
 import { WhyUs } from '@/components/WhyUs';
 import { Process } from '@/components/Process';
@@ -17,7 +17,7 @@ export default function Page() {
         <Hero />
         <TrustStrip />
         <Services />
-        <Proof />
+        <WorkTeaser />
         <Ethos />
         <WhyUs />
         <Process />
