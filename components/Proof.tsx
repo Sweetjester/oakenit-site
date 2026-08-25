@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
 import { LanternGlyph } from './Lantern';
 
@@ -22,10 +23,20 @@ const experience = [
  */
 const caseStudies = [
   {
+    metric: '60s',
+    metricLabel: 'from uploaded CV to a live, hosted personal site',
+    body: 'Designed, built and shipped CV Live end to end: CV parsing and AI-assisted rewriting, automated per-user subdomains, generated share cards, PDF export, and subscription billing.',
+    arc: ['A CV stuck in a PDF', 'Automated render and deploy', 'Live at yourname.cvlive.io'],
+    tag: 'Our own product',
+    href: 'https://www.cvlive.io/',
+    hrefLabel: 'cvlive.io',
+  },
+  {
     metric: '90%+',
     metricLabel: 'field reporting captured during a major live deployment',
     body: 'Designed and delivered a custom proof-of-posting platform used across a high-volume outdoor advertising operation.',
     arc: ['Manual, inconsistent reporting', 'Custom capture platform', 'Near-complete coverage'],
+    tag: 'Client project',
   },
 ];
 
@@ -74,6 +85,11 @@ export function Proof() {
                       'radial-gradient(circle at 90% 0%, rgba(237,162,27,0.16), transparent 60%)',
                   }}
                 />
+                {c.tag && (
+                  <div className="relative mb-5 text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45">
+                    {c.tag}
+                  </div>
+                )}
                 <div className="relative flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
                   <span className="font-display text-5xl md:text-6xl leading-none text-lantern big-numeral">
                     {c.metric}
@@ -85,6 +101,18 @@ export function Proof() {
                 <p className="relative text-forest-800/80 dark:text-cream-100/70 leading-relaxed">
                   {c.body}
                 </p>
+
+                {c.href && (
+                  <a
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="relative mt-4 inline-flex items-center gap-2 text-sm text-forest-600 dark:text-lantern-200 hover:text-lantern-600 dark:hover:text-lantern-100 transition-colors"
+                  >
+                    {c.hrefLabel}
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
                 <div className="relative mt-7 pt-6 border-t border-forest-900/10 dark:border-cream-100/10 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-forest-800/60 dark:text-cream-100/55">
                   {c.arc.map((step, j) => (
                     <span key={step} className="flex items-center gap-3">
@@ -97,8 +125,8 @@ export function Proof() {
             ))}
 
             <p className="text-sm text-forest-800/60 dark:text-cream-100/50 leading-relaxed">
-              Most of our work sits behind NDAs or inside businesses that would rather not
-              advertise their internal systems. Ask and we will walk you through the
+              Most client work sits behind NDAs, or inside businesses that would rather
+              not advertise their internal systems. Ask, and we will walk you through the
               closest comparable project on a call.
             </p>
           </div>
