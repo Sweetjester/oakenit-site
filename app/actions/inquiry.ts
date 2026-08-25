@@ -1,5 +1,7 @@
 'use server';
 
+import { fileInquiry } from '@/lib/heartwood';
+
 export type InquiryState =
   | { status: 'idle' }
   | { status: 'success' }
@@ -52,6 +54,25 @@ export async function submitInquiry(
     return { status: 'error', message: 'Please fix the highlighted fields.', fieldErrors };
   }
 
+  // File the lead into Heartwood BEFORE attempting email.
+  //
+  // Email is a notification; Heartwood is the record. Doing it in this order
+  // means a lead survives a missing API key, a bounced address, or a Resend
+  // outage — it lands on the sales board either way. fileInquiry never throws.
+  const filed = await fileInquiry({
+    name,
+    email,
+    company: company === '—' ? '' : company,
+    message: project,
+    source: 'oakenit.com/#contact',
+  });
+
+  if (filed.ok) {
+    console.log(`[inquiry] filed to Heartwood as item #${filed.itemId}`);
+  } else {
+    console.error(`[inquiry] Heartwood ingest failed: ${filed.reason}`);
+  }
+
   const subject = `New inquiry — ${name}${company !== '—' ? ` (${company})` : ''}`;
   const text = [
     `Name:       ${name}`,
@@ -79,6 +100,8 @@ export async function submitInquiry(
   if (!apiKey) {
     console.warn('[inquiry] RESEND_API_KEY not set — logging instead of sending:');
     console.log(text);
+    // Not a silent loss any more: the lead is on the Heartwood sales board
+    // if the ingest above succeeded.
     return { status: 'success' };
   }
 
@@ -113,6 +136,14 @@ export async function submitInquiry(
       }
       const trimmed = String(detail).slice(0, 280);
 
+      // The visitor's inquiry is already safe on the sales board, so telling
+      // them it failed would be untrue and would lose us the lead twice over.
+      // Log loudly for us; show them the success they actually got.
+      if (filed.ok) {
+        console.error('[inquiry] email failed but lead is captured in Heartwood — treating as success');
+        return { status: 'success' };
+      }
+
       return {
         status: 'error',
         message: `Email send failed (${res.status}): ${trimmed}`,
@@ -122,6 +153,12 @@ export async function submitInquiry(
     return { status: 'success' };
   } catch (err) {
     console.error('[inquiry] Network error', err);
+
+    if (filed.ok) {
+      console.error('[inquiry] email network error but lead is captured in Heartwood — treating as success');
+      return { status: 'success' };
+    }
+
     return {
       status: 'error',
       message: `Network error: ${err instanceof Error ? err.message : String(err)}`,

@@ -10,6 +10,8 @@
 
 **OakenIT** (legal: **Oaken IT Ltd**) is one of the user's two brands. This repo is the public marketing site (`oakenit.com`), built to convert visitors into inquiry-form submissions.
 
+**Internal system**: [Heartwood](https://github.com/Sweetjester/heartwood) — OakenIT's own operating system (append-only event log, department boards, MCP context layer for AI agents). This site's inquiry form files leads into it. See § 6.
+
 **Sister project**: [SweetTech](https://github.com/Sweetjester/Sweettech-site) at `/Documents/Vibe/sweettech`. The OakenIT codebase was forked from SweetTech and rebranded — the two share **identical architecture** and **identical positioning** (three-pillar UK technical services). What differs: name, palette, logo, domain, and any brand-specific copy tweaks.
 
 **Owner**: Andrew Hyslop ("Andy"). Trading email: `hello@oakenit.com` (planned — Google Workspace setup for the oakenit.com domain pending).
@@ -278,6 +280,14 @@ problem, and it is the one thing that cannot be written from the codebase.
 - Sends via Resend → `hello@oakenit.com` (default; override in `INQUIRY_TO_EMAIL`)
 - Default sender: `OakenIT Inquiries <onboarding@resend.dev>` — works without domain verification
 - Honeypot (`website` field) + 1.5s time-trap
+- **Every valid inquiry is filed into Heartwood first**, via `lib/heartwood.ts` →
+  `POST /ingest/inquiry`. It lands as a card on the **sales** board plus a `lead.received`
+  event. Email is a *notification*; Heartwood is the *record*.
+- `fileInquiry()` never throws and times out at 4s. A visitor's submission must never fail
+  because an internal system is slow or down — if you touch this, keep that property.
+- If Resend fails **but** the Heartwood write succeeded, the visitor sees success (their inquiry
+  genuinely is recorded) and the email failure is logged loudly. Only a double failure surfaces
+  an error to the visitor.
 - Falls back to `console.log` if `RESEND_API_KEY` unset
 - Surfaces Resend's actual error to the UI on failure
 
@@ -330,6 +340,8 @@ Set in **Railway → OakenIT service → Variables**.
 | `RESEND_API_KEY` | For email | — (logs only) | Resend API key |
 | `RESEND_FROM_EMAIL` | No | `OakenIT Inquiries <onboarding@resend.dev>` | Sender. Override once oakenit.com is verified in Resend |
 | `INQUIRY_TO_EMAIL` | No | `hello@oakenit.com` | Recipient. On Resend free tier this must match the Resend account email; use the account owner's address until domain verification |
+| `HEARTWOOD_INGEST_TOKEN` | **Yes, for lead capture** | — (logs a failure) | Heartwood token, `ingest` scope only |
+| `HEARTWOOD_URL` | No | `https://heartwood-app-production.up.railway.app` | Heartwood base URL |
 | `NEXT_PUBLIC_SITE_URL` | No | `https://www.oakenit.com` | Used by sitemap/OG/schema |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | No | unset | Enables Plausible. Value: `oakenit.com` |
 | `NEXT_PUBLIC_CLARITY_ID` | No | unset | Enables Microsoft Clarity |
@@ -348,6 +360,7 @@ TBD for OakenIT — most of these need to be set up. Track them here as they are
 |---|---|---|---|
 | **Railway** | Andy | — | ✅ Project `oakenit-site`, service `web`, deploys from GitHub `main`. URL: https://web-production-5eb08.up.railway.app |
 | **GitHub** | Andy (`Sweetjester`) | — | ✅ `Sweetjester/oakenit-site` |
+| **Heartwood** | Andy | — | ✅ Railway project `heartwood`. Receives every inquiry as a sales-board card |
 | **Domain registrar for oakenit.com** | Andy | — | ⏳ Need to confirm which registrar |
 | **Google Workspace** | Andy | `hello@oakenit.com` / `andy@oakenit.com` | ⏳ Not yet set up for oakenit.com |
 | **Resend** | — | — | ⏳ Consider a separate Resend account for OakenIT, or reuse SweetTech's account (in which case `INQUIRY_TO_EMAIL` must be that account's registered email until domain is verified) |
