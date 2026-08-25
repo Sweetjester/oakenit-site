@@ -76,6 +76,7 @@ oakenit/
 │   │                           # Services → WhyUs → Process → Footer
 │   ├── globals.css             # Base styles, theme custom-props, grain,
 │   │                           # scrollbar, marquee, .canopy, .text-lantern
+│   ├── fonts/                  # TTFs for the OG card (satori can't use CSS fonts)
 │   ├── icon.png                # Favicon (file convention)
 │   ├── apple-icon.png          # Apple touch icon (file convention)
 │   ├── robots.ts               # Dynamic /robots.txt
@@ -308,7 +309,7 @@ Andy to decide before Phase 2 content build starts. Ask.
 
 Inherited from SweetTech, all still apply:
 
-1. **OG image uses system serif, not Cormorant.** `next/og` needs font files as ArrayBuffers — skipped. It *does* inline `public/mark.png` as a base64 data URI (read with `node:fs`, so the route must stay on the Node runtime).
+1. **OG image fonts are bundled TTFs in `app/fonts/`**, read with `node:fs` (so the route must stay on the Node runtime), along with `public/mark.png` as a base64 data URI. Two gotchas: satori resolves a family name with two styles unpredictably, so the italic is registered under its **own** family name (`Cormorant Italic`); and Google's `css2` response lists the **italic** face first, so verify a downloaded TTF's name table before trusting the filename you gave it.
 2. **`overflow-y-hidden` on AnimatedLine (Hero)** — not `overflow-hidden` — so italic glyph flourishes extend horizontally freely while the vertical slide-up animation still clips.
 3. **`whitespace-nowrap` on key headline phrases** to prevent mid-phrase wraps. If you change copy, re-evaluate.
 4. **If oakenit.com is at a registrar that blocks apex CNAME**, use domain forwarding or HTTPS records for the apex; only `www` gets the CNAME. Same pattern as SweetTech's Squarespace workaround.

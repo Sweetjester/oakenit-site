@@ -11,6 +11,14 @@ export default async function OGImage() {
   const mark = await readFile(join(process.cwd(), 'public', 'mark.png'));
   const markSrc = `data:image/png;base64,${mark.toString('base64')}`;
 
+  // next/og has no serif of its own — the display face is bundled in the repo
+  // (app/fonts) so the card matches the site without a build-time network fetch.
+  const [display, displayItalic, sans] = await Promise.all([
+    readFile(join(process.cwd(), 'app', 'fonts', 'CormorantGaramond-SemiBold.ttf')),
+    readFile(join(process.cwd(), 'app', 'fonts', 'CormorantGaramond-MediumItalic.ttf')),
+    readFile(join(process.cwd(), 'app', 'fonts', 'Inter-Regular.ttf')),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -23,7 +31,7 @@ export default async function OGImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '76px',
-          fontFamily: 'serif',
+          fontFamily: 'Cormorant',
           position: 'relative',
         }}
       >
@@ -61,7 +69,7 @@ export default async function OGImage() {
             letterSpacing: '5px',
             textTransform: 'uppercase',
             color: '#f7c04a',
-            fontFamily: 'sans-serif',
+            fontFamily: 'Inter',
             fontWeight: 500,
           }}
         >
@@ -74,14 +82,23 @@ export default async function OGImage() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            lineHeight: 0.98,
-            fontSize: '158px',
-            letterSpacing: '-4px',
+            lineHeight: 0.95,
+            fontSize: '132px',
+            letterSpacing: '-3px',
             fontWeight: 600,
           }}
         >
-          <span style={{ color: '#f3ece3' }}>Tell us</span>
-          <span style={{ color: '#f7c04a', fontStyle: 'italic', marginTop: '4px' }}>
+          <span style={{ color: '#f3ece3', whiteSpace: 'nowrap' }}>Tell us</span>
+          <span
+            style={{
+              color: '#f7c04a',
+              fontFamily: 'Cormorant Italic',
+              fontStyle: 'italic',
+              fontWeight: 500,
+              marginTop: '6px',
+              whiteSpace: 'nowrap',
+            }}
+          >
             what you need.
           </span>
         </div>
@@ -97,7 +114,7 @@ export default async function OGImage() {
                 style={{
                   fontSize: '20px',
                   color: '#bcc9bd',
-                  fontFamily: 'sans-serif',
+                  fontFamily: 'Inter',
                   fontWeight: 400,
                 }}
               >
@@ -109,7 +126,7 @@ export default async function OGImage() {
             style={{
               fontSize: '22px',
               color: '#f7c04a',
-              fontFamily: 'sans-serif',
+              fontFamily: 'Inter',
               fontWeight: 500,
               letterSpacing: '1px',
             }}
@@ -119,6 +136,13 @@ export default async function OGImage() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: 'Cormorant', data: display, weight: 600, style: 'normal' },
+        { name: 'Cormorant Italic', data: displayItalic, weight: 500, style: 'italic' },
+        { name: 'Inter', data: sans, weight: 400, style: 'normal' },
+      ],
+    }
   );
 }
