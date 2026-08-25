@@ -15,8 +15,8 @@ export function StructuredData() {
     name: 'OakenIT',
     legalName: 'OakenIT',
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/mark.png`,
+    image: `${SITE_URL}/mark.png`,
     description:
       'AI-augmented technical team for UK businesses. Development, infrastructure, and consulting under one contract.',
     foundingDate: '2025',
@@ -53,7 +53,7 @@ export function StructuredData() {
     '@id': `${SITE_URL}#service`,
     name: 'OakenIT',
     url: SITE_URL,
-    image: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/mark.png`,
     description:
       'UK-based technical services firm offering software development, cloud infrastructure, cybersecurity, managed IT, and AI consulting to businesses with 10–200 employees.',
     serviceType: [
