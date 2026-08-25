@@ -5,10 +5,26 @@ import { SectionLabel } from './SectionLabel';
 import { LanternGlyph } from './Lantern';
 
 const steps = [
-  { n: '01', title: 'Listen', body: '30-min call. You describe the problem.' },
-  { n: '02', title: 'Scope', body: 'One-page proposal within 5 working days.' },
-  { n: '03', title: 'Ship', body: 'Two-week sprints. Demo every Friday.' },
-  { n: '04', title: 'Stay', body: 'Optional monthly retainer. Cancel anytime.' },
+  {
+    n: '01',
+    title: 'Understand',
+    body: 'A short conversation about the problem, the business, and what success looks like.',
+  },
+  {
+    n: '02',
+    title: 'Scope',
+    body: 'We recommend an approach, explain the trade-offs, and give you a clear proposal.',
+  },
+  {
+    n: '03',
+    title: 'Deliver',
+    body: 'Small releases, visible progress, and regular communication.',
+  },
+  {
+    n: '04',
+    title: 'Support',
+    body: 'Hand it over, keep improving it, or keep us available for when you need us.',
+  },
 ];
 
 export function Process() {
@@ -57,6 +73,10 @@ export function Process() {
             ))}
           </div>
         </div>
+
+        <p className="mt-6 text-sm text-forest-800/60 dark:text-cream-100/55">
+          No unnecessary retainers, and no vendor lock-in.
+        </p>
       </div>
     </section>
   );

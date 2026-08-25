@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Lantern, LanternGlyph } from './Lantern';
+import { Lantern } from './Lantern';
 
 /** Lanterns strung across the top of the hero, at hand-picked offsets. */
 const strung = [
@@ -13,6 +13,12 @@ const strung = [
   { left: '63%', cord: 88, size: 24, sway: 8, delay: 0.3 },
   { left: '74%', cord: 44, size: 33, sway: 6, delay: 1.6 },
   { left: '87%', cord: 104, size: 26, sway: 9.5, delay: 0.9 },
+];
+
+const facts = [
+  { k: '< 1 day', v: 'initial response' },
+  { k: '30 min', v: 'free discovery call' },
+  { k: '2–3 days', v: 'typical proposal' },
 ];
 
 export function Hero() {
@@ -40,12 +46,10 @@ export function Hero() {
           }}
         />
 
-        {/* The mark, oversized and ghosted, anchored bottom-right */}
         <div className="absolute -right-24 bottom-0 w-[min(70vw,720px)] aspect-square opacity-[0.13] dark:opacity-[0.18] pointer-events-none">
           <Image src="/mark.png" alt="" fill priority sizes="70vw" className="object-contain" />
         </div>
 
-        {/* Lanterns on cords from the top edge */}
         <div className="absolute inset-x-0 top-0 h-[42vh] hidden sm:block pointer-events-none">
           {strung.map((l) => (
             <div
@@ -68,23 +72,19 @@ export function Hero() {
         style={{ y, opacity }}
         className="relative z-10 max-w-7xl w-full mx-auto px-6 lg:px-10 pt-36 pb-16"
       >
-        {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-forest-800/60 dark:text-cream-100/55 mb-10"
+          className="text-xs uppercase tracking-[0.25em] text-forest-800/60 dark:text-cream-100/55 mb-8"
         >
-          <LanternGlyph className="h-4 w-3 text-lantern-500 dark:text-lantern-300 animate-flicker" />
-          <span className="h-px w-8 bg-lantern-500/60 dark:bg-lantern-300/50" />
-          <span>Bespoke tech · UK</span>
+          Senior expertise · Practical solutions · Plain English
         </motion.div>
 
-        {/* Headline */}
-        <h1 className="font-display text-[clamp(2.5rem,6.2vw,5.4rem)] leading-[1.02] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
-          <AnimatedLine delay={0.3}>Tell us</AnimatedLine>
+        <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-5xl">
+          <AnimatedLine delay={0.3}>Technology that makes</AnimatedLine>
           <AnimatedLine delay={0.45}>
-            <span className="text-lantern">what you need.</span>
+            your business <span className="text-lantern">easier to run.</span>
           </AnimatedLine>
         </h1>
 
@@ -92,10 +92,20 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 max-w-xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
+          className="mt-8 max-w-2xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
         >
-          Quick, bespoke technical work for UK businesses — software, infrastructure, or a
-          sharp answer. Senior team, AI-augmented.
+          OakenIT helps UK businesses build software, improve infrastructure and solve
+          difficult IT problems — without the cost and complexity of a traditional
+          consultancy.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 1 }}
+          className="mt-6 text-sm tracking-[0.08em] text-forest-800/60 dark:text-cream-100/55"
+        >
+          Software · Infrastructure · Automation · Technical consulting
         </motion.p>
 
         <motion.div
@@ -108,33 +118,25 @@ export function Hero() {
             href="#contact"
             className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium hover:bg-forest-600 dark:hover:bg-lantern-200 transition-colors lantern-glow"
           >
-            Brief us
+            Discuss a project
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
           <a
-            href="#process"
+            href="#services"
             className="inline-flex items-center gap-3 rounded-full border border-forest-900/20 dark:border-cream-100/20 px-7 py-4 text-base text-forest-800 dark:text-cream-100 hover:border-lantern-500 dark:hover:border-lantern-300 hover:text-forest-600 dark:hover:text-lantern-200 transition-colors"
           >
-            How it works
+            See what we do
           </a>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 flex flex-wrap items-center gap-x-9 gap-y-4 text-sm text-forest-800/70 dark:text-cream-100/60"
+          className="mt-14 flex flex-wrap items-baseline gap-x-10 gap-y-4 text-sm text-forest-800/70 dark:text-cream-100/60"
         >
-          {[
-            { k: '< 24h', v: 'first reply' },
-            { k: '5 days', v: 'to proposal' },
-            { k: '2 wks', v: 'first delivery' },
-          ].map((s, i) => (
-            <div key={s.v} className="flex items-center gap-2.5">
-              {i > 0 && (
-                <LanternGlyph className="h-3.5 w-2.5 mr-6 text-lantern-500/60 dark:text-lantern-300/50" />
-              )}
+          {facts.map((s) => (
+            <div key={s.v} className="flex items-baseline gap-2.5">
               <span className="font-display text-forest-600 dark:text-lantern-200 text-lg big-numeral">
                 {s.k}
               </span>
@@ -148,8 +150,6 @@ export function Hero() {
 }
 
 function AnimatedLine({ children, delay }: { children: React.ReactNode; delay: number }) {
-  // overflow-y-hidden (not overflow-hidden) so the vertical slide-up animation
-  // still clips, but italic letter flourishes can extend left/right freely.
   return (
     <span className="block overflow-y-hidden pb-[0.06em]">
       <motion.span

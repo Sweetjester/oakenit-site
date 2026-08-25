@@ -5,7 +5,12 @@ import { InquiryForm } from './InquiryForm';
 import { SectionLabel } from './SectionLabel';
 import { LanternGlyph } from './Lantern';
 
-const promises = ['Free 30-min scoping call if there is a fit', 'NDAs welcome'];
+const promises = [
+  'It doesn’t need to be perfectly defined',
+  'Free initial conversation, no obligation',
+  'We’ll tell you honestly if we can’t help',
+  'NDAs welcome',
+];
 
 export function CTA() {
   return (
@@ -26,7 +31,7 @@ export function CTA() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="mb-5"
             >
-              <SectionLabel>Brief us</SectionLabel>
+              <SectionLabel>Get in touch</SectionLabel>
             </motion.div>
 
             <motion.h2
@@ -36,11 +41,20 @@ export function CTA() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100"
             >
-              <span className="whitespace-nowrap">Brief us.</span>{' '}
-              <span className="text-lantern whitespace-nowrap">
-                We&rsquo;ll plan it.
-              </span>
+              Got a technology{' '}
+              <span className="text-lantern whitespace-nowrap">problem?</span>
             </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 text-forest-800/75 dark:text-cream-100/65 leading-relaxed max-w-md"
+            >
+              Tell us what&rsquo;s frustrating you, what you&rsquo;re trying to achieve, or
+              what isn&rsquo;t working. We&rsquo;ll tell you whether we think we can help.
+            </motion.p>
 
             <motion.ul
               initial={{ opacity: 0 }}

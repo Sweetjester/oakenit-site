@@ -40,9 +40,6 @@ export async function submitInquiry(
   const email = (formData.get('email') as string)?.trim();
   const company = (formData.get('company') as string)?.trim() || '—';
   const project = (formData.get('project') as string)?.trim();
-  const businessSize =
-    (formData.get('businessSize') as string)?.trim() || 'Not specified';
-  const timeline = (formData.get('timeline') as string)?.trim() || 'Not specified';
 
   const fieldErrors: Record<string, string> = {};
   if (!name) fieldErrors.name = 'Tell us your name.';
@@ -60,24 +57,20 @@ export async function submitInquiry(
     `Name:       ${name}`,
     `Email:      ${email}`,
     `Company:    ${company}`,
-    `Team size:  ${businessSize}`,
-    `Timeline:   ${timeline}`,
     '',
-    'Project:',
+    'Enquiry:',
     project,
   ].join('\n');
 
   const html = `
     <div style="font-family:Inter,system-ui,sans-serif;color:#1a1816;line-height:1.55;">
-      <h2 style="font-family:Georgia,serif;color:#956d1c;margin:0 0 16px;">New OakenIT inquiry</h2>
+      <h2 style="font-family:Georgia,serif;color:#b46000;margin:0 0 16px;">New OakenIT inquiry</h2>
       <table style="border-collapse:collapse;width:100%;max-width:560px;">
         <tr><td style="padding:6px 12px 6px 0;color:#666;width:140px;">Name</td><td><strong>${escapeHtml(name)}</strong></td></tr>
         <tr><td style="padding:6px 12px 6px 0;color:#666;">Email</td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
         <tr><td style="padding:6px 12px 6px 0;color:#666;">Company</td><td>${escapeHtml(company)}</td></tr>
-        <tr><td style="padding:6px 12px 6px 0;color:#666;">Team size</td><td>${escapeHtml(businessSize)}</td></tr>
-        <tr><td style="padding:6px 12px 6px 0;color:#666;">Timeline</td><td>${escapeHtml(timeline)}</td></tr>
       </table>
-      <h3 style="font-family:Georgia,serif;margin:24px 0 8px;">Project</h3>
+      <h3 style="font-family:Georgia,serif;margin:24px 0 8px;">Enquiry</h3>
       <p style="white-space:pre-wrap;background:#f5f1ea;padding:16px;border-radius:8px;">${escapeHtml(project)}</p>
     </div>
   `;

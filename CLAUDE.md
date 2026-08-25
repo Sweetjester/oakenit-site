@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-25 (lantern-tree rebrand + trim: three-pillar section removed at Andy's request)
+> **Last updated**: 2026-08-25 (designer review implemented: outcome-led positioning, Build/Fix/Improve, proof section, shorter form)
 
 ---
 
@@ -15,26 +15,41 @@
 **Owner**: Andrew Hyslop ("Andy"). Trading email: `hello@oakenit.com` (planned — Google Workspace setup for the oakenit.com domain pending).
 
 **Positioning** (do not drift without permission):
-- ⚠️ **The three-pillar section was removed on 2026-08-25 at Andy's request**
-  ("too much fluff... remove the 3 discipline stuff"). Do **not** reinstate a
-  Services/Three-disciplines section, a "three skills, one contract" line, or
-  the `Development · Systems · Consulting` triad as on-page furniture without
-  asking. The work itself hasn't changed — it's now stated once, in the hero
-  sub ("software, infrastructure, or a sharp answer") and the JSON-LD
-  `serviceType` list, and nowhere else.
-- Still true, just not sold as a framework: development, systems &
-  infrastructure, consulting
-- Voice: confident, plain English, slight edge, no hedging, no marketing fluff
-- Brand promise: senior team + AI = the work of a much bigger firm, delivered fast and explained clearly
-- Differentiator vs. agencies: faster, simpler, one contract
-- Differentiator vs. MSPs: more senior, more strategic, AI-native
 
-**Current hero** (identical to SweetTech's — change with permission):
-- Eyebrow: `BESPOKE TECH · UK`
-- Headline: `Tell us` / *`what you need.`*
-- Sub: "Quick, bespoke technical work for UK businesses — software, infrastructure, or a sharp answer. Senior team. AI-augmented. Brief us below."
-- Primary CTA: "Brief us" → `#contact`
-- Secondary CTA: "How it works" → `#process`
+Rewritten 2026-08-25 after a commissioned design review. The through-line is
+**outcome first, then specificity, then proof** — the previous site made the
+visitor work out what OakenIT does.
+
+- Headline promise: *technology that makes your business easier to run*
+- What we do, stated as problem shapes rather than disciplines:
+  **Build / Fix / Improve**
+- Differentiator: *senior expertise without the consultancy overhead* — you
+  work directly with the person designing and delivering the thing. For an SME
+  buyer, small and senior is the selling point. **Do not** write copy that
+  implies agency scale.
+- Brand personality: *technology without the nonsense.* The line "Most firms
+  sell you complexity. We sell you its absence." is the best sentence on the
+  site — it has its own section (`Ethos.tsx`). Keep it.
+
+**History worth knowing** — an earlier version sold three *disciplines*
+(Development / Systems / Consulting). Andy killed it as fluff, then the design
+review said services were invisible and asked for them back **framed as
+problems, not departments**. That is why `Services.tsx` exists again as
+Build/Fix/Improve. Don't regress it to discipline names.
+
+**AI messaging is deliberately demoted.** It used to be a headline pillar
+("AI is the unfair advantage"). A business buyer reads that as *"I'm paying
+consultancy rates for someone to prompt ChatGPT."* It is now one reason among
+four, phrased as "Modern tools, responsible judgement". Keep it there.
+
+**Current hero**:
+- Eyebrow: `SENIOR EXPERTISE · PRACTICAL SOLUTIONS · PLAIN ENGLISH`
+- Headline: `Technology that makes your business` / `easier to run.` (gold)
+- Sub: "OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems — without the cost and complexity of a traditional consultancy."
+- Capability line: `Software · Infrastructure · Automation · Technical consulting`
+- Primary CTA: "Discuss a project" → `#contact`
+- Secondary CTA: "See what we do" → `#services`
+- Facts strip: `< 1 day` initial response · `30 min` free discovery call · `2-3 days` typical proposal
 
 ---
 
@@ -80,8 +95,8 @@ oakenit/
 ├── app/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
-│   ├── page.tsx                # Composes: Cursor → Nav → Hero → CTA →
-│   │                           # WhyUs → Process → Footer
+│   ├── page.tsx                # Hero → TrustStrip → Services → Proof →
+│   │                           # Ethos → WhyUs → Process → CTA → Footer
 │   ├── globals.css             # Base styles, theme custom-props, grain,
 │   │                           # scrollbar, marquee, .canopy, .text-lantern
 │   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
@@ -97,10 +112,14 @@ oakenit/
 ├── components/
 │   ├── Nav.tsx                 # Sticky nav + theme toggle + Book a chat CTA
 │   ├── Hero.tsx                # Headline, sub, CTAs, inline stats strip
+│   ├── TrustStrip.tsx          # Capability band under the hero
+│   ├── Services.tsx            # Build / Fix / Improve
+│   ├── Proof.tsx               # Selected experience + case studies
+│   ├── Ethos.tsx               # "We sell you its absence" — night-side band
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
-│   ├── InquiryForm.tsx         # useActionState form with honeypot + time-trap
-│   ├── Process.tsx             # 4-step grid (Listen/Scope/Ship/Stay)
-│   ├── WhyUs.tsx               # Sticky-left value points (3)
+│   ├── InquiryForm.tsx         # 4 fields only — see § 6
+│   ├── Process.tsx             # Understand / Scope / Deliver / Support
+│   ├── WhyUs.tsx               # Sticky-left reasons-to-believe (4)
 │   ├── Footer.tsx
 │   ├── Logo.tsx                # mark.png + live-text wordmark
 │   ├── Lantern.tsx             # <Lantern> + <LanternGlyph> SVG motifs
@@ -215,7 +234,28 @@ All features carry over from SweetTech identical:
 - Anti-flash inline script reads `localStorage['oakenit-theme']` → `prefers-color-scheme` → dark default
 - Toggle in Nav (animated sun/moon)
 
+### ⚠️ Proof / case studies — read before touching `Proof.tsx`
+
+The design review called the credibility gap the site's biggest commercial
+problem, and it is the one thing that cannot be written from the codebase.
+
+- **Case-study entries are factual claims about real client work.** Never
+  invent, embellish, or round a figure to fill the grid. One real case study
+  beats three plausible ones.
+- The single entry currently shipped (90%+ field reporting / proof-of-posting
+  platform) came from Andy's designer. **It still needs Andy's explicit
+  sign-off** — flagged to him on 2026-08-25.
+- "Selected experience" is a list of *domains*, not client claims — safe to
+  extend as the work broadens.
+- Still missing, and worth chasing: an About section with a photo and a real
+  human biography. For a founder-led consultancy this does more for trust than
+  any amount of copy. Needs Andy's words and picture — do not fabricate either.
+
 ### ✅ Inquiry form
+- **Four fields only**: name, email, company (optional), "What can we help
+  with?". Business size and timeline pill-groups were removed 2026-08-25 —
+  every extra field on a first contact is another chance to bounce. Qualify on
+  the call instead. Don't add fields back without a reason.
 - Server Action at `app/actions/inquiry.ts`
 - Sends via Resend → `hello@oakenit.com` (default; override in `INQUIRY_TO_EMAIL`)
 - Default sender: `OakenIT Inquiries <onboarding@resend.dev>` — works without domain verification
@@ -236,20 +276,22 @@ All features carry over from SweetTech identical:
 - Smooth scroll, custom scrollbar
 - `text-oak-gradient` for italic emphasis (differs light/dark)
 
-### ✂️ Deliberately removed (2026-08-25)
-- **Services / "Three disciplines. One team." section** — deleted, along with
-  its nav link, footer column, sitemap anchor and JSON-LD `OfferCatalog`.
-- **WhyUs pull quote** and the "Three skills, one contract" point.
-- **Duplicated promises**: response times were stated three times (hero stats,
-  CTA bullet list, Process bodies). The CTA list is down to the two things
-  nothing else says.
-- Page is ~30% shorter as a result. Keep it that way — Andy's steer is
-  "nice but to the point".
+### ✂️ Stays removed
+- **"Three disciplines. One team."** as a framing — see § 1. Services came back
+  as Build/Fix/Improve; the discipline names did not.
+- **The pull quote in WhyUs** — the same sentence now anchors `Ethos.tsx`.
+- **Duplicated promises.** Response times used to be stated three times over
+  (hero stats, contact bullets, process bodies). They appear once, in the hero.
+- **Form fields**: business size, timeline.
 
-**Open**: the `<title>` still reads "Development, infrastructure, consulting for
-UK businesses" and the metadata description still lists all three. Left alone
-because it's load-bearing for search, but it no longer matches the page. Ask
-Andy before changing it.
+### 🔜 Still open after the design review
+1. **About section** — photo + real biography. The review rated this highly for
+   a founder-led consultancy. Blocked on Andy.
+2. **More case studies** — two or three would be materially better than one.
+   Blocked on Andy (and on his sign-off for the one that is live).
+3. **oakenit.com DNS.** The review's closing point: a `*.up.railway.app`
+   hostname reads as "unfinished demo", which is corrosive when what you're
+   selling is IT professionalism. Do not send prospects to the Railway URL.
 
 ### ❌ Not yet built (Phase 2)
 - Blog (`/insights/...`)

@@ -18,7 +18,7 @@ export function StructuredData() {
     logo: `${SITE_URL}/mark.png`,
     image: `${SITE_URL}/mark.png`,
     description:
-      'AI-augmented technical team for UK businesses. Development, infrastructure, and consulting under one contract.',
+      'OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems, without the cost and complexity of a traditional consultancy.',
     foundingDate: '2025',
     areaServed: { '@type': 'Country', name: 'United Kingdom' },
     contactPoint: {
@@ -42,7 +42,7 @@ export function StructuredData() {
     url: SITE_URL,
     name: 'OakenIT',
     description:
-      'Senior engineers and architects. We build, run, and advise on the technology your business depends on.',
+      'Software, infrastructure, automation and technical consulting for UK businesses.',
     publisher: { '@id': `${SITE_URL}#organization` },
     inLanguage: 'en-GB',
   };
@@ -55,14 +55,18 @@ export function StructuredData() {
     url: SITE_URL,
     image: `${SITE_URL}/mark.png`,
     description:
-      'UK-based technical services firm offering software development, cloud infrastructure, cybersecurity, managed IT, and AI consulting to businesses with 10–200 employees.',
+      'UK technical services firm: bespoke software, cloud and on-premise infrastructure, Microsoft 365, networks, cyber security, workflow automation and technical consulting for small and mid-sized businesses.',
     serviceType: [
-      'Software development',
+      'Bespoke software development',
+      'Systems integration',
+      'Workflow automation',
       'Cloud infrastructure',
-      'AI consulting',
-      'Managed IT services',
-      'Cybersecurity',
-      'CTO-as-a-service',
+      'Microsoft 365',
+      'Networks and connectivity',
+      'Cyber security',
+      'IT architecture review',
+      'Infrastructure modernisation',
+      'Technical consulting',
     ],
     areaServed: { '@type': 'Country', name: 'United Kingdom' },
     priceRange: '££',

@@ -7,9 +7,10 @@ import { ThemeToggle } from './ThemeToggle';
 import { Menu, X } from 'lucide-react';
 
 const links = [
-  { href: '#process', label: 'Process' },
-  { href: '#why', label: 'Why us' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#services', label: 'What we do' },
+  { href: '#work', label: 'Our work' },
+  { href: '#why', label: 'Why OakenIT' },
+  { href: '#process', label: 'How we work' },
 ];
 
 export function Nav() {
@@ -39,7 +40,7 @@ export function Nav() {
           <Logo size={30} />
         </a>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <a
               key={l.href}
@@ -58,7 +59,7 @@ export function Nav() {
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium hover:bg-forest-600 dark:hover:bg-lantern-200 transition-colors"
           >
-            Book a chat
+            Discuss a project
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </a>
         </div>
@@ -100,7 +101,7 @@ export function Nav() {
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 px-5 py-2.5 text-sm font-medium"
               >
-                Book a chat →
+                Discuss a project →
               </a>
             </div>
           </motion.div>

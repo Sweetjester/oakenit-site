@@ -1,19 +1,14 @@
 'use client';
 
-import { useActionState, useEffect, useRef, useState } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Loader2, ArrowRight, Mail } from 'lucide-react';
 import { submitInquiry, type InquiryState } from '@/app/actions/inquiry';
-
-const businessSizes = ['Just me', '2–10', '11–50', '51–200', '200+'];
-const timelines = ['ASAP', 'Next 1–3 months', '3–6 months', 'Just exploring'];
 
 const initial: InquiryState = { status: 'idle' };
 
 export function InquiryForm() {
   const [state, action, pending] = useActionState(submitInquiry, initial);
-  const [businessSize, setBusinessSize] = useState(businessSizes[1]);
-  const [timeline, setTimeline] = useState(timelines[0]);
   const formRef = useRef<HTMLFormElement>(null);
   const startedAt = useRef(Date.now());
 
@@ -74,34 +69,17 @@ export function InquiryForm() {
       </div>
 
       <div className="mt-5">
-        <Field label="Company (optional)" name="company" placeholder="Acme Inc." />
+        <Field label="Company (optional)" name="company" placeholder="Acme Ltd." />
       </div>
 
       <div className="mt-5">
         <Field
-          label="What do you want to build, fix, or figure out?"
+          label="What can we help with?"
           name="project"
           as="textarea"
           rows={5}
-          placeholder="A sentence or three is enough. The more specific, the sharper our reply."
+          placeholder="A sentence or two is plenty. What’s not working, or what are you trying to build?"
           error={fieldErrors.project}
-        />
-      </div>
-
-      <div className="mt-7 grid md:grid-cols-2 gap-7">
-        <PillGroup
-          label="Business size"
-          name="businessSize"
-          options={businessSizes}
-          value={businessSize}
-          onChange={setBusinessSize}
-        />
-        <PillGroup
-          label="Timeline"
-          name="timeline"
-          options={timelines}
-          value={timeline}
-          onChange={setTimeline}
         />
       </div>
 
@@ -120,7 +98,8 @@ export function InquiryForm() {
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-forest-900/10 dark:border-cream-100/10">
         <p className="text-xs text-forest-800/55 dark:text-cream-100/45 max-w-xs">
-          We reply within one business day. No newsletter, no autoresponder spam.
+Free initial conversation. We reply within one business day — no newsletter,
+          no autoresponder spam.
         </p>
         <button
           type="submit"
@@ -134,7 +113,7 @@ export function InquiryForm() {
             </>
           ) : (
             <>
-              Send inquiry
+              Talk to OakenIT
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
             </>
           )}
@@ -191,47 +170,5 @@ function Field({ label, name, type = 'text', placeholder, as = 'input', rows = 4
       )}
       {error && <span className="block mt-1.5 text-xs text-red-600 dark:text-red-300">{error}</span>}
     </label>
-  );
-}
-
-function PillGroup({
-  label,
-  name,
-  options,
-  value,
-  onChange,
-}: {
-  label: string;
-  name: string;
-  options: string[];
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <div>
-      <span className="block text-xs uppercase tracking-[0.18em] text-forest-800/65 dark:text-cream-100/55 mb-3">
-        {label}
-      </span>
-      <input type="hidden" name={name} value={value} />
-      <div className="flex flex-wrap gap-2">
-        {options.map((opt) => {
-          const active = opt === value;
-          return (
-            <button
-              key={opt}
-              type="button"
-              onClick={() => onChange(opt)}
-              className={`rounded-full text-sm px-4 py-2 border transition-colors ${
-                active
-                  ? 'bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 border-forest-700 dark:border-lantern-300'
-                  : 'bg-transparent text-forest-800/75 dark:text-cream-100/70 border-forest-900/15 dark:border-cream-100/15 hover:border-lantern-500/60 dark:hover:border-lantern-300/60 hover:text-forest-900 dark:hover:text-cream-100'
-              }`}
-            >
-              {opt}
-            </button>
-          );
-        })}
-      </div>
-    </div>
   );
 }

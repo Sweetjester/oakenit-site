@@ -19,6 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Anchor sections — sub-priority so they don't outrank the homepage,
     // but discoverable.
     {
+      url: `${SITE_URL}/#services`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/#work`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/#contact`,
       lastModified: now,
       changeFrequency: 'monthly',

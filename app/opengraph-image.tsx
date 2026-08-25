@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-export const alt = 'OakenIT — Tell us what you need.';
+export const alt = 'OakenIT — Technology that makes your business easier to run.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -73,26 +73,26 @@ export default async function OGImage() {
           }}
         >
           <div style={{ width: '50px', height: '2px', background: '#f7c04a', display: 'flex' }} />
-          <span>Bespoke tech · UK</span>
+          <span>Software · Infrastructure · Automation</span>
         </div>
 
-        {/* Headline */}
+        {/* Headline — satori lays flex children in a row, so each line is its
+            own flex container rather than relying on text wrapping. */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            lineHeight: 1.04,
-            fontSize: '108px',
-            letterSpacing: '-2px',
-            fontWeight: 400,
+            fontSize: '70px',
+            lineHeight: 1.14,
+            letterSpacing: '-1.5px',
+            color: '#f3ece3',
           }}
         >
-          <span style={{ color: '#f3ece3', whiteSpace: 'nowrap' }}>Tell us</span>
-          <span
-            style={{ color: '#f7c04a', whiteSpace: 'nowrap' }}
-          >
-            what you need.
-          </span>
+          <span>Technology that makes</span>
+          <div style={{ display: 'flex' }}>
+            <span>your business&nbsp;</span>
+            <span style={{ color: '#f7c04a' }}>easier to run.</span>
+          </div>
         </div>
 
         {/* Lockup + URL */}
@@ -110,7 +110,7 @@ export default async function OGImage() {
                   fontWeight: 400,
                 }}
               >
-                AI-augmented technical team for UK businesses.
+                Senior expertise without the consultancy overhead.
               </span>
             </div>
           </div>

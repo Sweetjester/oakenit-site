@@ -6,16 +6,20 @@ import { SectionLabel } from './SectionLabel';
 
 const points = [
   {
-    h: 'Senior, by default.',
-    p: 'Everyone you work with has shipped real systems for a decade. No juniors in disguise, no offshoring.',
+    h: 'Senior by default.',
+    p: 'You work directly with the experienced people who design, build and deliver the solution — not through layers of account management and junior consultants.',
   },
   {
-    h: 'AI is the unfair advantage.',
-    p: 'We use AI constantly, critically, never blindly. A small team that ships like a big one.',
+    h: 'Practical engineering.',
+    p: 'We choose technology because it solves the problem, not because it is fashionable or because it inflates the project.',
   },
   {
-    h: 'Plain English, every step.',
-    p: 'You will know what we are doing, why, and what it costs. If we can’t explain it in a paragraph, we won’t do it.',
+    h: 'Modern tools, responsible judgement.',
+    p: 'We use automation and AI where they genuinely reduce cost or delivery time, with experienced people accountable for every decision and every deliverable.',
+  },
+  {
+    h: 'Plain English.',
+    p: 'You will know what we are doing, why we are doing it, and what it costs. If we can’t explain it in a paragraph, we won’t do it.',
   },
 ];
 
@@ -28,11 +32,12 @@ export function WhyUs() {
             <div className="mb-5">
               <SectionLabel>Why OakenIT</SectionLabel>
             </div>
-            <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] mb-6 text-forest-800 dark:text-cream-100">
-              Why <span className="text-lantern">us.</span>
+            <h2 className="font-display text-[clamp(1.7rem,2.7vw,2.4rem)] leading-[1.14] tracking-[-0.01em] mb-6 text-forest-800 dark:text-cream-100">
+Senior expertise, without the <span className="text-lantern">consultancy overhead.</span>
             </h2>
             <p className="text-forest-800/75 dark:text-cream-100/65 text-lg leading-relaxed max-w-md">
-              Most firms sell you complexity. We sell you its absence.
+No layers of account management. No unnecessary platforms. No deliberately
+              complicated architecture. Just the right technology for the problem.
             </p>
           </div>
         </div>

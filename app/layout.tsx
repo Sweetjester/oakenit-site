@@ -30,11 +30,11 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'OakenIT — Development, infrastructure, consulting for UK businesses',
+    default: 'OakenIT — Software, infrastructure and IT problems solved, for UK businesses',
     template: '%s · OakenIT',
   },
   description:
-    'AI-augmented technical team for UK businesses. We build the software you need, run the infrastructure you have, and answer the hard questions that decide what comes next.',
+    'OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems — without the cost and complexity of a traditional consultancy. Senior expertise, plain English.',
   keywords: [
     'AI consultancy UK',
     'software development UK',
@@ -59,15 +59,15 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: SITE_URL,
     siteName: 'OakenIT',
-    title: 'OakenIT — Build. Run. Decide.',
+    title: 'OakenIT — Technology that makes your business easier to run',
     description:
-      'Senior engineers and architects. We build, run, and advise on the technology your business depends on — AI-augmented, plainly explained.',
+      'We build software, improve infrastructure and solve difficult IT problems for UK businesses. Senior expertise without the consultancy overhead.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OakenIT — Build. Run. Decide.',
+    title: 'OakenIT — Technology that makes your business easier to run',
     description:
-      'AI-augmented technical team for UK businesses. Development, infrastructure, consulting.',
+      'Software, infrastructure and difficult IT problems, solved for UK businesses.',
   },
   robots: {
     index: true,
