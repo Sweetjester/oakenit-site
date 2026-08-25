@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { SectionLabel } from './SectionLabel';
+import { Lantern } from './Lantern';
 
 const points = [
   {
@@ -28,20 +30,31 @@ export function WhyUs() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-ink-800/55 dark:text-parchment/50 mb-5">
-              <span className="h-px w-8 bg-oak-500 dark:bg-oak-400" />
-              <span>Why OakenIT</span>
+            <div className="mb-5">
+              <SectionLabel>Why OakenIT</SectionLabel>
             </div>
-            <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-tight mb-6 text-ink-900 dark:text-parchment">
-              Why{' '}
-              <span className="italic text-oak-gradient">us.</span>
+            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.02] tracking-[-0.02em] mb-6 text-forest-800 dark:text-cream-100">
+              Why <span className="italic font-medium text-lantern">us.</span>
             </h2>
-            <p className="text-ink-800/75 dark:text-parchment/65 text-lg leading-relaxed max-w-md">
+            <p className="text-forest-800/75 dark:text-cream-100/65 text-lg leading-relaxed max-w-md">
               Most firms sell you complexity. We sell you its absence.
             </p>
 
-            <div className="mt-10 p-7 rounded-2xl border border-oak-500/30 dark:border-oak-400/20 bg-oak-400/10 dark:bg-oak-400/[0.04]">
-              <p className="font-display italic text-lg text-ink-900 dark:text-parchment/90 leading-snug">
+            {/* Pull quote, lit from the left by a hanging lantern */}
+            <div className="relative mt-10 rounded-2xl border border-lantern-500/30 dark:border-lantern-300/25 bg-lantern-400/10 dark:bg-lantern-300/[0.06] p-7 pl-16 overflow-hidden">
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'radial-gradient(circle at 12% 30%, rgba(237,162,27,0.20), transparent 60%)',
+                }}
+              />
+              <Lantern
+                cord={12}
+                sway={7}
+                className="absolute left-3 -top-1 w-8 h-auto text-lantern-600/80 dark:text-lantern-300/85"
+              />
+              <p className="relative font-display italic text-[1.35rem] leading-snug text-forest-800 dark:text-cream-100/90">
                 &ldquo;The technical team you would hire if you could — by the month.&rdquo;
               </p>
             </div>
@@ -56,14 +69,16 @@ export function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative flex gap-5 p-8 rounded-2xl border border-ink-900/10 dark:border-parchment/10 hover:border-oak-500/50 dark:hover:border-oak-400/40 bg-parchment dark:bg-ink-900/40 transition-colors duration-500"
+              className="group relative flex gap-5 p-8 rounded-2xl border border-forest-900/12 dark:border-cream-100/10 hover:border-lantern-500/50 dark:hover:border-lantern-300/40 bg-cream-100/60 dark:bg-forest-900/40 transition-colors duration-500"
             >
-              <div className="shrink-0 h-10 w-10 rounded-full bg-oak-500 dark:bg-oak-400 text-ink-950 flex items-center justify-center mt-1">
+              <div className="shrink-0 h-10 w-10 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mt-1 group-hover:bg-lantern-400 group-hover:text-forest-950 transition-colors duration-500">
                 <Check size={18} strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="font-display text-2xl text-ink-900 dark:text-parchment mb-2">{p.h}</h3>
-                <p className="text-ink-800/75 dark:text-parchment/65 leading-relaxed">{p.p}</p>
+                <h3 className="font-display font-semibold text-[1.7rem] leading-tight text-forest-800 dark:text-cream-100 mb-2">
+                  {p.h}
+                </h3>
+                <p className="text-forest-800/75 dark:text-cream-100/65 leading-relaxed">{p.p}</p>
               </div>
             </motion.div>
           ))}

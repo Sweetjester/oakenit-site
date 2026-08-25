@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
-import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Cormorant_Garamond, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider, themeInitScript } from '@/components/ThemeProvider';
 import { StructuredData } from '@/components/StructuredData';
@@ -7,11 +7,14 @@ import { Analytics } from '@/components/Analytics';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oakenit.com';
 
-const display = Fraunces({
+// Matches the serif in the OakenIT lockup — high-contrast old-style, set at
+// 600 for headlines so the hairlines don't disappear at display sizes.
+const display = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  axes: ['opsz', 'SOFT'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 });
 
 const sans = Inter({
@@ -85,10 +88,13 @@ export const metadata: Metadata = {
       : undefined,
   },
   category: 'technology',
-  icons: {
-    icon: [{ url: '/logo.svg', type: 'image/svg+xml' }],
-    apple: '/logo.svg',
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#faf7f1' },
+    { media: '(prefers-color-scheme: dark)', color: '#031507' },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -102,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <StructuredData />
       </head>
-      <body className="grain font-sans bg-parchment-50 dark:bg-ink-950 text-ink-800 dark:text-parchment antialiased transition-colors duration-300">
+      <body className="grain font-sans bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100 antialiased transition-colors duration-300">
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>

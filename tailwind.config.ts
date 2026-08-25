@@ -9,40 +9,40 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Deep, warm oak-tinted black. Dark-mode backgrounds.
-        ink: {
-          DEFAULT: '#1a1712',
-          950: '#12100c',
-          900: '#1a1712',
-          800: '#24201a',
-          700: '#2f2a22',
-        },
-        // Warm cream / parchment. Light-mode backgrounds + dark-mode text.
-        parchment: {
-          DEFAULT: '#f2eadb',
-          50: '#fbf6ea',
-          100: '#f2eadb',
-          200: '#e6d9bd',
-        },
-        // Oak — the accent. Warm mid-brown range, deeper than OakenIT's honey.
-        oak: {
-          50: '#f5e8d1',
-          100: '#ecd6a8',
-          200: '#d9b878',
-          300: '#c19b6c',
-          400: '#a68158',
-          500: '#8b6d47',
-          600: '#6d5439',
-          700: '#503d29',
-        },
-        // Forest — used sparingly for the odd "alive" accent (bullet sparkles,
-        // active-state pings). Keeps the oak from feeling one-note.
+        // FOREST — the brand. Sampled straight off the logo mark's canopy and
+        // trunk. forest-950/900 are the dark-mode grounds; 600/700 carry text
+        // and solid buttons in light mode.
         forest: {
-          DEFAULT: '#3d7a52',
-          300: '#5aa273',
-          400: '#4a8e62',
-          500: '#3d7a52',
-          600: '#2d5f3f',
+          50: '#eef5ef',
+          100: '#d7e8da',
+          200: '#abcfb3',
+          300: '#72b081',
+          400: '#3f8c53',
+          500: '#246c30',
+          600: '#18551f',
+          700: '#0f3f18',
+          800: '#0a2e12',
+          900: '#06200d',
+          950: '#031507',
+        },
+        // LANTERN — the gold hanging from the branches. The only warm accent.
+        lantern: {
+          50: '#fff8e6',
+          100: '#ffedc2',
+          200: '#ffdb8a',
+          300: '#f7c04a',
+          400: '#eda21b',
+          500: '#d4820c',
+          600: '#b46000',
+          700: '#8a4a00',
+        },
+        // CREAM — the logo lockup's paper. Light-mode grounds, dark-mode text.
+        cream: {
+          DEFAULT: '#f3ece3',
+          50: '#faf7f1',
+          100: '#f3ece3',
+          200: '#e6dbcb',
+          300: '#d2c3ad',
         },
       },
       fontFamily: {
@@ -50,27 +50,25 @@ const config: Config = {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
-      letterSpacing: {
-        tightest: '-0.05em',
-      },
       animation: {
         marquee: 'marquee 40s linear infinite',
-        drip: 'drip 3s ease-in-out infinite',
-        'spin-slow': 'spin 20s linear infinite',
-        'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
+        sway: 'sway 6s ease-in-out infinite',
+        'sway-slow': 'sway 9s ease-in-out infinite',
+        flicker: 'flicker 5s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
-        drip: {
-          '0%, 100%': { transform: 'translateY(0) scaleY(1)' },
-          '50%': { transform: 'translateY(6px) scaleY(1.1)' },
+        sway: {
+          '0%, 100%': { transform: 'rotate(-2.5deg)' },
+          '50%': { transform: 'rotate(2.5deg)' },
         },
-        'pulse-soft': {
-          '0%, 100%': { opacity: '0.5' },
-          '50%': { opacity: '1' },
+        flicker: {
+          '0%, 100%': { opacity: '0.85' },
+          '45%': { opacity: '1' },
+          '70%': { opacity: '0.7' },
         },
       },
     },

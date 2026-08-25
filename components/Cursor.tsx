@@ -19,6 +19,10 @@ export function Cursor() {
     let ry = y;
 
     const onMove = (e: MouseEvent) => {
+      // Both elements start invisible so nothing is painted at 0,0 before the
+      // pointer has moved for the first time.
+      if (dot.current) dot.current.style.opacity = '1';
+      if (ring.current) ring.current.style.opacity = '1';
       x = e.clientX;
       y = e.clientY;
       if (dot.current) {
@@ -73,11 +77,13 @@ export function Cursor() {
     <>
       <div
         ref={dot}
-        className="hidden md:block fixed top-0 left-0 z-[200] w-1.5 h-1.5 rounded-full bg-oak-400 pointer-events-none mix-blend-difference"
+        style={{ opacity: 0 }}
+        className="hidden md:block fixed top-0 left-0 z-[200] w-1.5 h-1.5 rounded-full bg-lantern-300 pointer-events-none mix-blend-difference"
       />
       <div
         ref={ring}
-        className="hidden md:block fixed top-0 left-0 z-[199] w-9 h-9 rounded-full border border-ink-900/35 dark:border-parchment/40 pointer-events-none transition-[width,height,border-color] duration-300"
+        style={{ opacity: 0 }}
+        className="hidden md:block fixed top-0 left-0 z-[199] w-9 h-9 rounded-full border border-forest-900/35 dark:border-cream-100/40 pointer-events-none transition-[width,height,border-color] duration-300"
       />
     </>
   );

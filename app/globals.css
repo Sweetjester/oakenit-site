@@ -2,18 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Theme tokens. Light = the logo lockup's cream paper. Dark = night canopy.
+   --------------------------------------------------------------------------- */
 :root {
-  --grain-opacity: 0.025;
-  --scroll-bg: #fbf6ea;
-  --scroll-thumb: #e6d9bd;
-  --scroll-thumb-hover: #8b6d47;
+  --grain-opacity: 0.022;
+  --scroll-bg: #faf7f1;
+  --scroll-thumb: #d2c3ad;
+  --scroll-thumb-hover: #18551f;
+  --rule: rgba(6, 32, 13, 0.14);
+  --glow-warm: rgba(237, 162, 27, 0.22);
+  --glow-green: rgba(36, 108, 48, 0.16);
 }
 
 html.dark {
-  --grain-opacity: 0.035;
-  --scroll-bg: #12100c;
-  --scroll-thumb: #2f2a22;
-  --scroll-thumb-hover: #a68158;
+  --grain-opacity: 0.04;
+  --scroll-bg: #031507;
+  --scroll-thumb: #0f3f18;
+  --scroll-thumb-hover: #eda21b;
+  --rule: rgba(243, 236, 227, 0.12);
+  --glow-warm: rgba(247, 192, 74, 0.16);
+  --glow-green: rgba(63, 140, 83, 0.14);
 }
 
 * {
@@ -31,11 +40,11 @@ body {
 }
 
 ::selection {
-  background: #a68158;
-  color: #12100c;
+  background: #eda21b;
+  color: #031507;
 }
 
-/* Grain overlay */
+/* Grain overlay ----------------------------------------------------------- */
 .grain::before {
   content: '';
   position: fixed;
@@ -46,7 +55,7 @@ body {
   background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
 }
 
-/* Custom scrollbar */
+/* Scrollbar --------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -62,92 +71,96 @@ body {
   background: var(--scroll-thumb-hover);
 }
 
-/* Marquee */
+/* Marquee ----------------------------------------------------------------- */
 .marquee-track {
   display: inline-flex;
   width: max-content;
   animation: marquee 40s linear infinite;
 }
-
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Magnetic hover */
-.magnetic {
-  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Gradient text — works on both themes */
-.text-oak-gradient {
-  background: linear-gradient(135deg, #8b6d47 0%, #a68158 50%, #6d5439 100%);
+/* Emphasis text — lantern gold. Deeper in light mode so it stays readable
+   against cream; brighter in dark mode so it reads as lit. ------------------ */
+.text-lantern {
+  background: linear-gradient(135deg, #b46000 0%, #d4820c 45%, #8a4a00 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-html.dark .text-oak-gradient {
-  background: linear-gradient(135deg, #ecd6a8 0%, #a68158 50%, #6d5439 100%);
+html.dark .text-lantern {
+  background: linear-gradient(135deg, #ffdb8a 0%, #f7c04a 45%, #d4820c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Glow */
-.oak-glow {
+/* A lit lantern's halo — used on the primary CTA and the hero mark. -------- */
+.lantern-glow {
   box-shadow:
-    0 0 0 1px rgba(212, 164, 55, 0.2),
-    0 20px 60px -20px rgba(212, 164, 55, 0.35),
-    0 0 80px -20px rgba(212, 164, 55, 0.4);
+    0 0 0 1px rgba(237, 162, 27, 0.25),
+    0 18px 50px -18px rgba(237, 162, 27, 0.45),
+    0 0 70px -24px rgba(247, 192, 74, 0.5);
 }
 
-/* Card hover ring */
-.card-hover {
+/* Cards ------------------------------------------------------------------- */
+.card {
   position: relative;
-  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), border-color 400ms, background-color 400ms;
+  transition:
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 400ms,
+    box-shadow 400ms,
+    background-color 400ms;
 }
-.card-hover:hover {
+.card:hover {
   transform: translateY(-4px);
-  border-color: rgba(212, 164, 55, 0.5);
+  border-color: rgba(237, 162, 27, 0.45);
+  box-shadow: 0 26px 60px -34px rgba(6, 32, 13, 0.45);
+}
+html.dark .card:hover {
+  box-shadow: 0 26px 60px -30px rgba(0, 0, 0, 0.7);
 }
 
-/* Big number underlay */
+/* Hairline rule ----------------------------------------------------------- */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule), transparent);
+}
+
+/* Numerals ---------------------------------------------------------------- */
 .big-numeral {
   font-feature-settings: "lnum" 1, "tnum" 1;
 }
 
-/* Soft divider */
-.hairline {
-  background: linear-gradient(90deg, transparent, rgba(15, 13, 12, 0.18), transparent);
-  height: 1px;
-}
-html.dark .hairline {
-  background: linear-gradient(90deg, transparent, rgba(245, 241, 234, 0.12), transparent);
+/* Hanging lantern cords --------------------------------------------------- */
+.cord {
+  transform-origin: top center;
 }
 
-/* Logo dripping dots animation helper */
-.drop {
-  animation: drip 3s ease-in-out infinite;
-}
-@keyframes drip {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(8px); opacity: 0.7; }
+/* Canopy backdrop — soft overlapping leaf-light, sits behind hero sections. */
+.canopy {
+  background:
+    radial-gradient(60% 55% at 22% 8%, var(--glow-green), transparent 70%),
+    radial-gradient(45% 45% at 78% 18%, var(--glow-warm), transparent 70%);
 }
 
-/* Reveal on scroll utility */
-.reveal-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-up.in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Focus rings */
+/* Focus rings ------------------------------------------------------------- */
 :focus-visible {
-  outline: 2px solid #a68158;
+  outline: 2px solid #eda21b;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Respect reduced motion -------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .cord,
+  [class*='animate-'] {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

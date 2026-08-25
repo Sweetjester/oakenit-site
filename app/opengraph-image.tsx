@@ -1,42 +1,57 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 export const alt = 'OakenIT — Tell us what you need.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function OGImage() {
+  // Inline the mark — next/og can't fetch relative URLs at build time.
+  const mark = await readFile(join(process.cwd(), 'public', 'mark.png'));
+  const markSrc = `data:image/png;base64,${mark.toString('base64')}`;
+
   return new ImageResponse(
     (
       <div
         style={{
           width: '100%',
           height: '100%',
-          background: '#12100c',
-          color: '#f2eadb',
+          background: '#031507',
+          color: '#f3ece3',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '80px',
+          padding: '76px',
           fontFamily: 'serif',
           position: 'relative',
         }}
       >
-        {/* Honey glow */}
+        {/* Lantern glow */}
         <div
           style={{
             position: 'absolute',
-            top: '-200px',
-            left: '50%',
+            top: '-220px',
+            left: '46%',
             transform: 'translateX(-50%)',
-            width: '900px',
-            height: '500px',
-            background:
-              'radial-gradient(ellipse, rgba(212,164,55,0.35), transparent 70%)',
+            width: '1000px',
+            height: '560px',
+            background: 'radial-gradient(ellipse, rgba(237,162,27,0.30), transparent 70%)',
             display: 'flex',
           }}
         />
 
-        {/* Top row — eyebrow + dot */}
+        {/* The mark, ghosted at the right edge */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={markSrc}
+          alt=""
+          width={560}
+          height={560}
+          style={{ position: 'absolute', right: '-90px', bottom: '-70px', opacity: 0.22 }}
+        />
+
+        {/* Eyebrow */}
         <div
           style={{
             display: 'flex',
@@ -45,84 +60,55 @@ export default async function OGImage() {
             fontSize: '20px',
             letterSpacing: '5px',
             textTransform: 'uppercase',
-            color: '#a68158',
+            color: '#f7c04a',
             fontFamily: 'sans-serif',
             fontWeight: 500,
           }}
         >
-          <div
-            style={{
-              width: '50px',
-              height: '2px',
-              background: '#a68158',
-              display: 'flex',
-            }}
-          />
+          <div style={{ width: '50px', height: '2px', background: '#f7c04a', display: 'flex' }} />
           <span>Development · Systems · Consulting</span>
         </div>
 
-        {/* Main headline */}
+        {/* Headline */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             lineHeight: 0.98,
-            fontSize: '160px',
-            letterSpacing: '-3px',
-            fontWeight: 500,
+            fontSize: '158px',
+            letterSpacing: '-4px',
+            fontWeight: 600,
           }}
         >
-          <span style={{ color: '#f2eadb' }}>Tell us</span>
-          <span
-            style={{
-              color: '#a68158',
-              fontStyle: 'italic',
-              marginTop: '4px',
-            }}
-          >
+          <span style={{ color: '#f3ece3' }}>Tell us</span>
+          <span style={{ color: '#f7c04a', fontStyle: 'italic', marginTop: '4px' }}>
             what you need.
           </span>
         </div>
 
-        {/* Bottom row — wordmark + URL */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '40px',
-                fontWeight: 600,
-              }}
-            >
-              <span style={{ color: '#a68158' }}>Oaken</span>
-              <span style={{ color: '#f2eadb' }}>IT</span>
-            </span>
-            <span
-              style={{
-                fontSize: '20px',
-                color: '#c5b898',
-                fontFamily: 'sans-serif',
-                fontWeight: 400,
-              }}
-            >
-              AI-augmented technical team for UK businesses.
-            </span>
+        {/* Lockup + URL */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={markSrc} alt="" width={64} height={64} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <span style={{ fontSize: '42px', fontWeight: 600, color: '#f3ece3' }}>OakenIT</span>
+              <span
+                style={{
+                  fontSize: '20px',
+                  color: '#bcc9bd',
+                  fontFamily: 'sans-serif',
+                  fontWeight: 400,
+                }}
+              >
+                AI-augmented technical team for UK businesses.
+              </span>
+            </div>
           </div>
           <div
             style={{
               fontSize: '22px',
-              color: '#a68158',
+              color: '#f7c04a',
               fontFamily: 'sans-serif',
               fontWeight: 500,
               letterSpacing: '1px',

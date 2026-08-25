@@ -2,17 +2,26 @@
 
 import { motion } from 'framer-motion';
 import { InquiryForm } from './InquiryForm';
+import { SectionLabel } from './SectionLabel';
+import { LanternGlyph } from './Lantern';
+
+const promises = [
+  'Reply within one business day',
+  'Free 30-min scoping call if there is a fit',
+  'One-page proposal within 5 working days',
+  'NDAs welcome',
+];
 
 export function CTA() {
   return (
     <section id="contact" className="relative py-20 lg:py-28 overflow-hidden">
-      {/* Glow backdrop */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-oak-400/15 dark:bg-oak-400/12 blur-[160px] rounded-full" />
+      {/* Lantern light pooling behind the form */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-lantern-400/12 dark:bg-lantern-300/10 blur-[160px] rounded-full" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left — pitch */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
             <motion.div
@@ -20,10 +29,9 @@ export function CTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-ink-800/55 dark:text-parchment/50 mb-5"
+              className="mb-5"
             >
-              <span className="h-px w-8 bg-oak-500 dark:bg-oak-400" />
-              <span>Brief us</span>
+              <SectionLabel>Brief us</SectionLabel>
             </motion.div>
 
             <motion.h2
@@ -31,10 +39,10 @@ export function CTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-[clamp(2rem,3.6vw,3rem)] leading-[1] tracking-tight text-ink-900 dark:text-parchment"
+              className="font-display font-semibold text-[clamp(2.4rem,4.6vw,3.9rem)] leading-[1.02] tracking-[-0.02em] text-forest-800 dark:text-cream-100"
             >
               <span className="whitespace-nowrap">Brief us.</span>{' '}
-              <span className="italic text-oak-gradient whitespace-nowrap">
+              <span className="italic font-medium text-lantern whitespace-nowrap">
                 We&rsquo;ll plan it.
               </span>
             </motion.h2>
@@ -44,16 +52,11 @@ export function CTA() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.2 }}
-              className="mt-8 space-y-3 text-sm text-ink-800/70 dark:text-parchment/60"
+              className="mt-8 space-y-3.5 text-sm text-forest-800/75 dark:text-cream-100/65"
             >
-              {[
-                'Reply within one business day',
-                'Free 30-min scoping call if there is a fit',
-                'One-page proposal within 5 working days',
-                'NDAs welcome',
-              ].map((t, i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="text-oak-500 dark:text-oak-400 mt-1">✦</span>
+              {promises.map((t) => (
+                <li key={t} className="flex gap-3 items-center">
+                  <LanternGlyph className="h-4 w-3 shrink-0 text-lantern-500 dark:text-lantern-300" />
                   <span>{t}</span>
                 </li>
               ))}

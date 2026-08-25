@@ -27,15 +27,15 @@ export function InquiryForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="rounded-2xl border border-oak-500/30 dark:border-oak-400/30 bg-oak-400/10 dark:bg-oak-400/[0.04] p-10 md:p-14 text-center"
+        className="rounded-2xl border border-lantern-500/30 dark:border-lantern-300/25 bg-lantern-400/10 dark:bg-lantern-300/[0.06] p-10 md:p-14 text-center"
       >
-        <div className="mx-auto h-14 w-14 rounded-full bg-oak-500 dark:bg-oak-400 text-ink-950 flex items-center justify-center mb-6">
+        <div className="mx-auto h-14 w-14 rounded-full bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mb-6">
           <Check size={26} strokeWidth={2.5} />
         </div>
-        <h3 className="font-display text-3xl md:text-4xl text-ink-900 dark:text-parchment mb-3">
+        <h3 className="font-display font-semibold text-4xl md:text-5xl text-forest-800 dark:text-cream-100 mb-3">
           Message received.
         </h3>
-        <p className="text-ink-800/75 dark:text-parchment/70 max-w-md mx-auto leading-relaxed">
+        <p className="text-forest-800/75 dark:text-cream-100/70 max-w-md mx-auto leading-relaxed">
           We&rsquo;ll reply within one business day with three questions and a calendar
           link. Check your spam folder if it&rsquo;s quiet for too long.
         </p>
@@ -49,7 +49,7 @@ export function InquiryForm() {
     <form
       ref={formRef}
       action={action}
-      className="rounded-2xl border border-ink-900/10 dark:border-parchment/10 bg-parchment dark:bg-ink-900/60 p-6 md:p-10 backdrop-blur-sm"
+      className="rounded-2xl border border-forest-900/12 dark:border-cream-100/10 bg-cream-100/80 dark:bg-forest-900/60 p-6 md:p-10 backdrop-blur-sm"
     >
       {/* Honeypot — hidden from humans */}
       <input
@@ -118,14 +118,14 @@ export function InquiryForm() {
         )}
       </AnimatePresence>
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-ink-900/10 dark:border-parchment/10">
-        <p className="text-xs text-ink-800/55 dark:text-parchment/45 max-w-xs">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-forest-900/10 dark:border-cream-100/10">
+        <p className="text-xs text-forest-800/55 dark:text-cream-100/45 max-w-xs">
           We reply within one business day. No newsletter, no autoresponder spam.
         </p>
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-3 rounded-full bg-oak-500 dark:bg-oak-400 hover:bg-oak-400 dark:hover:bg-oak-300 disabled:bg-oak-500/60 dark:disabled:bg-oak-400/60 disabled:cursor-not-allowed text-ink-950 px-7 py-4 text-base font-medium transition-colors"
+          className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-lantern-300 hover:bg-forest-600 dark:hover:bg-lantern-200 disabled:opacity-60 disabled:cursor-not-allowed text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium transition-colors"
         >
           {pending ? (
             <>
@@ -141,11 +141,11 @@ export function InquiryForm() {
         </button>
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-2 text-xs text-ink-800/55 dark:text-parchment/40">
+      <div className="mt-6 flex items-center justify-center gap-2 text-xs text-forest-800/55 dark:text-cream-100/40">
         <span>or email us directly:</span>
         <a
           href="mailto:hello@oakenit.com"
-          className="inline-flex items-center gap-1 text-oak-600 dark:text-oak-300 hover:text-oak-500 dark:hover:text-oak-200 transition-colors"
+          className="inline-flex items-center gap-1 text-forest-600 dark:text-lantern-200 hover:text-lantern-600 dark:hover:text-lantern-100 transition-colors"
         >
           <Mail size={12} />
           hello@oakenit.com
@@ -167,11 +167,11 @@ type FieldProps = {
 
 function Field({ label, name, type = 'text', placeholder, as = 'input', rows = 4, error }: FieldProps) {
   const baseClasses =
-    'w-full bg-parchment-50 dark:bg-ink-950/60 border border-ink-900/15 dark:border-parchment/15 rounded-lg px-4 py-3 text-ink-900 dark:text-parchment placeholder:text-ink-800/35 dark:placeholder:text-parchment/30 focus:outline-none focus:border-oak-500 dark:focus:border-oak-400 focus:ring-1 focus:ring-oak-500/40 dark:focus:ring-oak-400/40 transition-all';
+    'w-full bg-cream-50 dark:bg-forest-950/60 border border-forest-900/15 dark:border-cream-100/15 rounded-lg px-4 py-3 text-forest-900 dark:text-cream-100 placeholder:text-forest-800/35 dark:placeholder:text-cream-100/30 focus:outline-none focus:border-lantern-500 dark:focus:border-lantern-300 focus:ring-1 focus:ring-lantern-500/40 dark:focus:ring-lantern-300/40 transition-all';
 
   return (
     <label className="block">
-      <span className="block text-xs uppercase tracking-[0.18em] text-ink-800/65 dark:text-parchment/55 mb-2">
+      <span className="block text-xs uppercase tracking-[0.18em] text-forest-800/65 dark:text-cream-100/55 mb-2">
         {label}
       </span>
       {as === 'textarea' ? (
@@ -209,7 +209,7 @@ function PillGroup({
 }) {
   return (
     <div>
-      <span className="block text-xs uppercase tracking-[0.18em] text-ink-800/65 dark:text-parchment/55 mb-3">
+      <span className="block text-xs uppercase tracking-[0.18em] text-forest-800/65 dark:text-cream-100/55 mb-3">
         {label}
       </span>
       <input type="hidden" name={name} value={value} />
@@ -223,8 +223,8 @@ function PillGroup({
               onClick={() => onChange(opt)}
               className={`rounded-full text-sm px-4 py-2 border transition-colors ${
                 active
-                  ? 'bg-oak-500 dark:bg-oak-400 text-ink-950 border-oak-500 dark:border-oak-400'
-                  : 'bg-transparent text-ink-800/75 dark:text-parchment/70 border-ink-900/15 dark:border-parchment/15 hover:border-oak-500/60 dark:hover:border-oak-400/60 hover:text-ink-900 dark:hover:text-parchment'
+                  ? 'bg-forest-700 dark:bg-lantern-300 text-cream-50 dark:text-forest-950 border-forest-700 dark:border-lantern-300'
+                  : 'bg-transparent text-forest-800/75 dark:text-cream-100/70 border-forest-900/15 dark:border-cream-100/15 hover:border-lantern-500/60 dark:hover:border-lantern-300/60 hover:text-forest-900 dark:hover:text-cream-100'
               }`}
             >
               {opt}

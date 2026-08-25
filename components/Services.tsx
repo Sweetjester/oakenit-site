@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Server, Compass, ArrowUpRight } from 'lucide-react';
+import { SectionLabel } from './SectionLabel';
+import { LanternGlyph } from './Lantern';
 
 const pillars = [
   {
@@ -52,17 +54,16 @@ export function Services() {
         {/* Section header */}
         <div className="grid lg:grid-cols-2 gap-10 mb-12 lg:mb-16 items-end">
           <div>
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-ink-800/55 dark:text-parchment/50 mb-5">
-              <span className="h-px w-8 bg-oak-500 dark:bg-oak-400" />
-              <span>What we do</span>
+            <div className="mb-5">
+              <SectionLabel>What we do</SectionLabel>
             </div>
-            <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-tight text-ink-900 dark:text-parchment">
+            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.02] tracking-[-0.02em] text-forest-800 dark:text-cream-100">
               <span className="whitespace-nowrap">Three disciplines.</span>{' '}
-              <span className="text-oak-gradient italic whitespace-nowrap">One team.</span>
+              <span className="italic font-medium text-lantern whitespace-nowrap">One team.</span>
             </h2>
           </div>
           <div className="flex items-end">
-            <p className="text-base lg:text-lg text-ink-800/75 dark:text-parchment/65 max-w-md">
+            <p className="text-base lg:text-lg text-forest-800/75 dark:text-cream-100/65 max-w-md">
               Build, run, advise — under one roof. One contract, one point of contact, no
               scope game.
             </p>
@@ -70,7 +71,7 @@ export function Services() {
         </div>
 
         {/* Three pillars */}
-        <div className="grid lg:grid-cols-3 gap-4">
+        <div className="grid lg:grid-cols-3 gap-5">
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
@@ -78,40 +79,46 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="card-hover group relative overflow-hidden rounded-2xl border border-ink-900/10 dark:border-parchment/10 bg-parchment dark:bg-ink-900/60 p-8 md:p-10 flex flex-col"
+              className="card group relative overflow-hidden rounded-2xl border border-forest-900/12 dark:border-cream-100/10 bg-cream-100/70 dark:bg-forest-900/60 p-8 md:p-10 flex flex-col"
             >
+              {/* lantern light warms the card on hover */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(circle at top right, rgba(212,164,55,0.18), transparent 60%)',
+                    'radial-gradient(circle at 85% 0%, rgba(237,162,27,0.20), transparent 62%)',
                 }}
               />
 
               <div className="relative flex items-start justify-between mb-8">
-                <div className="h-12 w-12 rounded-xl bg-oak-400/10 dark:bg-oak-400/10 border border-oak-500/30 dark:border-oak-400/20 flex items-center justify-center text-oak-600 dark:text-oak-300 group-hover:bg-oak-500 dark:group-hover:bg-oak-400 group-hover:text-ink-950 dark:group-hover:text-ink-950 transition-colors duration-500">
+                <div className="h-12 w-12 rounded-xl bg-lantern-400/12 border border-lantern-500/30 dark:border-lantern-300/25 flex items-center justify-center text-forest-600 dark:text-lantern-200 group-hover:bg-lantern-300 group-hover:text-forest-950 group-hover:border-lantern-300 transition-colors duration-500">
                   <p.icon size={20} strokeWidth={1.6} />
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-ink-800/45 dark:text-parchment/40 mt-2">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-forest-800/45 dark:text-cream-100/40 mt-2">
                   {p.tag}
                 </span>
               </div>
 
-              <h3 className="relative font-display text-2xl md:text-3xl text-ink-900 dark:text-parchment mb-3">
+              <h3 className="relative font-display font-semibold text-3xl md:text-[2.1rem] leading-tight text-forest-800 dark:text-cream-100 mb-3">
                 {p.title}
               </h3>
-              <p className="relative text-ink-800/75 dark:text-parchment/65 leading-relaxed mb-7">{p.blurb}</p>
+              <p className="relative text-forest-800/75 dark:text-cream-100/65 leading-relaxed mb-7">
+                {p.blurb}
+              </p>
 
-              <ul className="relative mt-auto space-y-2 pt-6 border-t border-ink-900/10 dark:border-parchment/10">
+              <ul className="relative mt-auto space-y-2.5 pt-6 border-t border-forest-900/10 dark:border-cream-100/10">
                 {p.includes.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-ink-800/80 dark:text-parchment/75">
-                    <span className="text-oak-500/80 dark:text-oak-400/70 text-xs">✦</span>
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 text-sm text-forest-800/85 dark:text-cream-100/75"
+                  >
+                    <LanternGlyph className="h-3.5 w-2.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="relative mt-8 flex items-center gap-2 text-sm text-oak-600/0 dark:text-oak-300/0 group-hover:text-oak-600 dark:group-hover:text-oak-300 transition-colors duration-500">
+              <div className="relative mt-8 flex items-center gap-2 text-sm text-forest-600/0 dark:text-lantern-200/0 group-hover:text-forest-600 dark:group-hover:text-lantern-200 transition-colors duration-500">
                 <a href="#contact" className="flex items-center gap-2">
                   Brief us
                   <ArrowUpRight size={14} />

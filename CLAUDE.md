@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-07-09 (initial scaffold, forked from SweetTech)
+> **Last updated**: 2026-08-25 (lantern-tree rebrand: real logo artwork, forest/lantern palette, Cormorant Garamond)
 
 ---
 
@@ -40,7 +40,7 @@ Identical to SweetTech:
 - **Styling**: Tailwind v3 with `darkMode: 'class'`
 - **Motion**: Framer Motion 11
 - **Icons**: Lucide React
-- **Fonts** (`next/font/google`): Fraunces (display serif), Inter (sans), JetBrains Mono
+- **Fonts** (`next/font/google`): Cormorant Garamond (display serif — matches the logo wordmark), Inter (sans), JetBrains Mono
 - **Email**: Resend (zero-DNS path — see § 7)
 - **Analytics**: Plausible + Microsoft Clarity (both env-gated)
 - **Hosting**: Railway (Nixpacks, Node 20+, `npm start`)
@@ -75,7 +75,9 @@ oakenit/
 │   ├── page.tsx                # Composes: Cursor → Nav → Hero → CTA →
 │   │                           # Services → WhyUs → Process → Footer
 │   ├── globals.css             # Base styles, theme custom-props, grain,
-│   │                           # scrollbar, marquee, hairline, oak-gradient
+│   │                           # scrollbar, marquee, .canopy, .text-lantern
+│   ├── icon.png                # Favicon (file convention)
+│   ├── apple-icon.png          # Apple touch icon (file convention)
 │   ├── robots.ts               # Dynamic /robots.txt
 │   ├── sitemap.ts              # Dynamic /sitemap.xml
 │   ├── opengraph-image.tsx     # Dynamic 1200×630 branded OG card
@@ -91,7 +93,9 @@ oakenit/
 │   ├── Process.tsx             # 4-step grid (Listen/Scope/Ship/Stay)
 │   ├── WhyUs.tsx               # Sticky-left value points + pull quote
 │   ├── Footer.tsx
-│   ├── Logo.tsx                # Serves logo.png / logo-light.png by theme
+│   ├── Logo.tsx                # mark.png + live-text wordmark
+│   ├── Lantern.tsx             # <Lantern> + <LanternGlyph> SVG motifs
+│   ├── SectionLabel.tsx        # Shared section eyebrow
 │   ├── Cursor.tsx              # Desktop-only magnetic cursor
 │   ├── ThemeProvider.tsx       # Theme context + no-flash init script
 │   ├── ThemeToggle.tsx         # Sun/moon toggle
@@ -100,15 +104,13 @@ oakenit/
 │   └── Marquee.tsx             # Unused; kept for optional reuse
 │
 ├── public/
-│   ├── logo.svg                # Placeholder dark-mode logo (SVG). Replace when
-│   │                           # real artwork arrives (see § 5 → Logo).
-│   └── logo-light.svg          # Placeholder light-mode logo (SVG).
+│   └── mark.png                # The lantern-tree mark (transparent, 900px)
 │
 ├── README.md
 ├── CLAUDE.md                   # This file
 ├── railway.json                # Nixpacks build/start config
 ├── next.config.mjs
-├── tailwind.config.ts          # Brand palette: ink, parchment, oak, forest
+├── tailwind.config.ts          # Brand palette: forest, lantern, cream
 ├── tsconfig.json
 ├── postcss.config.mjs
 ├── .nvmrc                      # 20
@@ -121,30 +123,48 @@ oakenit/
 
 ### Colors (in `tailwind.config.ts`)
 
+Sampled directly off the logo mark: the canopy greens and the lantern golds.
+
 | Token | Hex | Use |
 |---|---|---|
-| `ink-950` | `#12100c` | Dark-mode bg (warm oak-black) |
-| `ink-900` | `#1a1712` | Dark-mode card bg / borders |
-| `ink-800` | `#24201a` | Dark-mode hover surfaces |
-| `parchment-50` | `#fbf6ea` | Light-mode bg (warm cream) |
-| `parchment-100` / `parchment` | `#f2eadb` | Light-mode card bg / dark-mode text |
-| `parchment-200` | `#e6d9bd` | Light-mode borders |
-| `oak-300` | `#c19b6c` | Dark-mode link hover |
-| `oak-400` | `#a68158` | **Dark-mode primary accent** (CTAs, glow) |
-| `oak-500` | `#8b6d47` | Light-mode primary accent |
-| `oak-600` | `#6d5439` | Light-mode link hover |
-| `forest-500` | `#3d7a52` | Reserved for occasional "alive" pings — use sparingly |
+| `forest-950` | `#031507` | Dark-mode bg; footer bg in **both** themes |
+| `forest-900` | `#06200d` | Dark-mode card bg |
+| `forest-800` | `#0a2e12` | Body text (light mode), headings |
+| `forest-700` | `#0f3f18` | **Light-mode primary button**, wordmark |
+| `forest-600` | `#18551f` | Light-mode link hover, stat numerals |
+| `forest-50` | `#eef5ef` | Process section band (light) |
+| `lantern-200` | `#ffdb8a` | Dark-mode link hover |
+| `lantern-300` | `#f7c04a` | **Dark-mode primary button**, lantern fill, glyphs |
+| `lantern-400` | `#eda21b` | Glow colour, focus ring, selection |
+| `lantern-500` | `#d4820c` | Light-mode accent line / glyphs |
+| `lantern-600` | `#b46000` | Light-mode emphasis text (readable on cream) |
+| `cream-50` | `#faf7f1` | Light-mode bg |
+| `cream-100` | `#f3ece3` | Light-mode card bg / dark-mode text |
 
-**Rule**: dark-mode colour ↔ light-mode pair. Pattern:
+**Rule**: green is the ground, gold is the light. Gold is an *accent* — never a
+large fill on cream (contrast dies). Primary CTA is solid `forest-700` in light
+mode and solid `lantern-300` in dark mode.
+
+Pattern:
 ```tsx
-className="bg-parchment-50 dark:bg-ink-950 text-ink-900 dark:text-parchment"
+className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 ```
 
 ### Typography
 
-- **Display (Fraunces)**: all headlines and "feature" text. Italic + `text-oak-gradient` for emphasis words.
+- **Display (Cormorant Garamond)**: all headlines and "feature" text. Set
+  `font-semibold` at display sizes so the hairlines survive; emphasis words are
+  `italic font-medium` + `.text-lantern` (gold gradient, theme-aware).
 - **Sans (Inter)**: body, eyebrow labels, UI.
 - **Mono (JetBrains)**: rare — footer status line only.
+
+### Motifs
+
+- `components/Lantern.tsx` — `<Lantern>` (hanging, sways) and `<LanternGlyph>`
+  (~1em, used as the list bullet everywhere the old `✦` was).
+- `components/SectionLabel.tsx` — the shared eyebrow: glyph + rule + label.
+- `.canopy` (globals.css) — the soft green/gold light pooled behind the hero.
+- The mark itself is used ghosted as a watermark in the hero and footer.
 
 ### Voice rules (same as SweetTech)
 
@@ -152,16 +172,22 @@ className="bg-parchment-50 dark:bg-ink-950 text-ink-900 dark:text-parchment"
 - Short declarative sentences. Full stops. Confident.
 - Active verbs. "We build" not "we provide building".
 - Pick fights with the alternatives (agencies, MSPs, freelancers).
-- Italic gold-oak word = the **transformation** or **value**, not the action.
+- Italic lantern-gold word = the **transformation** or **value**, not the action.
 - Headline pattern: `[plain statement]. [italic gradient promise].`
 
 ### Logo
 
-Two placeholder SVG marks in `public/`: `logo.svg` (dark bg version — oak-on-ink) and `logo-light.svg` (light bg version — oak-on-parchment). Both are simple stylised-oak-tree wordmarks — placeholders only, do not treat as final brand art.
+Real artwork, delivered 2026-08-25: a deep-green tree hung with gold lanterns.
 
-**Andy is generating real logo artwork separately.** When received:
-- If saved as SVG → drop at the same paths (`/public/logo.svg` and `/public/logo-light.svg`), no code change.
-- If saved as PNG → drop at `/public/logo.png` and `/public/logo-light.png`, then update `components/Logo.tsx` (2 `src=` strings) and `app/layout.tsx` `icons` block to change `.svg` → `.png` (mind the `type` mime too).
+- `public/mark.png` (900px, transparent) — the mark. One file for both themes.
+- `app/icon.png` + `app/apple-icon.png` — favicons, via Next's file conventions
+  (there is deliberately **no** `icons` block in `layout.tsx` metadata).
+- The wordmark is **not** an image — it's live text in Cormorant Garamond, so it
+  recolours per theme. See `components/Logo.tsx`.
+
+Andy supplied two files: a full-colour tree illustration and a flat cream
+lockup. The palette is sampled from the **illustration** — the lockup's green
+was off-brand.
 
 ---
 
@@ -231,8 +257,8 @@ TBD for OakenIT — most of these need to be set up. Track them here as they are
 
 | Service | Owner | Email used | Status |
 |---|---|---|---|
-| **Railway** | Andy | — | ⏳ Service needs creating |
-| **GitHub** | Andy (`Sweetjester`) | — | ⏳ Repo needs creating (name TBD — `oakenit-site`?) |
+| **Railway** | Andy | — | ✅ Project `oakenit-site`, service `web`, deploys from GitHub `main`. URL: https://web-production-5eb08.up.railway.app |
+| **GitHub** | Andy (`Sweetjester`) | — | ✅ `Sweetjester/oakenit-site` |
 | **Domain registrar for oakenit.com** | Andy | — | ⏳ Need to confirm which registrar |
 | **Google Workspace** | Andy | `hello@oakenit.com` / `andy@oakenit.com` | ⏳ Not yet set up for oakenit.com |
 | **Resend** | — | — | ⏳ Consider a separate Resend account for OakenIT, or reuse SweetTech's account (in which case `INQUIRY_TO_EMAIL` must be that account's registered email until domain is verified) |
@@ -269,9 +295,9 @@ Andy to decide before Phase 2 content build starts. Ask.
 
 ## 10. Next moves
 
-1. **Andy to provide real logo artwork** — replace `public/logo.png` and `public/logo-light.png`.
-2. **Create GitHub repo** — likely `Sweetjester/oakenit-site` (or similar) — and push initial commit.
-3. **Provision Railway service** — new project, connect the GitHub repo, add `RESEND_API_KEY` (and reconsider `INQUIRY_TO_EMAIL` based on which Resend account is used).
+1. ~~Real logo artwork~~ ✅ done 2026-08-25.
+2. ~~Create GitHub repo~~ ✅ done.
+3. **Add `RESEND_API_KEY`** in Railway (and reconsider `INQUIRY_TO_EMAIL` based on which Resend account is used) — the form logs to console until then.
 4. **Point `oakenit.com` DNS** at Railway. Registrar-specific — steps depend on where the domain is registered.
 5. **Set up Google Workspace** email for `hello@oakenit.com` (if not already).
 6. **Answer the OakenIT vs SweetTech strategic question** (see § 9) before starting Phase 2 content work.
@@ -282,13 +308,14 @@ Andy to decide before Phase 2 content build starts. Ask.
 
 Inherited from SweetTech, all still apply:
 
-1. **OG image uses system serif, not Fraunces.** `next/og` needs font files as ArrayBuffers — skipped. To fix: fetch Fraunces at the top of `app/opengraph-image.tsx`.
+1. **OG image uses system serif, not Cormorant.** `next/og` needs font files as ArrayBuffers — skipped. It *does* inline `public/mark.png` as a base64 data URI (read with `node:fs`, so the route must stay on the Node runtime).
 2. **`overflow-y-hidden` on AnimatedLine (Hero)** — not `overflow-hidden` — so italic glyph flourishes extend horizontally freely while the vertical slide-up animation still clips.
 3. **`whitespace-nowrap` on key headline phrases** to prevent mid-phrase wraps. If you change copy, re-evaluate.
 4. **If oakenit.com is at a registrar that blocks apex CNAME**, use domain forwarding or HTTPS records for the apex; only `www` gets the CNAME. Same pattern as SweetTech's Squarespace workaround.
 5. **Resend free tier**: sender `onboarding@resend.dev` can only send TO the email the Resend account was registered with (until domain verification). Set `INQUIRY_TO_EMAIL` to that address.
 6. **Tailwind dark variants are explicit**, not auto. Every styled element needs `X dark:Y`.
-7. **`tracking-tightest` breaks italic Fraunces at certain sizes.** Stick with `tracking-tight`.
+7. **Cormorant runs small and light.** Headlines need `font-semibold` and a larger `clamp()` than a normal serif; body-size display text needs `font-medium` minimum.
+10. **Never use `-z-10` for full-bleed backdrops.** `html` has a background *and* `body` has an opaque background, so a negative-z child paints underneath the body background and vanishes. Use `z-0` on the backdrop + `relative z-10` on the content.
 8. **Background command exit code 143** is SIGTERM from `kill`, not a real failure.
 9. **`railway.json` buildCommand** = `npm run build`. Do not reintroduce `npm ci &&` — EBUSY race on Railway's cache.
 

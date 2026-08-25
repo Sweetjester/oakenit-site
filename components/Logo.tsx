@@ -10,15 +10,13 @@ type Props = {
 };
 
 /**
- * The image paths below point at SVG placeholders. When you have real logo
- * artwork:
- *   - If you save it as SVG, drop it at the same paths — no change needed.
- *   - If you save it as PNG, drop it at /public/logo.png + /public/logo-light.png
- *     and update the `src` strings from `.svg` to `.png` (2 lines).
+ * The lockup: the lantern-tree mark (real artwork, /public/mark.png — it has a
+ * transparent background so it sits on either theme) plus the wordmark set in
+ * the display serif to match the supplied logo.
  */
 export function Logo({ size = 36, withWordmark = true, className = '' }: Props) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center gap-2.5 ${className}`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -26,30 +24,22 @@ export function Logo({ size = 36, withWordmark = true, className = '' }: Props) 
         style={{ width: size, height: size }}
         className="relative shrink-0"
       >
-        {/* Dark-mode artwork */}
         <Image
-          src="/logo.svg"
+          src="/mark.png"
           alt="OakenIT"
           fill
           priority
           sizes={`${size}px`}
-          className="object-contain hidden dark:block"
-        />
-        {/* Light-mode artwork */}
-        <Image
-          src="/logo-light.svg"
-          alt="OakenIT"
-          fill
-          priority
-          sizes={`${size}px`}
-          className="object-contain block dark:hidden"
+          className="object-contain"
         />
       </motion.div>
 
       {withWordmark && (
-        <span className="font-display text-[1.35rem] leading-none tracking-tight">
-          <span className="text-oak-600 dark:text-oak-400">Oaken</span>
-          <span className="text-ink-900 dark:text-parchment">IT</span>
+        <span
+          className="font-display font-semibold leading-none tracking-[-0.01em] text-forest-700 dark:text-cream-100"
+          style={{ fontSize: size * 0.82 }}
+        >
+          OakenIT
         </span>
       )}
     </div>
