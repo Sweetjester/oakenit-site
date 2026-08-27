@@ -14,10 +14,13 @@
  * is clipped to that same path so nothing spills over the edges.
  */
 
+/**
+ * An open crescent: outer circle r40 at (50,78) minus inner r33 at (62,78),
+ * meeting at (77.29, 48.76) and (77.29, 107.24). Thick on the left, opening to
+ * the right, with the lantern hung in the opening.
+ */
 const CRESCENT =
-  'M50 38 a40 40 0 1 0 0.01 0 Z M52 44 a34 34 0 1 0 0.01 0 Z';
-/** Tilt, so the hoop doesn't sit in the upright posture of a flag crescent. */
-const TILT = -24;
+  'M77.29 48.76 A40 40 0 1 0 77.29 107.24 A33 33 0 1 1 77.29 48.76 Z';
 
 type Props = {
   /** Cord length above the lantern, in viewBox units. */
@@ -34,7 +37,7 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
   const top = cord;
   // shift so the crescent's top edge (local y=38) lands exactly at `top`
   const shift = top - 38;
-  const H = top + 112;
+  const H = top + 126;
   const id = (n: string) => `${n}-${uid}`;
 
   return (
@@ -50,86 +53,104 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
       }
     >
       <defs>
-        {/* Lit glass. The only fill in the piece — everything else is line. */}
-        <radialGradient id={id('glass')} cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stopColor="#fff4d6" stopOpacity="0.9" />
-          <stop offset="55%" stopColor="#f7c04a" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#d4820c" stopOpacity="0.05" />
+        {/* the lit glass — the only fill in an otherwise drawn piece */}
+        <radialGradient id={id('glass')} cx="0.5" cy="0.52" r="0.55">
+          <stop offset="0%" stopColor="#fff6de" stopOpacity="0.95" />
+          <stop offset="55%" stopColor="#f7c04a" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#d4820c" stopOpacity="0.06" />
         </radialGradient>
         <radialGradient id={id('halo')} cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stopColor="#ffdb8a" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="#ffdb8a" stopOpacity="0.45" />
           <stop offset="100%" stopColor="#ffdb8a" stopOpacity="0" />
         </radialGradient>
       </defs>
 
-      {/* Drawn in line, like the tree: strokes carry the form, one lit fill. */}
       <g
         stroke="currentColor"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
-        vectorEffect="non-scaling-stroke"
       >
-        {/* ---- suspension ------------------------------------------------ */}
-        <line x1="50" y1="0" x2="50" y2={top - 22} strokeWidth="1.1" opacity="0.7" />
-        <circle cx="50" cy={top - 17} r="4.2" strokeWidth="1.3" opacity="0.85" />
-        <line x1="50" y1={top - 12.8} x2="50" y2={top - 7} strokeWidth="1.1" opacity="0.7" />
+        {/* ---- cord, bead, ring ----------------------------------------- */}
+        <line x1="50" y1="0" x2="50" y2={top - 30} strokeWidth="1" opacity="0.65" />
+        <circle cx="50" cy={top - 27} r="2.4" strokeWidth="1" opacity="0.9" fill="currentColor" fillOpacity="0.25" />
+        <line x1="50" y1={top - 24.6} x2="50" y2={top - 22} strokeWidth="1" opacity="0.65" />
+        <circle cx="50" cy={top - 17.6} r="4.4" strokeWidth="1.2" opacity="0.9" />
+        <line x1="50" y1={top - 13.2} x2="50" y2={top - 1} strokeWidth="1" opacity="0.65" />
 
         <g transform={`translate(0 ${shift})`}>
-          {/* cap where the cord meets the hoop */}
-          <path d="M45 32 L50 39 L55 32" strokeWidth="1.3" opacity="0.9" />
+          {/* ---- crescent ------------------------------------------------ */}
+          <path d={CRESCENT} strokeWidth="1.5" opacity="0.95" />
+          {/* an inner contour, so the band reads as drawn rather than cut */}
+          <path
+            d="M75.5 52.5 A36.4 36.4 0 1 0 75.5 103.5"
+            strokeWidth="0.7"
+            opacity="0.4"
+          />
 
-          {/* ---- hoop, drawn as two arcs with a few ribs between --------- */}
-          <g transform={`rotate(${TILT} 50 78)`}>
-            <circle cx="50" cy="78" r="40" strokeWidth="1.5" opacity="0.95" />
-            <circle cx="52" cy="78" r="34" strokeWidth="1.2" opacity="0.8" />
-            {/* ribs across the band */}
-            {[100, 138, 176, 214, 252, 290].map((deg) => (
-              <line
-                key={deg}
-                x1="50"
-                y1="38"
-                x2="50"
-                y2="44"
-                strokeWidth="1"
-                opacity="0.55"
-                transform={`rotate(${deg} 50 78)`}
-              />
-            ))}
-            {/* a couple of sketch strokes that overshoot, so it reads drawn */}
-            <path d="M14 90 q 5 10 13 16" strokeWidth="0.9" opacity="0.4" />
-            <path d="M20 56 q 4 -8 11 -13" strokeWidth="0.9" opacity="0.35" />
+          {/* leaf sprig laid along the band */}
+          <g transform="rotate(235 50 78)" strokeWidth="0.85" opacity="0.75">
+            <path d="M40 47.5 q 9 -3.4 18 -1.4" />
+            <path d="M45.6 46.6 q 1.8 -4 5.4 -3.4 q -1.4 3.8 -5.4 3.4 Z" />
+            <path d="M51.4 45.8 q 1.9 -4 5.4 -3.2 q -1.5 3.8 -5.4 3.2 Z" />
+            <path d="M47.8 48.4 q 1.5 3.4 4.9 3.6 q -0.9 -3.6 -4.9 -3.6 Z" />
           </g>
 
-          {/* ---- hanging globe ------------------------------------------- */}
-          <ellipse cx="68" cy="96" rx="30" ry="31" fill={`url(#${id('halo')})`} stroke="none" />
+          {/* ---- the hanging lantern ------------------------------------- */}
+          <ellipse cx="70" cy="96" rx="27" ry="28" fill={`url(#${id('halo')})`} stroke="none" />
 
-          <line x1="68" y1="47" x2="68" y2="60" strokeWidth="1" opacity="0.7" />
-          <circle cx="68" cy="62.6" r="2.6" strokeWidth="1.1" opacity="0.85" />
-          <path d="M65.6 65 L68 69 L70.4 65" strokeWidth="1.1" opacity="0.85" />
+          {/* chain from the upper limb */}
+          <line x1="70" y1="50" x2="70" y2="56" strokeWidth="0.9" opacity="0.7" />
+          <circle cx="70" cy="58" r="2" strokeWidth="0.9" opacity="0.8" />
+          <line x1="70" y1="60" x2="70" y2="63" strokeWidth="0.9" opacity="0.7" />
 
-          {/* cap */}
-          <path d="M57.6 78 L60.4 71.6 L75.6 71.6 L78.4 78" strokeWidth="1.3" opacity="0.9" />
-          <line x1="57.6" y1="78" x2="78.4" y2="78" strokeWidth="1.1" opacity="0.75" />
+          {/* onion dome + finial */}
+          <path d="M70 63 v3" strokeWidth="1" opacity="0.85" />
+          <path
+            d="M60.5 80 C 60.5 72, 64.5 68.5, 70 66 C 75.5 68.5, 79.5 72, 79.5 80 Z"
+            strokeWidth="1.2"
+            opacity="0.92"
+          />
+          <path d="M66.5 79.6 q 3.5 -6 3.5 -9.6 q 0 3.6 3.5 9.6" strokeWidth="0.7" opacity="0.45" />
+          {/* collar */}
+          <path d="M58.5 80 H81.5 M60.5 83.4 H79.5" strokeWidth="1.1" opacity="0.9" />
 
-          {/* glass */}
-          <ellipse cx="68" cy="96" rx="19.5" ry="20.5" fill={`url(#${id('glass')})`} stroke="none" />
-          <ellipse cx="68" cy="96" rx="19.5" ry="20.5" strokeWidth="1.4" opacity="0.95" />
-          <ellipse cx="68" cy="96" rx="9.7" ry="20.5" strokeWidth="1" opacity="0.6" />
-          <line x1="68" y1="75.5" x2="68" y2="116.5" strokeWidth="0.9" opacity="0.5" />
+          {/* glass body */}
+          <path
+            d="M60.5 83.4 C 54 90, 54 103, 60.5 110 H79.5 C 86 103, 86 90, 79.5 83.4 Z"
+            fill={`url(#${id('glass')})`}
+            stroke="none"
+          />
+          <path
+            d="M60.5 83.4 C 54 90, 54 103, 60.5 110 H79.5 C 86 103, 86 90, 79.5 83.4 Z"
+            strokeWidth="1.3"
+            opacity="0.95"
+          />
+          {/* pointed-arch panels */}
+          <path d="M70 84.2 C 64.6 88, 63.6 103, 66.4 110" strokeWidth="0.8" opacity="0.55" />
+          <path d="M70 84.2 C 75.4 88, 76.4 103, 73.6 110" strokeWidth="0.8" opacity="0.55" />
+          <path d="M63.4 89 q 6.6 -5 13.2 0" strokeWidth="0.7" opacity="0.4" />
 
           {/* base + finial */}
-          <path d="M57.6 113.5 L78.4 113.5 L74 120.5 L62 120.5 Z" strokeWidth="1.2" opacity="0.9" />
-          <path d="M62.5 120.5 L68 129 L73.5 120.5" strokeWidth="1.2" opacity="0.85" />
+          <path d="M59.5 110 H80.5 M62 113.4 H78" strokeWidth="1.1" opacity="0.9" />
+          <path d="M65.6 113.4 L70 121 L74.4 113.4" strokeWidth="1.1" opacity="0.85" />
+          <path d="M70 117.2 l1.7 2.1 -1.7 2.1 -1.7 -2.1 Z" strokeWidth="0.7" opacity="0.6" />
 
-          {/* ---- leaf pendant -------------------------------------------- */}
-          <line x1="50" y1="118" x2="50" y2="126" strokeWidth="1" opacity="0.6" />
+          {/* ---- pendant below the crescent ------------------------------ */}
+          <circle cx="50" cy="122.5" r="2.6" strokeWidth="1" opacity="0.85" />
+          {/* four-pointed star */}
           <path
-            d="M50 126.5 c 5.5 3.4 6.5 9 0 14 c -6.5 -5 -5.5 -10.6 0 -14 Z"
-            strokeWidth="1.2"
+            d="M50 127 C 50.6 130.2, 51.6 131.2, 54.6 131.8 C 51.6 132.4, 50.6 133.4, 50 136.6 C 49.4 133.4, 48.4 132.4, 45.4 131.8 C 48.4 131.2, 49.4 130.2, 50 127 Z"
+            strokeWidth="0.9"
+            opacity="0.85"
+          />
+          {/* leaf */}
+          <path
+            d="M50 138 c 4.6 3, 5.4 8, 0 12.4 c -5.4 -4.4, -4.6 -9.4, 0 -12.4 Z"
+            strokeWidth="1.1"
             opacity="0.9"
           />
-          <line x1="50" y1="129" x2="50" y2="138.5" strokeWidth="0.8" opacity="0.55" />
+          <line x1="50" y1="140" x2="50" y2="148.6" strokeWidth="0.7" opacity="0.5" />
         </g>
       </g>
     </svg>
@@ -181,16 +202,6 @@ export function HangingLantern({
           left: globeX - light / 2,
           top: globeY - light / 2,
           animationDelay: `${delay}s`,
-        }}
-      />
-      <div
-        className="lantern-shaft"
-        style={{
-          width: light * 0.6,
-          height: light * 1.15,
-          left: globeX - light * 0.3,
-          top: globeY,
-          animationDelay: `${delay + 1.1}s`,
         }}
       />
       <MoonLantern

@@ -161,28 +161,7 @@ html.dark .card:hover {
     );
 }
 
-/* A shaft falling from the lantern. Clipped to a widening cone and blurred,
-   so it reads as light through air rather than a drawn triangle. */
-.lantern-shaft {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: screen;
-  transition: opacity 700ms ease;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 226, 152, 0.13) 0%,
-    rgba(255, 205, 108, 0.05) 30%,
-    rgba(255, 190, 80, 0) 72%
-  );
-  clip-path: polygon(38% 0%, 62% 0%, 96% 100%, 4% 100%);
-  filter: blur(22px);
-}
 
-html.dark .lantern-shaft {
-  opacity: 1;
-  animation: lantern-flicker 13s ease-in-out infinite;
-}
 
 
 /* Softer variant for lanterns sitting *behind* content — the canopy ones.

@@ -243,10 +243,9 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
   `lantern-flicker` keyframes are deliberately uneven; an even sine reads as a
   pulsing LED rather than a flame. Each instance takes a different
   `animation-delay` so they don't beat in unison.
-- `.lantern-shaft` — a shaft falling from each hanging lantern, clipped to a
-  widening cone and blurred 22px. It wants to stay *very* faint: at anything
-  above ~0.15 alpha it reads as a searchlight cutting across the headline
-  rather than light through air.
+- ⚠️ **There was a `.lantern-shaft`** — a cone of light falling from each
+  lantern — and Andy had it removed on 2026-08-27: it read as a downward beam
+  that didn't belong. Don't reintroduce one.
 - ⚠️ **There was a `.lantern-pool` and it is gone deliberately.** It used
   `radial-gradient(ellipse at top, …)`, which puts the gradient's brightest
   point on the element's own top edge — the browser clips there, so every glow
