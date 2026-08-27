@@ -193,16 +193,6 @@ export function HangingLantern({
           animationDelay: `${delay + 1.1}s`,
         }}
       />
-      <div
-        className="lantern-pool"
-        style={{
-          width: light * 0.8,
-          height: light * 1.5,
-          left: globeX - light * 0.4,
-          top: globeY,
-          animationDelay: `${delay + 0.6}s`,
-        }}
-      />
       <MoonLantern
         cord={cord}
         sway={sway}

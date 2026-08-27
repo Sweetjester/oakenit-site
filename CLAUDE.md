@@ -247,6 +247,17 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
   widening cone and blurred 22px. It wants to stay *very* faint: at anything
   above ~0.15 alpha it reads as a searchlight cutting across the headline
   rather than light through air.
+- ⚠️ **There was a `.lantern-pool` and it is gone deliberately.** It used
+  `radial-gradient(ellipse at top, …)`, which puts the gradient's brightest
+  point on the element's own top edge — the browser clips there, so every glow
+  carried a hard horizontal seam across it, visible as a rectangle once you
+  brightened the page. Any glow layer must reach fully transparent *inside* its
+  own box: centred `closest-side` radials are safe, edge-anchored ones are not.
+- `components/Fireflies.tsx` — a handful of points around the canopy, dark mode
+  only (the CSS hides the canvas in light, and the loop early-returns when the
+  element isn't laid out, so it costs nothing in daylight). The blink is
+  `pow(sin, 6)` on purpose: fireflies read as fireflies because they are dark
+  more often than lit — a steady twinkle reads as fairy lights.
 - `components/TreeCanopy.tsx` — the ghosted background tree **with real
   lanterns hung on it**, used in the hero and footer.
   - `public/tree.png` is `public/mark.png` with its baked-in lanterns masked

@@ -141,8 +141,7 @@ html.dark .card:hover {
    radial wash plus a softer pool falling below it, both screen-blended so they
    *add* light to whatever sits underneath rather than painting over it. In
    light mode it is daylight: the lanterns are decoration and the wash is off. */
-.lantern-light,
-.lantern-pool {
+.lantern-light {
   position: absolute;
   pointer-events: none;
   opacity: 0;
@@ -185,14 +184,6 @@ html.dark .lantern-shaft {
   animation: lantern-flicker 13s ease-in-out infinite;
 }
 
-.lantern-pool {
-  background: radial-gradient(
-    ellipse at top,
-    rgba(255, 219, 138, 0.24),
-    rgba(255, 199, 94, 0.07) 45%,
-    rgba(255, 190, 80, 0) 74%
-  );
-}
 
 /* Softer variant for lanterns sitting *behind* content — the canopy ones.
    Same light, roughly half the strength, so copy stays readable over them. */
@@ -221,10 +212,6 @@ html.dark .lantern-light-soft {
   animation: lantern-flicker 9s ease-in-out infinite;
 }
 
-html.dark .lantern-pool {
-  opacity: 1;
-  animation: lantern-flicker 11s ease-in-out infinite;
-}
 
 /* The drawing itself breathes with its lanterns. */
 .animate-lantern-breathe {

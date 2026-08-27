@@ -1,6 +1,7 @@
 'use client';
 
 import { MoonLantern } from './MoonLantern';
+import { Fireflies } from './Fireflies';
 
 /**
  * The background tree, drawn in line and lit by its own lanterns.
@@ -106,6 +107,9 @@ export function TreeCanopy({
             }}
           />
         ))}
+
+        {/* fireflies, dark only — they drift a little wider than the canopy */}
+        <Fireflies className="absolute -inset-[6%] hidden h-[112%] w-[112%] dark:block" />
 
         {/* the lanterns */}
         {LANTERNS.map((l, i) => (
