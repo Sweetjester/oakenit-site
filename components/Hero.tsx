@@ -43,9 +43,8 @@ export function Hero() {
 
         <TreeCanopy
           idPrefix="tree"
-          priority
           className="absolute -right-24 bottom-0 w-[min(70vw,720px)] aspect-square pointer-events-none"
-          treeClassName="opacity-[0.13] dark:opacity-[0.18]"
+          treeClassName="opacity-[0.3] dark:opacity-[0.62]"
         />
 
         <div className="absolute inset-x-0 top-0 h-[52vh] hidden sm:block pointer-events-none">

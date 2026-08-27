@@ -16,9 +16,8 @@ export function Footer() {
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-leaf-400/10 blur-[130px] rounded-full" />
         <TreeCanopy
           idPrefix="foottree"
-          sizes="420px"
           className="absolute right-[-6%] -bottom-24 w-[420px] aspect-square"
-          treeClassName="opacity-[0.13]"
+          treeClassName="opacity-[0.5]"
         />
       </div>
 

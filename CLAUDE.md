@@ -232,7 +232,8 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
   - `<MoonGlyph>` — ~1em hanging lantern, the list bullet. Deliberately not
     a crescent-and-star, for the same reason.
 - `public/moon-lantern.svg` — the same lantern as a standalone asset, for
-  dropping into logo artwork.
+  dropping into logo artwork. Regenerate it whenever `MoonLantern` changes, or
+  it drifts out of step with the site.
 - `components/SectionLabel.tsx` — the shared eyebrow: glyph + rule + label.
 - `.canopy` (globals.css) — the soft green/gold light pooled behind the hero.
 - **Dark mode is lit by the lanterns.** `.lantern-light` (a radial wash) and
@@ -242,12 +243,25 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
   `lantern-flicker` keyframes are deliberately uneven; an even sine reads as a
   pulsing LED rather than a flame. Each instance takes a different
   `animation-delay` so they don't beat in unison.
+- `.lantern-shaft` — a shaft falling from each hanging lantern, clipped to a
+  widening cone and blurred 22px. It wants to stay *very* faint: at anything
+  above ~0.15 alpha it reads as a searchlight cutting across the headline
+  rather than light through air.
 - `components/TreeCanopy.tsx` — the ghosted background tree **with real
   lanterns hung on it**, used in the hero and footer.
   - `public/tree.png` is `public/mark.png` with its baked-in lanterns masked
-    out (warm hue 15–68° + the bright glow halos), then cropped. The originals
-    were raster: they could neither take the moon-lantern design nor light
-    anything.
+    out (warm hue 15–68° + the bright glow halos), then cropped. It is now only
+    the **source**, not shipped in the page.
+  - `public/tree-lines.png` is what the page draws: Sobel edge-work off
+    `tree.png` (blur 1.1 first, gamma 0.75, plus 32% of the original tone so
+    the canopy isn't wireframe), white on transparent.
+  - ⚠️ **It is used as a CSS `mask-image`, not an `<img>`.** That is the point:
+    whatever sits behind the mask becomes the ink, so the paint layer is a
+    stack of radial gradients at the lantern anchors. In dark mode the branches
+    near a lantern genuinely take its warmth and fall to cold green in the
+    gaps — the tree is lit *by* its lanterns rather than being a silhouette
+    with glows floating over it. Change the anchors and the lighting moves with
+    them for free.
   - The anchor coordinates in `TreeCanopy` are the *centroids of the masked
     lanterns*, and each `cord` is the distance from that blob's **top** — where
     the original cord met its branch — down to the globe. So the new lanterns

@@ -50,142 +50,87 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
       }
     >
       <defs>
-        {/* Brass: lit from the upper left, darker on the underside. */}
-        <linearGradient id={id('brass')} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#f6dd9a" />
-          <stop offset="35%" stopColor="#d9ab44" />
-          <stop offset="60%" stopColor="#b8860b" />
-          <stop offset="100%" stopColor="#8a6212" />
-        </linearGradient>
-        <linearGradient id={id('brassEdge')} x1="0" y1="0" x2="0.4" y2="1">
-          <stop offset="0%" stopColor="#ffeec2" />
-          <stop offset="100%" stopColor="#c9a227" />
-        </linearGradient>
-        {/* Jade inlay */}
-        <linearGradient id={id('jade')} x1="0" y1="0" x2="0.6" y2="1">
-          <stop offset="0%" stopColor="#3f7d6b" />
-          <stop offset="55%" stopColor="#2c5d51" />
-          <stop offset="100%" stopColor="#1e463d" />
-        </linearGradient>
-        {/* Glass: hottest at the star, cooling outward */}
-        <radialGradient id={id('glass')} cx="0.5" cy="0.52" r="0.62">
-          <stop offset="0%" stopColor="#fffdf2" />
-          <stop offset="42%" stopColor="#ffeeb8" />
-          <stop offset="78%" stopColor="#f3cf7d" />
-          <stop offset="100%" stopColor="#e0b45c" />
+        {/* Lit glass. The only fill in the piece — everything else is line. */}
+        <radialGradient id={id('glass')} cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stopColor="#fff4d6" stopOpacity="0.9" />
+          <stop offset="55%" stopColor="#f7c04a" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#d4820c" stopOpacity="0.05" />
         </radialGradient>
         <radialGradient id={id('halo')} cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stopColor="#ffe9a8" stopOpacity="0.85" />
-          <stop offset="45%" stopColor="#ffd166" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#ffd166" stopOpacity="0" />
+          <stop offset="0%" stopColor="#ffdb8a" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#ffdb8a" stopOpacity="0" />
         </radialGradient>
-        {/* No transform: the referencing group's translate already applies. */}
-        <clipPath id={id('clip')}>
-          <path d={CRESCENT} fillRule="evenodd" />
-        </clipPath>
       </defs>
 
-      {/* ---- suspension ------------------------------------------------ */}
-      <line x1="50" y1="0" x2="50" y2={top - 22} stroke="currentColor" strokeWidth="1.6" opacity="0.85" />
-      <circle cx="50" cy={top - 17} r="4.4" stroke="currentColor" strokeWidth="2.2" opacity="0.9" />
-      <line x1="50" y1={top - 12} x2="50" y2={top - 7} stroke="currentColor" strokeWidth="1.6" opacity="0.85" />
-      {/* finial cap where the cord meets the crescent */}
-      <path d={`M44.5 ${top - 8} H55.5 L50 ${top + 2} Z`} fill={`url(#${id('brassEdge')})`} />
+      {/* Drawn in line, like the tree: strokes carry the form, one lit fill. */}
+      <g
+        stroke="currentColor"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+      >
+        {/* ---- suspension ------------------------------------------------ */}
+        <line x1="50" y1="0" x2="50" y2={top - 22} strokeWidth="1.1" opacity="0.7" />
+        <circle cx="50" cy={top - 17} r="4.2" strokeWidth="1.3" opacity="0.85" />
+        <line x1="50" y1={top - 12.8} x2="50" y2={top - 7} strokeWidth="1.1" opacity="0.7" />
 
-      <g transform={`translate(0 ${shift})`}>
-        {/* ---- crescent ------------------------------------------------ */}
-        <g transform={`rotate(${TILT} 50 78)`}>
-        <path d={CRESCENT} fillRule="evenodd" fill={`url(#${id('brass')})`} />
+        <g transform={`translate(0 ${shift})`}>
+          {/* cap where the cord meets the hoop */}
+          <path d="M45 32 L50 39 L55 32" strokeWidth="1.3" opacity="0.9" />
 
-        <g clipPath={`url(#${id('clip')})`}>
-          {/* jade inlay channel, laid along the crescent's centreline */}
-          <path
-            d="M50 41.5 a36.5 36.5 0 1 0 0.01 0"
-            fill="none"
-            stroke={`url(#${id('jade')})`}
-            strokeWidth="6"
-          />
-          {/* filigree — a few scrolls riding the inlay */}
-          <g
-            fill="none"
-            stroke="#f7e2a6"
-            strokeWidth="1.15"
-            strokeLinecap="round"
-            opacity="0.7"
-          >
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-              <g key={deg} transform={`rotate(${deg} 50 78)`}>
-                <path d="M46.5 45 c 3.5 -1.6 7 0 7 2.6 c 0 2.6 -3.5 3.4 -4.4 1.7 c -0.9 -1.7 0.9 -2.6 1.8 -1.7" />
-                <path d="M43.5 47 c 1.8 1.8 1.8 3.6 0.9 5.4" opacity="0.6" />
-              </g>
+          {/* ---- hoop, drawn as two arcs with a few ribs between --------- */}
+          <g transform={`rotate(${TILT} 50 78)`}>
+            <circle cx="50" cy="78" r="40" strokeWidth="1.5" opacity="0.95" />
+            <circle cx="52" cy="78" r="34" strokeWidth="1.2" opacity="0.8" />
+            {/* ribs across the band */}
+            {[100, 138, 176, 214, 252, 290].map((deg) => (
+              <line
+                key={deg}
+                x1="50"
+                y1="38"
+                x2="50"
+                y2="44"
+                strokeWidth="1"
+                opacity="0.55"
+                transform={`rotate(${deg} 50 78)`}
+              />
             ))}
+            {/* a couple of sketch strokes that overshoot, so it reads drawn */}
+            <path d="M14 90 q 5 10 13 16" strokeWidth="0.9" opacity="0.4" />
+            <path d="M20 56 q 4 -8 11 -13" strokeWidth="0.9" opacity="0.35" />
           </g>
-          {/* inner and outer bright edges */}
+
+          {/* ---- hanging globe ------------------------------------------- */}
+          <ellipse cx="68" cy="96" rx="30" ry="31" fill={`url(#${id('halo')})`} stroke="none" />
+
+          <line x1="68" y1="47" x2="68" y2="60" strokeWidth="1" opacity="0.7" />
+          <circle cx="68" cy="62.6" r="2.6" strokeWidth="1.1" opacity="0.85" />
+          <path d="M65.6 65 L68 69 L70.4 65" strokeWidth="1.1" opacity="0.85" />
+
+          {/* cap */}
+          <path d="M57.6 78 L60.4 71.6 L75.6 71.6 L78.4 78" strokeWidth="1.3" opacity="0.9" />
+          <line x1="57.6" y1="78" x2="78.4" y2="78" strokeWidth="1.1" opacity="0.75" />
+
+          {/* glass */}
+          <ellipse cx="68" cy="96" rx="19.5" ry="20.5" fill={`url(#${id('glass')})`} stroke="none" />
+          <ellipse cx="68" cy="96" rx="19.5" ry="20.5" strokeWidth="1.4" opacity="0.95" />
+          <ellipse cx="68" cy="96" rx="9.7" ry="20.5" strokeWidth="1" opacity="0.6" />
+          <line x1="68" y1="75.5" x2="68" y2="116.5" strokeWidth="0.9" opacity="0.5" />
+
+          {/* base + finial */}
+          <path d="M57.6 113.5 L78.4 113.5 L74 120.5 L62 120.5 Z" strokeWidth="1.2" opacity="0.9" />
+          <path d="M62.5 120.5 L68 129 L73.5 120.5" strokeWidth="1.2" opacity="0.85" />
+
+          {/* ---- leaf pendant -------------------------------------------- */}
+          <line x1="50" y1="118" x2="50" y2="126" strokeWidth="1" opacity="0.6" />
           <path
-            d={CRESCENT}
-            fillRule="evenodd"
-            fill="none"
-            stroke={`url(#${id('brassEdge')})`}
-            strokeWidth="3.4"
-            opacity="0.95"
+            d="M50 126.5 c 5.5 3.4 6.5 9 0 14 c -6.5 -5 -5.5 -10.6 0 -14 Z"
+            strokeWidth="1.2"
+            opacity="0.9"
           />
+          <line x1="50" y1="129" x2="50" y2="138.5" strokeWidth="0.8" opacity="0.55" />
         </g>
-        </g>
-
-        {/* ---- hanging globe ------------------------------------------- */}
-        {/* halo behind the glass */}
-        <ellipse cx="68" cy="97" rx="34" ry="36" fill={`url(#${id('halo')})`} />
-
-        {/* drop chain + star */}
-        <line x1="68" y1="47" x2="68" y2="60" stroke="currentColor" strokeWidth="1.4" opacity="0.85" />
-        <circle cx="68" cy="62" r="3.1" fill={`url(#${id('brassEdge')})`} />
-        <path d="M65.4 63.6 h5.2 l-2.6 3.4 Z" fill={`url(#${id('brass')})`} />
-
-        {/* cap */}
-        <path d="M58 78 h20 l-3 -6 h-14 Z" fill={`url(#${id('brass')})`} />
-        <rect x="62" y="70" width="12" height="3" rx="1.2" fill={`url(#${id('jade')})`} />
-        <circle cx="68" cy="68" r="2.4" fill={`url(#${id('brassEdge')})`} />
-
-        {/* glass */}
-        <ellipse cx="68" cy="96" rx="19.5" ry="20.5" fill={`url(#${id('glass')})`} />
-        {/* ribs */}
-        <g stroke="#c9a227" strokeWidth="1.2" fill="none" opacity="0.85">
-          <ellipse cx="68" cy="96" rx="19.5" ry="20.5" />
-          <ellipse cx="68" cy="96" rx="9.7" ry="20.5" />
-          <line x1="68" y1="75.5" x2="68" y2="116.5" />
-        </g>
-        {/* the star in the glass — the light source */}
-        <path
-          d="M68 87 l2.6 6.4 6.4 2.6 -6.4 2.6 -2.6 6.4 -2.6 -6.4 -6.4 -2.6 6.4 -2.6 Z"
-          fill="#fff8dc"
-        />
-        <path
-          d="M68 87 l2.6 6.4 6.4 2.6 -6.4 2.6 -2.6 6.4 -2.6 -6.4 -6.4 -2.6 6.4 -2.6 Z"
-          fill="none"
-          stroke="#e8bf5e"
-          strokeWidth="0.8"
-        />
-
-        {/* base + finial */}
-        <path d="M58 113 h20 l-4 7 h-12 Z" fill={`url(#${id('jade')})`} />
-        <path d="M62 120 h12 l-6 9 Z" fill={`url(#${id('brass')})`} />
-
-        {/* ---- pendant below the crescent ------------------------------- */}
-        <line x1="50" y1="118" x2="50" y2="124" stroke="currentColor" strokeWidth="1.4" opacity="0.8" />
-        <circle cx="50" cy="127" r="3.4" fill={`url(#${id('brassEdge')})`} />
-        <circle cx="50" cy="127" r="1.5" fill={`url(#${id('jade')})`} />
-        <line x1="50" y1="130" x2="50" y2="134" stroke="currentColor" strokeWidth="1.2" opacity="0.8" />
-        {/* oak leaf */}
-        <path
-          d="M50 134 c 5.5 3 6.5 8.5 0 13.5 c -6.5 -5 -5.5 -10.5 0 -13.5 Z"
-          fill={`url(#${id('brassEdge')})`}
-        />
-        <line
-          x1="50" y1="136" x2="50" y2="146"
-          stroke={`url(#${id('jade')})`}
-          strokeWidth="0.9"
-          opacity="0.8"
-        />
       </g>
     </svg>
   );
@@ -236,6 +181,16 @@ export function HangingLantern({
           left: globeX - light / 2,
           top: globeY - light / 2,
           animationDelay: `${delay}s`,
+        }}
+      />
+      <div
+        className="lantern-shaft"
+        style={{
+          width: light * 0.6,
+          height: light * 1.15,
+          left: globeX - light * 0.3,
+          top: globeY,
+          animationDelay: `${delay + 1.1}s`,
         }}
       />
       <div
