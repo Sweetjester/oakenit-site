@@ -15,7 +15,9 @@
  */
 
 const CRESCENT =
-  'M85.17 58.94 A40 40 0 1 0 85.17 97.06 A30 30 0 1 1 85.17 58.94 Z';
+  'M50 38 a40 40 0 1 0 0.01 0 Z M52 44 a34 34 0 1 0 0.01 0 Z';
+/** Tilt, so the hoop doesn't sit in the upright posture of a flag crescent. */
+const TILT = -24;
 
 type Props = {
   /** Cord length above the lantern, in viewBox units. */
@@ -77,8 +79,9 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
           <stop offset="45%" stopColor="#ffd166" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#ffd166" stopOpacity="0" />
         </radialGradient>
+        {/* No transform: the referencing group's translate already applies. */}
         <clipPath id={id('clip')}>
-          <path d={CRESCENT} transform={`translate(0 ${shift})`} />
+          <path d={CRESCENT} fillRule="evenodd" />
         </clipPath>
       </defs>
 
@@ -91,15 +94,16 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
 
       <g transform={`translate(0 ${shift})`}>
         {/* ---- crescent ------------------------------------------------ */}
-        <path d={CRESCENT} fill={`url(#${id('brass')})`} />
+        <g transform={`rotate(${TILT} 50 78)`}>
+        <path d={CRESCENT} fillRule="evenodd" fill={`url(#${id('brass')})`} />
 
         <g clipPath={`url(#${id('clip')})`}>
           {/* jade inlay channel, laid along the crescent's centreline */}
           <path
-            d="M73.75 61.37 A29 29 0 1 0 73.75 94.63"
+            d="M50 41.5 a36.5 36.5 0 1 0 0.01 0"
             fill="none"
             stroke={`url(#${id('jade')})`}
-            strokeWidth="11"
+            strokeWidth="6"
           />
           {/* filigree — a few scrolls riding the inlay */}
           <g
@@ -109,21 +113,23 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
             strokeLinecap="round"
             opacity="0.7"
           >
-            {[95, 130, 165, 200, 235, 270].map((deg) => (
+            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
               <g key={deg} transform={`rotate(${deg} 50 78)`}>
-                <path d="M46 49 c 4 -2 8 0 8 3 c 0 3 -4 4 -5 2 c -1 -2 1 -3 2 -2" />
-                <path d="M43 51 c 2 2 2 4 1 6" opacity="0.6" />
+                <path d="M46.5 45 c 3.5 -1.6 7 0 7 2.6 c 0 2.6 -3.5 3.4 -4.4 1.7 c -0.9 -1.7 0.9 -2.6 1.8 -1.7" />
+                <path d="M43.5 47 c 1.8 1.8 1.8 3.6 0.9 5.4" opacity="0.6" />
               </g>
             ))}
           </g>
           {/* inner and outer bright edges */}
           <path
             d={CRESCENT}
+            fillRule="evenodd"
             fill="none"
             stroke={`url(#${id('brassEdge')})`}
             strokeWidth="3.4"
             opacity="0.95"
           />
+        </g>
         </g>
 
         {/* ---- hanging globe ------------------------------------------- */}
@@ -132,10 +138,8 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
 
         {/* drop chain + star */}
         <line x1="68" y1="47" x2="68" y2="60" stroke="currentColor" strokeWidth="1.4" opacity="0.85" />
-        <path
-          d="M68 57 l2.1 4.6 4.9 .6 -3.6 3.4 .9 4.9 -4.3 -2.4 -4.3 2.4 .9 -4.9 -3.6 -3.4 4.9 -.6 Z"
-          fill={`url(#${id('brassEdge')})`}
-        />
+        <circle cx="68" cy="62" r="3.1" fill={`url(#${id('brassEdge')})`} />
+        <path d="M65.4 63.6 h5.2 l-2.6 3.4 Z" fill={`url(#${id('brass')})`} />
 
         {/* cap */}
         <path d="M58 78 h20 l-3 -6 h-14 Z" fill={`url(#${id('brass')})`} />
@@ -143,12 +147,12 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
         <circle cx="68" cy="68" r="2.4" fill={`url(#${id('brassEdge')})`} />
 
         {/* glass */}
-        <ellipse cx="68" cy="96" rx="18" ry="19" fill={`url(#${id('glass')})`} />
+        <ellipse cx="68" cy="96" rx="19.5" ry="20.5" fill={`url(#${id('glass')})`} />
         {/* ribs */}
         <g stroke="#c9a227" strokeWidth="1.2" fill="none" opacity="0.85">
-          <ellipse cx="68" cy="96" rx="18" ry="19" />
-          <ellipse cx="68" cy="96" rx="9" ry="19" />
-          <line x1="68" y1="77" x2="68" y2="115" />
+          <ellipse cx="68" cy="96" rx="19.5" ry="20.5" />
+          <ellipse cx="68" cy="96" rx="9.7" ry="20.5" />
+          <line x1="68" y1="75.5" x2="68" y2="116.5" />
         </g>
         {/* the star in the glass — the light source */}
         <path
@@ -171,10 +175,16 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
         <circle cx="50" cy="127" r="3.4" fill={`url(#${id('brassEdge')})`} />
         <circle cx="50" cy="127" r="1.5" fill={`url(#${id('jade')})`} />
         <line x1="50" y1="130" x2="50" y2="134" stroke="currentColor" strokeWidth="1.2" opacity="0.8" />
-        {/* small crescent, same construction scaled down */}
+        {/* oak leaf */}
         <path
-          d="M55.6 136.1 A7 7 0 1 0 55.6 142.7 A5.2 5.2 0 1 1 55.6 136.1 Z"
+          d="M50 134 c 5.5 3 6.5 8.5 0 13.5 c -6.5 -5 -5.5 -10.5 0 -13.5 Z"
           fill={`url(#${id('brassEdge')})`}
+        />
+        <line
+          x1="50" y1="136" x2="50" y2="146"
+          stroke={`url(#${id('jade')})`}
+          strokeWidth="0.9"
+          opacity="0.8"
         />
       </g>
     </svg>
@@ -249,20 +259,22 @@ export function HangingLantern({
   );
 }
 
-/** ~1em crescent-and-star, used as the list bullet. */
+/** ~1em hanging lantern, used as the list bullet. Deliberately *not* a
+ *  crescent-and-star: that pairing reads as a flag, not a lantern. */
 export function MoonGlyph({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M9.4 2.2 A5.4 5.4 0 1 0 9.4 11.8 A4.1 4.1 0 1 1 9.4 2.2 Z"
-        fill="currentColor"
-      />
-      <path
-        d="M10.6 5.1 l1 2.1 2.1 .3 -1.6 1.4 .4 2.1 -1.9 -1.1 -1.9 1.1 .4 -2.1 -1.6 -1.4 2.1 -.3 Z"
-        fill="currentColor"
-        opacity="0.9"
-        transform="translate(-1.4 -1.6) scale(0.86) translate(2.2 2.4)"
-      />
+      {/* hanger */}
+      <circle cx="7" cy="1.5" r="1" stroke="currentColor" strokeWidth="0.9" />
+      <line x1="7" y1="2.5" x2="7" y2="3.4" stroke="currentColor" strokeWidth="0.9" />
+      {/* cap */}
+      <path d="M4.4 4.6 h5.2 l-1.1 -1.4 h-3 Z" fill="currentColor" />
+      {/* glass */}
+      <ellipse cx="7" cy="7.9" rx="3.3" ry="3.4" fill="currentColor" opacity="0.3" />
+      <ellipse cx="7" cy="7.9" rx="3.3" ry="3.4" stroke="currentColor" strokeWidth="1" />
+      <ellipse cx="7" cy="7.9" rx="1.4" ry="3.4" stroke="currentColor" strokeWidth="0.7" opacity="0.75" />
+      {/* finial */}
+      <path d="M5.2 11 h3.6 l-1.8 2.6 Z" fill="currentColor" />
     </svg>
   );
 }

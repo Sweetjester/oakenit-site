@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-27 (moon-lantern motif, dark-mode lighting, lit background tree)
+> **Last updated**: 2026-08-27 (lantern reworked off the flag reading; dark-mode lighting; lit background tree)
 
 ---
 
@@ -209,17 +209,28 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 
 - `components/MoonLantern.tsx` — the motif, replacing the earlier plain
   lantern on 2026-08-27 from artwork Andy supplied:
-  - `<MoonLantern>` — brass crescent with jade inlay and filigree, a star-lit
-    globe hanging inside, crescent pendant below. The crescent is the
-    difference of two circles (outer r40 at 50,78; inner r30 at 62,78) meeting
-    at (85.17, 58.94)/(85.17, 97.06). **Two traps**: everything laid inside is
-    clipped to that path or it spills over the tips; and any arc drawn along
-    the crescent must have endpoints that genuinely lie on its radius, or the
-    SVG arc solver invents its own centre and the band lands elsewhere.
+  - `<MoonLantern>` — a brass **hoop** with jade inlay and filigree, a lit
+    globe hanging inside it, oak-leaf pendant below.
+    ⚠️ **Do not put the crescent back.** The first version was a deep upright
+    crescent with a five-pointed star finial and a crescent pendant; Andy
+    flagged on 2026-08-27 that it read as the Pakistani flag rather than a
+    lantern, which is not a reading a UK IT consultancy wants. It is now a
+    closed, gently tapered ring (outer r40 at 50,78; inner r34 nudged to
+    52,78, `fillRule="evenodd"`), tilted 24° off vertical, with a brass knop
+    where the star was and a leaf where the pendant crescent was. The lantern,
+    not the ring, should read first.
+    **Geometry traps**: anything laid inside the hoop must be clipped to it;
+    and an arc drawn along the hoop needs endpoints genuinely on its radius,
+    or the SVG arc solver invents its own centre and the band lands elsewhere.
+    A `clipPath` resolves in the *referencing element's* user space, which
+    already carries the group translate — do not translate the clip path too,
+    or long-corded lanterns lose their inlay entirely (this shipped broken
+    once and was invisible at preview cord lengths).
   - `<HangingLantern>` — a lantern plus the light it throws. Rendered cord
     length is `size * cord / 100`, so hero cords are in the hundreds to clear
     the 80px nav.
-  - `<MoonGlyph>` — ~1em crescent-and-star, the list bullet.
+  - `<MoonGlyph>` — ~1em hanging lantern, the list bullet. Deliberately not
+    a crescent-and-star, for the same reason.
 - `public/moon-lantern.svg` — the same lantern as a standalone asset, for
   dropping into logo artwork.
 - `components/SectionLabel.tsx` — the shared eyebrow: glyph + rule + label.
