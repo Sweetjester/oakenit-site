@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { HangingLantern } from './MoonLantern';
+import { TreeCanopy } from './TreeCanopy';
 
 /**
  * The footer is night-side in both themes — the canopy after dark, lanterns
@@ -13,9 +14,12 @@ export function Footer() {
       {/* canopy glow + ghosted mark */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-leaf-400/10 blur-[130px] rounded-full" />
-        <div className="absolute right-[-6%] -bottom-24 w-[420px] aspect-square opacity-[0.13]">
-          <Image src="/mark.png" alt="" fill sizes="420px" className="object-contain" />
-        </div>
+        <TreeCanopy
+          idPrefix="foottree"
+          sizes="420px"
+          className="absolute right-[-6%] -bottom-24 w-[420px] aspect-square"
+          treeClassName="opacity-[0.13]"
+        />
       </div>
 
       {/* a couple of lanterns hanging off the top edge */}

@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-27 (moon-lantern motif + dark-mode lantern lighting)
+> **Last updated**: 2026-08-27 (moon-lantern motif, dark-mode lighting, lit background tree)
 
 ---
 
@@ -231,7 +231,23 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
   `lantern-flicker` keyframes are deliberately uneven; an even sine reads as a
   pulsing LED rather than a flame. Each instance takes a different
   `animation-delay` so they don't beat in unison.
-- The mark itself is used ghosted as a watermark in the hero and footer.
+- `components/TreeCanopy.tsx` — the ghosted background tree **with real
+  lanterns hung on it**, used in the hero and footer.
+  - `public/tree.png` is `public/mark.png` with its baked-in lanterns masked
+    out (warm hue 15–68° + the bright glow halos), then cropped. The originals
+    were raster: they could neither take the moon-lantern design nor light
+    anything.
+  - The anchor coordinates in `TreeCanopy` are the *centroids of the masked
+    lanterns*, so the new ones hang on the same branches. If the mark artwork
+    is ever re-exported, both `tree.png` and those anchors must be regenerated
+    together or the lanterns will float off the branches.
+  - The smaller glow orbs the artwork carried are recreated as pure light —
+    `.lantern-light-soft`, no fixture.
+  - ⚠️ `TreeCanopy` must not merge `relative` into the caller's className:
+    Tailwind emits `relative` *after* `absolute`, so it wins and the canopy
+    silently leaves its corner. It uses an inner positioning div instead.
+- The logo mark (`mark.png`) keeps its original lanterns — that's Andy's
+  artwork, and it is what the favicon and OG card use.
 
 ### Voice rules (same as SweetTech)
 

@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { HangingLantern } from './MoonLantern';
+import { TreeCanopy } from './TreeCanopy';
 
 /** Lanterns strung across the top of the hero, at hand-picked offsets. */
 const strung = [
@@ -41,9 +41,12 @@ export function Hero() {
           }}
         />
 
-        <div className="absolute -right-24 bottom-0 w-[min(70vw,720px)] aspect-square opacity-[0.13] dark:opacity-[0.18] pointer-events-none">
-          <Image src="/mark.png" alt="" fill priority sizes="70vw" className="object-contain" />
-        </div>
+        <TreeCanopy
+          idPrefix="tree"
+          priority
+          className="absolute -right-24 bottom-0 w-[min(70vw,720px)] aspect-square pointer-events-none"
+          treeClassName="opacity-[0.13] dark:opacity-[0.18]"
+        />
 
         <div className="absolute inset-x-0 top-0 h-[52vh] hidden sm:block pointer-events-none">
           {strung.map((l, i) => (

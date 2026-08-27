@@ -169,9 +169,31 @@ html.dark .card:hover {
   );
 }
 
+/* Softer variant for lanterns sitting *behind* content — the canopy ones.
+   Same light, roughly half the strength, so copy stays readable over them. */
+.lantern-light-soft {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  transition: opacity 700ms ease;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 231, 163, 0.26),
+    rgba(255, 198, 100, 0.1) 42%,
+    rgba(255, 184, 74, 0) 72%
+  );
+}
+
 html.dark .lantern-light {
   opacity: 1;
   animation: lantern-flicker 7s ease-in-out infinite;
+}
+
+html.dark .lantern-light-soft {
+  opacity: 1;
+  animation: lantern-flicker 9s ease-in-out infinite;
 }
 
 html.dark .lantern-pool {
