@@ -72,11 +72,26 @@ export function TreeCanopy({
           key={`orb-${i}`}
           className="lantern-light-soft absolute"
           style={{
-            width: `${o.w * 3.2}%`,
-            height: `${o.w * 3.2}%`,
-            left: `${o.x - o.w * 1.6}%`,
-            top: `${o.y - o.w * 1.6}%`,
+            width: `${o.w * 2.5}%`,
+            height: `${o.w * 2.5}%`,
+            left: `${o.x - o.w * 1.25}%`,
+            top: `${o.y - o.w * 1.25}%`,
             animationDelay: `${o.delay}s`,
+          }}
+        />
+      ))}
+
+      {/* each lantern's light, in box coordinates */}
+      {LANTERNS.map((l, i) => (
+        <div
+          key={`lanlight-${i}`}
+          className="lantern-light absolute"
+          style={{
+            width: `${l.w * 4.6}%`,
+            height: `${l.w * 4.6}%`,
+            left: `${l.x - l.w * 2.3}%`,
+            top: `${l.y - l.w * 2.3}%`,
+            animationDelay: `${l.delay}s`,
           }}
         />
       ))}
@@ -92,16 +107,6 @@ export function TreeCanopy({
             top: `${l.y - l.w * globeY(l.cord)}%`,
           }}
         >
-          <div
-            className="lantern-light-soft absolute"
-            style={{
-              width: '420%',
-              height: '420%',
-              left: `${GLOBE_X * 100 - 210}%`,
-              top: `${globeY(l.cord) * 100 - 210}%`,
-              animationDelay: `${l.delay}s`,
-            }}
-          />
           <MoonLantern
             cord={l.cord}
             sway={l.sway}

@@ -256,6 +256,13 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
     all be regenerated together or the lanterns will float off the branches.
   - The smaller glow orbs the artwork carried are recreated as pure light —
     `.lantern-light-soft`, no fixture.
+  - ⚠️ **Every light in here is positioned in canopy-box coordinates, not
+    inside the lantern's own wrapper.** A percentage `height`/`top` resolves
+    against the containing block's *height*, and a lantern wrapper is ~3.4x
+    taller than it is wide once it has a long cord — nesting the glow inside it
+    stretched it into a smear and pushed it far below its lantern. The canopy
+    box is `aspect-square`, so there % width and % height are equal in px.
+    (`HangingLantern` in the hero/footer is safe because it works in px.)
   - ⚠️ `TreeCanopy` must not merge `relative` into the caller's className:
     Tailwind emits `relative` *after* `absolute`, so it wins and the canopy
     silently leaves its corner. It uses an inner positioning div instead.
