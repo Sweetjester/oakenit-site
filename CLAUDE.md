@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-25 (Andy's revisions: leaf-green accent, new hero line, /work page)
+> **Last updated**: 2026-08-27 (moon-lantern motif + dark-mode lantern lighting)
 
 ---
 
@@ -128,7 +128,7 @@ oakenit/
 │   ├── WhyUs.tsx               # Sticky-left reasons-to-believe (4)
 │   ├── Footer.tsx
 │   ├── Logo.tsx                # mark.png + live-text wordmark
-│   ├── Lantern.tsx             # <Lantern> + <LanternGlyph> SVG motifs
+│   ├── MoonLantern.tsx         # <MoonLantern>/<HangingLantern>/<MoonGlyph>
 │   ├── SectionLabel.tsx        # Shared section eyebrow
 │   ├── ThemeProvider.tsx       # Theme context + no-flash init script
 │   ├── ThemeToggle.tsx         # Sun/moon toggle
@@ -137,7 +137,8 @@ oakenit/
 │   └── Marquee.tsx             # Unused; kept for optional reuse
 │
 ├── public/
-│   └── mark.png                # The lantern-tree mark (transparent, 900px)
+│   ├── mark.png                # The lantern-tree mark (transparent, 900px)
+│   └── moon-lantern.svg        # Standalone lantern, for logo artwork
 │
 ├── README.md
 ├── CLAUDE.md                   # This file
@@ -179,8 +180,8 @@ Sampled directly off the logo mark: the canopy greens and the lantern golds.
 the accent from gold to leaf green on 2026-08-25 — emphasis text, buttons,
 links, rules, numerals and focus rings are all `leaf-*` now.
 
-**Gold survives in exactly one place**: the lantern motif — `<Lantern>`
-decorations and `<LanternGlyph>` bullets. The mark PNG itself contains that
+**Gold survives in exactly one place**: the lantern motif — `<MoonLantern>`
+decorations and `<MoonGlyph>` bullets. The mark PNG itself contains that
 gold, so it can't be eliminated; it reads as illustration rather than as the UI
 accent. If you touch colours, the test is: *is this element a lantern?* If yes,
 `lantern-*`; if no, `leaf-*`. Don't reintroduce gold for text or buttons.
@@ -206,10 +207,30 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 
 ### Motifs
 
-- `components/Lantern.tsx` — `<Lantern>` (hanging, sways) and `<LanternGlyph>`
-  (~1em, used as the list bullet everywhere the old `✦` was).
+- `components/MoonLantern.tsx` — the motif, replacing the earlier plain
+  lantern on 2026-08-27 from artwork Andy supplied:
+  - `<MoonLantern>` — brass crescent with jade inlay and filigree, a star-lit
+    globe hanging inside, crescent pendant below. The crescent is the
+    difference of two circles (outer r40 at 50,78; inner r30 at 62,78) meeting
+    at (85.17, 58.94)/(85.17, 97.06). **Two traps**: everything laid inside is
+    clipped to that path or it spills over the tips; and any arc drawn along
+    the crescent must have endpoints that genuinely lie on its radius, or the
+    SVG arc solver invents its own centre and the band lands elsewhere.
+  - `<HangingLantern>` — a lantern plus the light it throws. Rendered cord
+    length is `size * cord / 100`, so hero cords are in the hundreds to clear
+    the 80px nav.
+  - `<MoonGlyph>` — ~1em crescent-and-star, the list bullet.
+- `public/moon-lantern.svg` — the same lantern as a standalone asset, for
+  dropping into logo artwork.
 - `components/SectionLabel.tsx` — the shared eyebrow: glyph + rule + label.
 - `.canopy` (globals.css) — the soft green/gold light pooled behind the hero.
+- **Dark mode is lit by the lanterns.** `.lantern-light` (a radial wash) and
+  `.lantern-pool` (the light falling below) are `mix-blend-mode: screen`, so
+  they *add* light to what's beneath rather than painting over it. Both are
+  `opacity: 0` in light mode — it's daylight, the lanterns are decoration. The
+  `lantern-flicker` keyframes are deliberately uneven; an even sine reads as a
+  pulsing LED rather than a flame. Each instance takes a different
+  `animation-delay` so they don't beat in unison.
 - The mark itself is used ghosted as a watermark in the hero and footer.
 
 ### Voice rules (same as SweetTech)

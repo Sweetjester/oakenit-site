@@ -3,16 +3,16 @@
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Lantern } from './Lantern';
+import { HangingLantern } from './MoonLantern';
 
 /** Lanterns strung across the top of the hero, at hand-picked offsets. */
 const strung = [
-  { left: '10%', cord: 96, size: 24, sway: 7, delay: 0 },
-  { left: '20%', cord: 40, size: 30, sway: 9, delay: 1.2 },
-  { left: '31%', cord: 72, size: 21, sway: 6.5, delay: 0.6 },
-  { left: '63%', cord: 88, size: 24, sway: 8, delay: 0.3 },
-  { left: '74%', cord: 44, size: 33, sway: 6, delay: 1.6 },
-  { left: '87%', cord: 104, size: 26, sway: 9.5, delay: 0.9 },
+  { left: '7%', cord: 239, size: 44, sway: 7, delay: 0, reach: 6.5 },
+  { left: '19%', cord: 276, size: 58, sway: 9, delay: 1.4, reach: 7 },
+  { left: '40%', cord: 294, size: 34, sway: 6.5, delay: 0.6, reach: 5.5 },
+  { left: '60%', cord: 462, size: 40, sway: 8, delay: 2.1, reach: 6 },
+  { left: '77%', cord: 190, size: 62, sway: 6, delay: 0.3, reach: 7.5 },
+  { left: '90%', cord: 539, size: 38, sway: 9.5, delay: 1.1, reach: 6 },
 ];
 
 
@@ -45,20 +45,9 @@ export function Hero() {
           <Image src="/mark.png" alt="" fill priority sizes="70vw" className="object-contain" />
         </div>
 
-        <div className="absolute inset-x-0 top-0 h-[42vh] hidden sm:block pointer-events-none">
-          {strung.map((l) => (
-            <div
-              key={l.left}
-              className="absolute top-0"
-              style={{ left: l.left, width: l.size }}
-            >
-              <Lantern
-                cord={l.cord}
-                sway={l.sway}
-                delay={l.delay}
-                className="w-full h-auto text-lantern-600/70 dark:text-lantern-300/80"
-              />
-            </div>
+        <div className="absolute inset-x-0 top-0 h-[52vh] hidden sm:block pointer-events-none">
+          {strung.map((l, i) => (
+            <HangingLantern key={l.left} uid={`hero${i}`} {...l} />
           ))}
         </div>
       </div>

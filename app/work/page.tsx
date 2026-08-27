@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { SectionLabel } from '@/components/SectionLabel';
-import { LanternGlyph } from '@/components/Lantern';
+import { MoonGlyph } from '@/components/MoonLantern';
 import { SiteEmbed } from '@/components/SiteEmbed';
 
 export const metadata: Metadata = {
@@ -85,7 +85,7 @@ export default function WorkPage() {
                       key={b}
                       className="flex items-center gap-3 text-sm text-forest-800/85 dark:text-cream-100/75"
                     >
-                      <LanternGlyph className="h-3.5 w-2.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
+                      <MoonGlyph className="h-3.5 w-3.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -169,7 +169,7 @@ export default function WorkPage() {
                     key={e}
                     className="flex items-center gap-3 text-forest-800/80 dark:text-cream-100/70"
                   >
-                    <LanternGlyph className="h-4 w-3 shrink-0 text-lantern-500 dark:text-lantern-300" />
+                    <MoonGlyph className="h-4 w-4 shrink-0 text-lantern-500 dark:text-lantern-300" />
                     <span>{e}</span>
                   </li>
                 ))}

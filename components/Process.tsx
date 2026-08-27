@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { SectionLabel } from './SectionLabel';
-import { LanternGlyph } from './Lantern';
+import { MoonGlyph } from './MoonLantern';
 
 const steps = [
   {
@@ -58,7 +58,7 @@ export function Process() {
                   }}
                 />
                 <span className="relative flex items-center gap-2.5 font-display text-leaf-600 dark:text-leaf-300 text-sm tracking-[0.3em] big-numeral">
-                  <LanternGlyph className="h-4 w-3 shrink-0" />
+                  <MoonGlyph className="h-4 w-4 shrink-0" />
                   {s.n}
                 </span>
                 <div className="relative">

@@ -1,4 +1,4 @@
-import { LanternGlyph } from './Lantern';
+import { MoonGlyph } from './MoonLantern';
 
 const areas = [
   'Software',
@@ -18,7 +18,7 @@ export function TrustStrip() {
           {areas.map((a, i) => (
             <li key={a} className="flex items-center gap-3">
               {i > 0 && (
-                <LanternGlyph className="h-3.5 w-2.5 text-lantern-500/70 dark:text-lantern-300/60" />
+                <MoonGlyph className="h-3.5 w-3.5 text-lantern-500/70 dark:text-lantern-300/60" />
               )}
               <span>{a}</span>
             </li>

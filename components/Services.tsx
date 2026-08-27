@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Hammer, Wrench, TrendingUp } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
-import { LanternGlyph } from './Lantern';
+import { MoonGlyph } from './MoonLantern';
 
 const pillars = [
   {
@@ -107,7 +107,7 @@ export function Services() {
                     key={item}
                     className="flex items-center gap-3 text-sm text-forest-800/85 dark:text-cream-100/75"
                   >
-                    <LanternGlyph className="h-3.5 w-2.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
+                    <MoonGlyph className="h-3.5 w-3.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
                     <span>{item}</span>
                   </li>
                 ))}

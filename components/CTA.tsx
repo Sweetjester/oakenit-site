@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { InquiryForm } from './InquiryForm';
 import { SectionLabel } from './SectionLabel';
-import { LanternGlyph } from './Lantern';
+import { MoonGlyph } from './MoonLantern';
 
 const promises = [
   'It doesn’t need to be perfectly defined',
@@ -65,7 +65,7 @@ export function CTA() {
             >
               {promises.map((t) => (
                 <li key={t} className="flex gap-3 items-center">
-                  <LanternGlyph className="h-4 w-3 shrink-0 text-lantern-500 dark:text-lantern-300" />
+                  <MoonGlyph className="h-4 w-4 shrink-0 text-lantern-500 dark:text-lantern-300" />
                   <span>{t}</span>
                 </li>
               ))}

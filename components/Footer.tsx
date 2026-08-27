@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Lantern } from './Lantern';
+import { HangingLantern } from './MoonLantern';
 
 /**
  * The footer is night-side in both themes — the canopy after dark, lanterns
@@ -20,12 +20,9 @@ export function Footer() {
 
       {/* a couple of lanterns hanging off the top edge */}
       <div className="absolute inset-x-0 top-0 pointer-events-none hidden sm:block">
-        <div className="absolute top-0 left-[14%] w-9">
-          <Lantern cord={30} sway={8} className="w-full h-auto text-lantern-300/70" />
-        </div>
-        <div className="absolute top-0 left-[28%] w-7">
-          <Lantern cord={34} sway={10} delay={1.4} className="w-full h-auto text-lantern-300/50" />
-        </div>
+        <HangingLantern left="13%" cord={26} size={54} sway={8} delay={0} reach={7} uid="foot0" />
+        <HangingLantern left="29%" cord={48} size={38} sway={10} delay={1.4} reach={6} uid="foot1" />
+        <HangingLantern left="84%" cord={34} size={44} sway={9} delay={2.3} reach={6.5} uid="foot2" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16">
