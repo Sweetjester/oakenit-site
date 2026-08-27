@@ -12,8 +12,9 @@ import { ArrowUpRight } from 'lucide-react';
 const DESKTOP_WIDTH = 1280;
 const MOBILE_WIDTH = 430;
 /** Below this container width, frame the site's own mobile layout instead of
- *  shrinking its desktop one to the point of illegibility. */
-const BREAKPOINT = 700;
+ *  shrinking its desktop one to the point of illegibility. Keep it near actual
+ *  phone widths — a ~660px portfolio column still reads fine scaled down. */
+const BREAKPOINT = 520;
 
 type Props = {
   src: string;

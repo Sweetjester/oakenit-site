@@ -315,13 +315,22 @@ problem, and it is the one thing that cannot be written from the codebase.
   beats three plausible ones.
 - The 90%+ field-reporting / proof-of-posting entry came from Andy's designer.
   **It still needs Andy's explicit sign-off** — flagged to him on 2026-08-25.
+- **PhantomAxis Studios** (added 2026-08-27) — a site built for a games/film
+  composer, embedded live from
+  https://phantomaxis-production.up.railway.app. Source lives at
+  `~/Documents/DEV/phantomaxis`, deployed on Andy's *personal* Railway.
+  ⚠️ It is tagged **"Recent build"**, deliberately: it was built for a friend
+  and the commercial arrangement is unknown, so it does not claim
+  "Client project". Ask Andy before upgrading that label.
 - CV Live is *our own product*, not client work, and is labelled as such. It is
   embedded live via `SiteEmbed` — cvlive.io sends no `X-Frame-Options` or CSP
   `frame-ancestors`, so it frames cleanly. If that ever changes the frame will
   go blank; fall back to a screenshot.
 - `SiteEmbed` renders the target at desktop width and scales it down, but
-  switches to the site's *own* mobile layout below a 700px container — a 1280px
-  page shrunk into a phone column is unreadable.
+  switches to the site's *own* mobile layout below a **520px** container. That
+  threshold was 700 and was wrong: the work page's embed column is ~660px, so
+  both embeds were rendering their mobile layouts inside a wide frame. Keep the
+  breakpoint near real phone widths.
 - "Selected experience" is a list of *domains*, not client claims — safe to
   extend as the work broadens.
 - Still missing, and worth chasing: an About section with a photo and a real

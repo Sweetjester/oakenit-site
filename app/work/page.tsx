@@ -22,6 +22,14 @@ const experience = [
   'High-volume transactional systems',
 ];
 
+const phantomBuilt = [
+  'Custom transport over SoundCloud’s Widget API',
+  'Waveforms drawn from real published peak data',
+  'Canvas effect driven by the amplitude under the playhead',
+  'His own artwork masked into the page',
+  'Dynamic share card built from the same artwork',
+];
+
 const cvLiveBuilt = [
   'CV parsing and AI-assisted rewriting',
   'Automated per-user subdomains',
@@ -116,8 +124,72 @@ export default function WorkPage() {
                   src="https://www.cvlive.io/"
                   label="www.cvlive.io"
                   title="CV Live — live site"
-                  height={700}
+                  height={880}
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PhantomAxis -------------------------------------------------- */}
+        <section className="py-14 lg:py-20 border-t border-forest-900/10 dark:border-cream-100/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 order-2 lg:order-1">
+                <SiteEmbed
+                  src="https://phantomaxis-production.up.railway.app/"
+                  label="PhantomAxis Studios"
+                  title="PhantomAxis Studios — live site"
+                  height={880}
+                />
+              </div>
+
+              <div className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-32">
+                <div className="text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
+                  Recent build
+                </div>
+                <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
+                  PhantomAxis Studios
+                </h2>
+
+                <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <span className="font-display text-5xl leading-none text-leaf big-numeral">
+                    10
+                  </span>
+                  <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
+                    cues playing from the page itself, not a pasted-in widget
+                  </span>
+                </div>
+
+                <p className="mt-7 text-forest-800/80 dark:text-cream-100/70 leading-relaxed">
+                  A composer for games and film, whose portfolio was buried in an embedded
+                  player on a template site. The product is sound, so the site plays: a
+                  custom transport, waveforms drawn from real peak data, and a mist effect
+                  that follows the amplitude of whatever is playing.
+                </p>
+
+                <ul className="mt-7 space-y-2.5">
+                  {phantomBuilt.map((b) => (
+                    <li
+                      key={b}
+                      className="flex items-center gap-3 text-sm text-forest-800/85 dark:text-cream-100/75"
+                    >
+                      <MoonGlyph className="h-3.5 w-3.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 pt-6 border-t border-forest-900/10 dark:border-cream-100/10 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-forest-800/60 dark:text-cream-100/55">
+                  {['A portfolio nobody pressed play on', 'The site becomes the player', 'Ten cues, one click'].map(
+                    (step, j) => (
+                      <span key={step} className="flex items-center gap-3">
+                        {j > 0 && <span className="text-leaf-500 dark:text-leaf-300">→</span>}
+                        <span>{step}</span>
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
             </div>
           </div>

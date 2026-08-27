@@ -16,6 +16,12 @@ const highlights = [
     tag: 'Our own product',
   },
   {
+    metric: '10',
+    label: 'cues playing from the page, not a pasted-in widget',
+    name: 'PhantomAxis Studios',
+    tag: 'Recent build',
+  },
+  {
     metric: '90%+',
     label: 'field reporting captured on a live deployment',
     name: 'Proof-of-posting platform',
@@ -47,7 +53,7 @@ export function WorkTeaser() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-3 gap-5">
           {highlights.map((h, i) => (
             <motion.a
               key={h.name}
@@ -72,7 +78,7 @@ export function WorkTeaser() {
                 <span className="font-display text-5xl leading-none text-leaf big-numeral">
                   {h.metric}
                 </span>
-                <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-[16rem] leading-snug">
+                <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-[14rem] leading-snug">
                   {h.label}
                 </span>
               </div>
