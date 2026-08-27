@@ -568,3 +568,8 @@ When shipping:
 3. **What to look at** — be specific (*"check the new headline on mobile portrait"*, not *"see if it looks OK"*)
 
 Don't ask "want me to push?" — push and tell him.
+
+**Don't narrate verification.** Andy asked on 2026-08-27 to stop the
+post-deploy ritual of curling the live site and reporting which strings are
+present or absent. Check what you need to check, silently; if it's fine, just
+say it's shipped. Only surface a check when it actually found something wrong.
