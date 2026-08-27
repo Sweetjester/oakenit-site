@@ -15,12 +15,15 @@ import { MoonLantern } from './MoonLantern';
  * percentage of the (square) container. A lantern's globe sits at 68% of its
  * width across and, at cord 40, 1.18 widths down — hence the offsets below.
  */
+// `cord` is recovered from the mask too: each blob's top is where the original
+// cord met its branch, so these hang from the same points the artwork did
+// rather than floating below them.
 const LANTERNS = [
-  { x: 79.64, y: 75.39, w: 7.46, sway: 7, delay: 0.0 },
-  { x: 14.48, y: 70.11, w: 7.01, sway: 9, delay: 1.3 },
-  { x: 69.29, y: 65.1, w: 7.34, sway: 6.4, delay: 2.2 },
-  { x: 28.12, y: 66.75, w: 7.01, sway: 8.2, delay: 0.7 },
-  { x: 89.33, y: 66.61, w: 6.89, sway: 7.6, delay: 1.8 },
+  { x: 79.64, y: 75.39, w: 7.46, cord: 230, sway: 7, delay: 0.0 },
+  { x: 14.48, y: 70.11, w: 7.01, cord: 170, sway: 9, delay: 1.3 },
+  { x: 69.29, y: 65.1, w: 7.34, cord: 122, sway: 6.4, delay: 2.2 },
+  { x: 28.12, y: 66.75, w: 7.01, cord: 138, sway: 8.2, delay: 0.7 },
+  { x: 89.33, y: 66.61, w: 6.89, cord: 148, sway: 7.6, delay: 1.8 },
 ];
 
 /** The smaller glowing orbs the artwork carried, as pure light. */
@@ -36,10 +39,9 @@ const ORBS = [
   { x: 46.6, y: 21.49, w: 5.65, delay: 1.6 },
 ];
 
-const CORD = 40;
 /** globe offset from the svg's own top-left, in multiples of its width */
 const GLOBE_X = 0.68;
-const GLOBE_Y = (CORD + 58) / 100;
+const globeY = (cord: number) => (cord + 58) / 100;
 
 type Props = {
   /** Opacity of the tree itself. The lanterns stay brighter than it. */
@@ -87,7 +89,7 @@ export function TreeCanopy({
           style={{
             width: `${l.w}%`,
             left: `${l.x - l.w * GLOBE_X}%`,
-            top: `${l.y - l.w * GLOBE_Y}%`,
+            top: `${l.y - l.w * globeY(l.cord)}%`,
           }}
         >
           <div
@@ -96,12 +98,12 @@ export function TreeCanopy({
               width: '420%',
               height: '420%',
               left: `${GLOBE_X * 100 - 210}%`,
-              top: `${GLOBE_Y * 100 - 210}%`,
+              top: `${globeY(l.cord) * 100 - 210}%`,
               animationDelay: `${l.delay}s`,
             }}
           />
           <MoonLantern
-            cord={CORD}
+            cord={l.cord}
             sway={l.sway}
             delay={l.delay}
             uid={`${idPrefix}${i}`}

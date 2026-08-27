@@ -249,9 +249,11 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
     were raster: they could neither take the moon-lantern design nor light
     anything.
   - The anchor coordinates in `TreeCanopy` are the *centroids of the masked
-    lanterns*, so the new ones hang on the same branches. If the mark artwork
-    is ever re-exported, both `tree.png` and those anchors must be regenerated
-    together or the lanterns will float off the branches.
+    lanterns*, and each `cord` is the distance from that blob's **top** — where
+    the original cord met its branch — down to the globe. So the new lanterns
+    hang from the same points on the same branches, with a visible cord. If the
+    mark artwork is ever re-exported, `tree.png`, the anchors and the cords must
+    all be regenerated together or the lanterns will float off the branches.
   - The smaller glow orbs the artwork carried are recreated as pure light —
     `.lantern-light-soft`, no fixture.
   - ⚠️ `TreeCanopy` must not merge `relative` into the caller's className:
