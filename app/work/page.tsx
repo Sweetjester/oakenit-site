@@ -30,6 +30,14 @@ const cvLiveBuilt = [
   'Subscription billing and account management',
 ];
 
+const fieldCaptureBuilt = [
+  'Job folders and share links created straight from the booking system',
+  'One upload link that works on any phone, for any job',
+  'Location taken from the device, not the photo file',
+  'Client reports with a live map and no login to get past',
+  'Photos served from object storage — no file server to run',
+];
+
 export default function WorkPage() {
   return (
     <>
@@ -142,6 +150,61 @@ export default function WorkPage() {
               </p>
               <div className="mt-7 pt-6 border-t border-forest-900/10 dark:border-cream-100/10 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-forest-800/60 dark:text-cream-100/55">
                 {['Manual, inconsistent reporting', 'Custom capture platform', 'Near-complete coverage'].map(
+                  (step, j) => (
+                    <span key={step} className="flex items-center gap-3">
+                      {j > 0 && <span className="text-leaf-500 dark:text-leaf-300">→</span>}
+                      <span>{step}</span>
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Field capture platform --------------------------------------- */}
+        <section className="py-14 lg:py-20 border-t border-forest-900/10 dark:border-cream-100/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10 lg:gap-14">
+            <div className="lg:col-span-5">
+              <div className="text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
+                Client project
+              </div>
+              <h2 className="font-display text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] text-forest-800 dark:text-cream-100">
+                Field capture and client reporting
+              </h2>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-5">
+                <span className="font-display text-5xl md:text-6xl leading-none text-leaf big-numeral">
+                  1 link
+                </span>
+                <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
+                  for every crew on every job — nothing to hand out per campaign
+                </span>
+              </div>
+
+              <p className="text-forest-800/80 dark:text-cream-100/70 leading-relaxed">
+                A second platform for the same operator, rebuilt without the self-hosted file
+                server the first one depended on. Crews photograph the work on their phones,
+                the system files each photo against the right job, and the client opens a
+                report showing where their campaign went up.
+              </p>
+
+              <ul className="mt-7 space-y-2.5">
+                {fieldCaptureBuilt.map((b) => (
+                  <li
+                    key={b}
+                    className="flex items-center gap-3 text-sm text-forest-800/85 dark:text-cream-100/75"
+                  >
+                    <MoonGlyph className="h-3.5 w-3.5 shrink-0 text-lantern-500/85 dark:text-lantern-300/75" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-7 pt-6 border-t border-forest-900/10 dark:border-cream-100/10 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-forest-800/60 dark:text-cream-100/55">
+                {['A file server to maintain', 'Cloud storage and a phone app', 'Reports clients open themselves'].map(
                   (step, j) => (
                     <span key={step} className="flex items-center gap-3">
                       {j > 0 && <span className="text-leaf-500 dark:text-leaf-300">→</span>}
