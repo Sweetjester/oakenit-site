@@ -3,13 +3,17 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Fireflies around the canopy. Dark mode only — they make no sense in
- * daylight, and the CSS hides the canvas there, so the loop skips its work
- * whenever the element isn't laid out.
+ * Points of life around the canopy, themed to the time of day.
  *
- * Deliberately restrained: a handful of points, slow wander, and a blink that
- * is mostly *off*. Fireflies read as fireflies because they are dark more
- * often than lit; a steady twinkle reads as fairy lights.
+ * Dark: fireflies. Additive glow, and a blink that is mostly *off* — they read
+ * as fireflies precisely because they are dark more often than lit; a steady
+ * twinkle reads as fairy lights.
+ *
+ * Light: motes drifting in sun. A glow is *invisible* on cream — additive
+ * blending against a near-white page just makes white — so daylight draws
+ * them the other way up: small warm specks painted over the page in leaf green
+ * and gold, never blinking out, only breathing in brightness as they catch the
+ * light. Same positions, same drift, opposite physics.
  */
 const COUNT = 16;
 
@@ -27,6 +31,8 @@ type Fly = {
   period: number;
   offset: number;
   size: number;
+  /** which daylight colour this one takes */
+  moteIdx: number;
 };
 
 function seed(): Fly[] {
@@ -49,8 +55,17 @@ function seed(): Fly[] {
     period: 5200 + ((i * 977) % 4200),
     offset: (i * 1310) % 5200,
     size: 1.1 + ((i * 13) % 4) * 0.28,
+    moteIdx: i % 4,
   }));
 }
+
+/** Daylight specks: the leaf greens and the lantern golds, on cream. */
+const MOTE_COLOURS = [
+  [54, 86, 15],
+  [74, 118, 29],
+  [143, 77, 0],
+  [10, 46, 18],
+];
 
 export function Fireflies({ className = '' }: { className?: string }) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -63,6 +78,15 @@ export function Fireflies({ className = '' }: { className?: string }) {
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const flies = seed();
+
+    // the theme toggle swaps a class on <html>; watch it rather than reading
+    // the DOM every frame
+    const root = document.documentElement;
+    let dark = root.classList.contains('dark');
+    const mo = new MutationObserver(() => {
+      dark = root.classList.contains('dark');
+    });
+    mo.observe(root, { attributes: true, attributeFilter: ['class'] });
 
     let w = 0, h = 0, raf = 0;
     const resize = () => {
@@ -83,31 +107,51 @@ export function Fireflies({ className = '' }: { className?: string }) {
       // hidden in light mode: nothing laid out, nothing to do
       if (!el.offsetParent || !w || !h) return;
       ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalCompositeOperation = dark ? 'lighter' : 'source-over';
 
       for (const f of flies) {
         const x = (f.hx + Math.sin(now * f.fx + f.phase) * f.rx) * w;
         const y = (f.hy + Math.cos(now * f.fy + f.phase * 1.7) * f.ry) * h;
 
-        // mostly dark, with a soft swell — pow sharpens the off period
         const t = ((now + f.offset) % f.period) / f.period;
-        const lit = reduced ? 0.35 : Math.pow(Math.sin(t * Math.PI), 6);
-        if (lit < 0.01) continue;
 
-        const glow = f.size * 9;
-        const g = ctx.createRadialGradient(x, y, 0, x, y, glow);
-        g.addColorStop(0, `rgba(255,236,170,${0.5 * lit})`);
-        g.addColorStop(0.4, `rgba(247,192,74,${0.16 * lit})`);
-        g.addColorStop(1, 'rgba(247,192,74,0)');
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(x, y, glow, 0, Math.PI * 2);
-        ctx.fill();
+        if (dark) {
+          // mostly dark, with a soft swell — pow sharpens the off period
+          const lit = reduced ? 0.35 : Math.pow(Math.sin(t * Math.PI), 6);
+          if (lit < 0.01) continue;
 
-        ctx.fillStyle = `rgba(255,247,214,${0.85 * lit})`;
-        ctx.beginPath();
-        ctx.arc(x, y, f.size, 0, Math.PI * 2);
-        ctx.fill();
+          const glow = f.size * 9;
+          const g = ctx.createRadialGradient(x, y, 0, x, y, glow);
+          g.addColorStop(0, `rgba(255,236,170,${0.5 * lit})`);
+          g.addColorStop(0.4, `rgba(247,192,74,${0.16 * lit})`);
+          g.addColorStop(1, 'rgba(247,192,74,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(x, y, glow, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = `rgba(255,247,214,${0.85 * lit})`;
+          ctx.beginPath();
+          ctx.arc(x, y, f.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          // daylight: never out, just breathing as it catches the sun
+          const lit = reduced ? 0.7 : 0.62 + 0.38 * Math.sin(t * Math.PI * 2);
+          const [r, g2, b2] = MOTE_COLOURS[f.moteIdx];
+          const halo = f.size * 6.5;
+          const grad = ctx.createRadialGradient(x, y, 0, x, y, halo);
+          grad.addColorStop(0, `rgba(${r},${g2},${b2},${0.24 * lit})`);
+          grad.addColorStop(1, `rgba(${r},${g2},${b2},0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(x, y, halo, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = `rgba(${r},${g2},${b2},${0.58 * lit})`;
+          ctx.beginPath();
+          ctx.arc(x, y, f.size * 1.35, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
 
       ctx.globalCompositeOperation = 'source-over';
@@ -117,6 +161,7 @@ export function Fireflies({ className = '' }: { className?: string }) {
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      mo.disconnect();
     };
   }, []);
 

@@ -252,11 +252,20 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
   carried a hard horizontal seam across it, visible as a rectangle once you
   brightened the page. Any glow layer must reach fully transparent *inside* its
   own box: centred `closest-side` radials are safe, edge-anchored ones are not.
-- `components/Fireflies.tsx` — a handful of points around the canopy, dark mode
-  only (the CSS hides the canvas in light, and the loop early-returns when the
-  element isn't laid out, so it costs nothing in daylight). The blink is
-  `pow(sin, 6)` on purpose: fireflies read as fireflies because they are dark
-  more often than lit — a steady twinkle reads as fairy lights.
+- `components/Fireflies.tsx` — points of life around the canopy, themed to the
+  time of day. Same positions and drift in both, **opposite physics**:
+  - **Dark — fireflies.** Additive (`lighter`) warm glow, blink shaped by
+    `pow(sin, 6)` so they are dark far more often than lit. That asymmetry is
+    what sells them; a steady twinkle reads as fairy lights.
+  - **Light — motes in sun.** ⚠️ A glow is *invisible* on cream: additive
+    blending against a near-white page only makes white. So daylight paints
+    them the other way up — `source-over`, dark leaf-green and gold specks over
+    the page, never blinking out, only breathing in brightness. They also have
+    to be **darker and larger than instinct suggests**; mid-green at low alpha
+    disappears entirely on `cream-50`.
+  - The theme toggle swaps a class on `<html>`, so the loop watches it with a
+    `MutationObserver` rather than reading the DOM every frame, and switches
+    physics live without a reload.
 - `components/TreeCanopy.tsx` — the ghosted background tree **with real
   lanterns hung on it**, used in the hero and footer.
   - `public/tree.png` is `public/mark.png` with its baked-in lanterns masked

@@ -108,8 +108,9 @@ export function TreeCanopy({
           />
         ))}
 
-        {/* fireflies, dark only — they drift a little wider than the canopy */}
-        <Fireflies className="absolute -inset-[6%] hidden h-[112%] w-[112%] dark:block" />
+        {/* fireflies at night, motes by day — they drift a little wider than
+            the canopy either way */}
+        <Fireflies className="absolute -inset-[6%] h-[112%] w-[112%]" />
 
         {/* the lanterns */}
         {LANTERNS.map((l, i) => (
