@@ -41,8 +41,8 @@ export function CTA() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100"
             >
-              Got a technology{' '}
-              <span className="text-leaf whitespace-nowrap">problem?</span>
+              Let&rsquo;s build{' '}
+              <span className="text-leaf whitespace-nowrap">something.</span>
             </motion.h2>
 
             <motion.p
@@ -52,8 +52,9 @@ export function CTA() {
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 text-forest-800/75 dark:text-cream-100/65 leading-relaxed max-w-md"
             >
-              Tell us what&rsquo;s frustrating you, what you&rsquo;re trying to achieve, or
-              what isn&rsquo;t working. We&rsquo;ll tell you whether we think we can help.
+              Whether it&rsquo;s a system to build, something that keeps breaking, or an
+              idea you haven&rsquo;t pinned down yet — tell us what you&rsquo;re after and
+              we&rsquo;ll tell you honestly whether we can help.
             </motion.p>
 
             <motion.ul

@@ -22,9 +22,9 @@ Rewritten 2026-08-25 after a commissioned design review. The through-line is
 **outcome first, then specificity, then proof** — the previous site made the
 visitor work out what OakenIT does.
 
-- Headline promise: *practical solutions in English, not CLI*
-- What we do, stated as problem shapes rather than disciplines:
-  **Build / Fix / Improve**
+- Headline promise: *we help businesses kickstart their IT*
+- What we do, in three cards: **Kickstart / Bespoke development /
+  Short & long-term support** (was Build/Fix/Improve until 2026-08-31)
 - Differentiator: *senior expertise without the consultancy overhead* — you
   work directly with the person designing and delivering the thing. For an SME
   buyer, small and senior is the selling point. **Do not** write copy that
@@ -37,9 +37,10 @@ visitor work out what OakenIT does.
 
 **History worth knowing** — an earlier version sold three *disciplines*
 (Development / Systems / Consulting). Andy killed it as fluff, then the design
-review said services were invisible and asked for them back **framed as
-problems, not departments**. That is why `Services.tsx` exists again as
-Build/Fix/Improve. Don't regress it to discipline names.
+review said services were invisible and asked for them back framed as problems
+rather than departments (Build/Fix/Improve). Andy renamed them again on
+2026-08-31 to Kickstart / Bespoke development / Short & long-term support —
+named after what a customer is buying. Don't regress to discipline names.
 
 **AI messaging is deliberately demoted.** It used to be a headline pillar
 ("AI is the unfair advantage"). A business buyer reads that as *"I'm paying
@@ -48,7 +49,7 @@ four, phrased as "Modern tools, responsible judgement". Keep it there.
 
 **Current hero** (no eyebrow, no response-time promises — both removed at
 Andy's request 2026-08-25; don't reinstate an SLA strip):
-- Headline: `Practical solutions in English,` / `not CLI.` (leaf green)
+- Headline: `We help businesses` / `kickstart their IT.` (leaf green)
 - Sub: "OakenIT helps businesses build software and improve infrastructure to solve common and niche business problems."
 - Capability line: `Software · Infrastructure · Automation · Technical consulting`
 - Primary CTA: "Discuss a project" → `#contact`
@@ -119,7 +120,7 @@ oakenit/
 │   ├── Nav.tsx                 # Sticky nav + theme toggle + Book a chat CTA
 │   ├── Hero.tsx                # Headline, sub, CTAs, inline stats strip
 │   ├── TrustStrip.tsx          # Capability band under the hero
-│   ├── Services.tsx            # Build / Fix / Improve
+│   ├── Services.tsx            # Kickstart / Bespoke dev / Support
 │   ├── WorkTeaser.tsx          # Homepage band linking to /work
 │   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)

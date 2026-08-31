@@ -1,16 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Hammer, Wrench, TrendingUp } from 'lucide-react';
+import { Rocket, Code2, LifeBuoy } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
 import { MoonGlyph } from './MoonLantern';
 
 const pillars = [
   {
-    icon: Hammer,
-    tag: 'Build',
+    icon: Rocket,
+    tag: 'Kickstart',
     blurb:
-      'Bespoke software, internal tools and integrations designed around the way your business actually works.',
+      'For businesses setting up, or starting again after outgrowing whatever they started with. The foundations, done properly the first time.',
+    includes: [
+      'Cloud and Microsoft 365 setup',
+      'Networks, devices and access',
+      'Security and backups from day one',
+      'Getting off spreadsheets and paper',
+      'Migrating from a system you have outgrown',
+    ],
+  },
+  {
+    icon: Code2,
+    tag: 'Bespoke development',
+    blurb:
+      'Software shaped around how your business actually works, rather than a product you have to reshape your business around.',
     includes: [
       'Internal business applications',
       'Customer and staff portals',
@@ -20,31 +33,16 @@ const pillars = [
     ],
   },
   {
-    icon: Wrench,
-    tag: 'Fix',
+    icon: LifeBuoy,
+    tag: 'Short & long-term support',
     blurb:
-      'When something technical isn’t working properly, has become unreliable, or simply needs sorting out.',
+      'A pair of hands for a fortnight, or a technical team on call for years. The same people either way, and no notice period dressed up as a contract.',
     includes: [
-      'Microsoft 365',
-      'Servers and cloud infrastructure',
-      'Networks and connectivity',
-      'Security and access',
-      'Performance and reliability',
-      'Legacy systems',
-    ],
-  },
-  {
-    icon: TrendingUp,
-    tag: 'Improve',
-    blurb:
-      'Sometimes the technology works — it just works badly. We simplify complicated environments and replace manual processes.',
-    includes: [
-      'IT architecture reviews',
-      'Infrastructure modernisation',
-      'Cloud strategy',
-      'Security improvements',
-      'Automation opportunities',
-      'Technical due diligence',
+      'Fixing what is broken now',
+      'Monitoring and maintenance',
+      'Infrastructure and cloud management',
+      'Security and compliance',
+      'Technical advice when decisions come up',
     ],
   },
 ];
@@ -59,7 +57,7 @@ export function Services() {
               <SectionLabel>What we do</SectionLabel>
             </div>
             <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
-              Build. Fix. <span className="text-leaf">Improve.</span>
+              Start it. Build it. <span className="text-leaf">Keep it running.</span>
             </h2>
           </div>
           <div className="flex items-end">
@@ -88,11 +86,11 @@ export function Services() {
                 }}
               />
 
-              <div className="relative flex items-center gap-4 mb-6">
+              <div className="relative flex items-center gap-4 mb-6 min-h-[2.75rem]">
                 <div className="h-11 w-11 shrink-0 rounded-xl bg-leaf-400/12 border border-leaf-500/30 dark:border-leaf-300/25 flex items-center justify-center text-forest-600 dark:text-leaf-200 group-hover:bg-leaf-300 group-hover:text-forest-950 group-hover:border-leaf-300 transition-colors duration-500">
                   <p.icon size={19} strokeWidth={1.7} />
                 </div>
-                <h3 className="font-display text-3xl leading-none text-forest-800 dark:text-cream-100">
+                <h3 className="font-display text-2xl md:text-[1.75rem] leading-tight text-forest-800 dark:text-cream-100">
                   {p.tag}
                 </h3>
               </div>

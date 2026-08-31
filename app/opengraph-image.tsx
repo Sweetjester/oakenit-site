@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-export const alt = 'OakenIT — Practical solutions in English, not CLI.';
+export const alt = 'OakenIT — We help businesses kickstart their IT.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -88,8 +88,8 @@ export default async function OGImage() {
             color: '#f3ece3',
           }}
         >
-          <span>Practical solutions in English,</span>
-          <span style={{ color: '#a0d850' }}>not CLI.</span>
+          <span>We help businesses</span>
+          <span style={{ color: '#a0d850' }}>kickstart their IT.</span>
         </div>
 
         {/* Lockup + URL */}

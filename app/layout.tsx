@@ -59,13 +59,13 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: SITE_URL,
     siteName: 'OakenIT',
-    title: 'OakenIT — Practical solutions in English, not CLI',
+    title: 'OakenIT — We help businesses kickstart their IT',
     description:
       'We help businesses build software and improve infrastructure to solve common and niche business problems.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OakenIT — Practical solutions in English, not CLI',
+    title: 'OakenIT — We help businesses kickstart their IT',
     description:
       'Software and infrastructure for common and niche business problems.',
   },

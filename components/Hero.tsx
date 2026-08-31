@@ -59,9 +59,9 @@ export function Hero() {
         className="relative z-10 max-w-7xl w-full mx-auto px-6 lg:px-10 pt-32 pb-16"
       >
         <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-5xl">
-          <AnimatedLine delay={0.3}>Practical solutions in English,</AnimatedLine>
+          <AnimatedLine delay={0.3}>We help businesses</AnimatedLine>
           <AnimatedLine delay={0.45}>
-            <span className="text-leaf">not CLI.</span>
+            <span className="text-leaf">kickstart their IT.</span>
           </AnimatedLine>
         </h1>
 
@@ -71,8 +71,9 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 max-w-2xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
         >
-          OakenIT helps businesses build software and improve infrastructure to solve
-          common and niche business problems.
+          Setting up from scratch, replacing something that has stopped working, or
+          building software that doesn&rsquo;t exist yet. We do the technical part, and
+          explain it in plain English.
         </motion.p>
 
         <motion.p
