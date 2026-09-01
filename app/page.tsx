@@ -5,6 +5,7 @@ import { Services } from '@/components/Services';
 import { WorkTeaser } from '@/components/WorkTeaser';
 import { WhyUs } from '@/components/WhyUs';
 import { Process } from '@/components/Process';
+import { Stack } from '@/components/Stack';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
 
@@ -19,6 +20,7 @@ export default function Page() {
         <WorkTeaser />
         <WhyUs />
         <Process />
+        <Stack />
         <CTA />
       </main>
       <Footer />

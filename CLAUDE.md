@@ -100,7 +100,7 @@ oakenit/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
 │   ├── page.tsx                # Hero → TrustStrip → Services → WorkTeaser →
-│   │                           # WhyUs → Process → CTA → Footer
+│   │                           # WhyUs → Process → Stack → CTA → Footer
 │   │                           # (no custom cursor — removed 2026-08-25,
 │   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
@@ -121,6 +121,7 @@ oakenit/
 │   ├── Hero.tsx                # Headline, sub, CTAs, inline stats strip
 │   ├── TrustStrip.tsx          # Capability band under the hero
 │   ├── Services.tsx            # Kickstart / Bespoke dev / Support
+│   ├── Stack.tsx               # "Our stack" — Simple Icons brand marks
 │   ├── WorkTeaser.tsx          # Homepage band linking to /work
 │   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
@@ -390,6 +391,18 @@ problem, and it is the one thing that cannot be written from the codebase.
   an error to the visitor.
 - Falls back to `console.log` if `RESEND_API_KEY` unset
 - Surfaces Resend's actual error to the UI on failure
+
+### ⚠️ Our stack (`Stack.tsx`)
+
+- Icon paths are inlined from [Simple Icons](https://simpleicons.org) — CC0 as
+  data, but the marks stay their owners' trademarks. They render **monochrome
+  in `currentColor`**: no brand colour, no lockup, no partner badge. That keeps
+  it a statement of what we use rather than a claim of endorsement. If a
+  partner badge is ever wanted (Microsoft Partner and so on), that is a
+  programme with its own rules — don't fake one.
+- **Keep the list honest.** A stack strip reads as a capability claim; a
+  prospect may ask about anything on it. Andy was asked on 2026-09-01 to trim
+  anything OakenIT doesn't genuinely work with.
 
 ### ✅ SEO foundation
 - `/robots.txt`, `/sitemap.xml` (dynamic)
