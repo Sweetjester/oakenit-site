@@ -34,24 +34,11 @@ export function Stack() {
   return (
     <section
       id="stack"
-      className="relative py-16 lg:py-20 border-t border-forest-900/10 dark:border-cream-100/10"
+      className="relative py-16 lg:py-20 border-y border-forest-900/10 dark:border-cream-100/10 bg-forest-50/60 dark:bg-forest-900/40"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-end mb-10">
-          <div>
-            <div className="mb-5">
-              <SectionLabel>Our stack</SectionLabel>
-            </div>
-            <h2 className="font-display text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] text-forest-800 dark:text-cream-100">
-              The tools we actually{' '}
-              <span className="text-leaf">work with.</span>
-            </h2>
-          </div>
-          <p className="text-forest-800/70 dark:text-cream-100/60 lg:text-right lg:justify-self-end max-w-md">
-            Not a badge collection — this is what we use day to day. If yours isn&rsquo;t
-            here, ask; it is usually the shape of the problem that matters, not the brand
-            on the box.
-          </p>
+        <div className="mb-8">
+          <SectionLabel>Our stack</SectionLabel>
         </div>
 
         <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-px bg-forest-900/10 dark:bg-cream-100/10 border border-forest-900/10 dark:border-cream-100/10">

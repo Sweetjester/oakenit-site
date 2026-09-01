@@ -100,7 +100,7 @@ oakenit/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
 │   ├── page.tsx                # Hero → TrustStrip → Services → WorkTeaser →
-│   │                           # WhyUs → Process → Stack → CTA → Footer
+│   │                           # WhyUs → Stack → CTA → Footer
 │   │                           # (no custom cursor — removed 2026-08-25,
 │   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
@@ -126,7 +126,6 @@ oakenit/
 │   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
 │   ├── InquiryForm.tsx         # 4 fields only — see § 6
-│   ├── Process.tsx             # Understand / Scope / Deliver / Support
 │   ├── WhyUs.tsx               # Sticky-left reasons-to-believe (4)
 │   ├── Footer.tsx
 │   ├── Logo.tsx                # mark.png + live-text wordmark
@@ -403,6 +402,9 @@ problem, and it is the one thing that cannot be written from the codebase.
 - **Keep the list honest.** A stack strip reads as a capability claim; a
   prospect may ask about anything on it. Andy was asked on 2026-09-01 to trim
   anything OakenIT doesn't genuinely work with.
+- It is a **banner**, not a section: label plus grid, no heading and no
+  supporting paragraph. Andy stripped those on 2026-09-01 — don't add copy
+  back to it.
 
 ### ✅ SEO foundation
 - `/robots.txt`, `/sitemap.xml` (dynamic)
@@ -424,6 +426,9 @@ problem, and it is the one thing that cannot be written from the codebase.
 - **Duplicated promises.** Response times used to be stated three times over
   (hero stats, contact bullets, process bodies). They appear once, in the hero.
 - **Form fields**: business size, timeline.
+- **The "How we work" section** (`Process.tsx` — Understand / Scope / Deliver /
+  Support) — replaced by the stack banner on 2026-09-01. Its nav and footer
+  links now point at `#stack`.
 
 ### 🔜 Still open after the design review
 1. **About section** — photo + real biography. The review rated this highly for

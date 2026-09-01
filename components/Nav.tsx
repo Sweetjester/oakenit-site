@@ -10,7 +10,7 @@ const links = [
   { href: '/#services', label: 'What we do' },
   { href: '/work', label: 'Our work' },
   { href: '/#why', label: 'Why OakenIT' },
-  { href: '/#process', label: 'How we work' },
+  { href: '/#stack', label: 'Our stack' },
 ];
 
 export function Nav() {

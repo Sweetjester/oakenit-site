@@ -50,7 +50,7 @@ export function Footer() {
             <ul className="space-y-3 text-cream-100/75">
               <li><a href="/#services" className="hover:text-leaf-200 transition-colors">What we do</a></li>
               <li><a href="/work" className="hover:text-leaf-200 transition-colors">Our work</a></li>
-              <li><a href="/#process" className="hover:text-leaf-200 transition-colors">How we work</a></li>
+              <li><a href="/#stack" className="hover:text-leaf-200 transition-colors">Our stack</a></li>
               <li><a href="/#contact" className="hover:text-leaf-200 transition-colors">Discuss a project</a></li>
             </ul>
           </div>
