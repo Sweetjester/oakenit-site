@@ -25,9 +25,31 @@ type Props = {
   height?: number;
   /** Frame height at MOBILE_WIDTH, before scaling. */
   mobileHeight?: number;
+  /** Browser bar + caption. Off for thumbnails. */
+  chrome?: boolean;
+  /**
+   * Always render the desktop layout, however narrow the container. A card
+   * thumbnail wants a recognisable shrunk-down desktop page, not the site's
+   * mobile layout letterboxed into a landscape box.
+   */
+  desktopOnly?: boolean;
+  /**
+   * When false the iframe ignores the pointer, so a card wrapping this stays
+   * clickable instead of the frame swallowing the click.
+   */
+  interactive?: boolean;
 };
 
-export function SiteEmbed({ src, label, title, height = 900, mobileHeight = 760 }: Props) {
+export function SiteEmbed({
+  src,
+  label,
+  title,
+  height = 900,
+  mobileHeight = 760,
+  chrome = true,
+  desktopOnly = false,
+  interactive = true,
+}: Props) {
   const wrap = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
 
@@ -40,14 +62,21 @@ export function SiteEmbed({ src, label, title, height = 900, mobileHeight = 760 
     return () => ro.disconnect();
   }, []);
 
-  const wide = width >= BREAKPOINT;
+  const wide = desktopOnly || width >= BREAKPOINT;
   const designWidth = wide ? DESKTOP_WIDTH : MOBILE_WIDTH;
   const frameHeight = wide ? height : mobileHeight;
   const scale = width ? Math.min(1, width / designWidth) : 0;
 
   return (
-    <figure className="rounded-2xl overflow-hidden border border-forest-900/12 dark:border-cream-100/10 bg-cream-100/70 dark:bg-forest-900/60 shadow-[0_30px_70px_-40px_rgba(6,32,13,0.5)]">
+    <figure
+      className={
+        chrome
+          ? 'rounded-2xl overflow-hidden border border-forest-900/12 dark:border-cream-100/10 bg-cream-100/70 dark:bg-forest-900/60 shadow-[0_30px_70px_-40px_rgba(6,32,13,0.5)]'
+          : 'overflow-hidden'
+      }
+    >
       {/* Chrome */}
+      {chrome && (
       <div className="flex items-center gap-3 px-4 py-3 border-b border-forest-900/10 dark:border-cream-100/10 bg-cream-200/50 dark:bg-forest-950/50">
         <div className="flex gap-1.5 shrink-0">
           <span className="h-2.5 w-2.5 rounded-full bg-forest-900/15 dark:bg-cream-100/15" />
@@ -69,6 +98,7 @@ export function SiteEmbed({ src, label, title, height = 900, mobileHeight = 760 
           <ArrowUpRight size={13} />
         </a>
       </div>
+      )}
 
       {/* Scaled viewport */}
       <div
@@ -84,7 +114,10 @@ export function SiteEmbed({ src, label, title, height = 900, mobileHeight = 760 
           width={designWidth}
           height={frameHeight}
           referrerPolicy="no-referrer-when-downgrade"
-          className="absolute top-0 left-0 border-0 transition-opacity duration-500"
+          tabIndex={interactive ? undefined : -1}
+          className={`absolute top-0 left-0 border-0 transition-opacity duration-500 ${
+            interactive ? '' : 'pointer-events-none'
+          }`}
           style={{
             transform: `scale(${scale || 1})`,
             transformOrigin: 'top left',
@@ -93,9 +126,11 @@ export function SiteEmbed({ src, label, title, height = 900, mobileHeight = 760 
         />
       </div>
 
-      <figcaption className="px-4 py-3 border-t border-forest-900/10 dark:border-cream-100/10 text-xs text-forest-800/55 dark:text-cream-100/45">
-        Live site — scroll inside the frame.
-      </figcaption>
+      {chrome && (
+        <figcaption className="px-4 py-3 border-t border-forest-900/10 dark:border-cream-100/10 text-xs text-forest-800/55 dark:text-cream-100/45">
+          Live site — scroll inside the frame.
+        </figcaption>
+      )}
     </figure>
   );
 }

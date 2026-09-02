@@ -122,7 +122,7 @@ oakenit/
 │   ├── TrustStrip.tsx          # Capability band under the hero
 │   ├── Services.tsx            # Kickstart / Bespoke dev / Support
 │   ├── Stack.tsx               # "Our stack" — Simple Icons brand marks
-│   ├── WorkTeaser.tsx          # Homepage band linking to /work
+│   ├── WorkTeaser.tsx          # Homepage cards — live site thumbnails
 │   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
 │   ├── InquiryForm.tsx         # 4 fields only — see § 6
