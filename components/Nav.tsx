@@ -9,7 +9,6 @@ import { Menu, X } from 'lucide-react';
 const links = [
   { href: '/#services', label: 'What we do' },
   { href: '/work', label: 'Our work' },
-  { href: '/#why', label: 'Why OakenIT' },
   { href: '/#stack', label: 'Our stack' },
 ];
 

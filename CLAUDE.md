@@ -100,7 +100,7 @@ oakenit/
 │   ├── layout.tsx              # Fonts, metadata, JSON-LD via StructuredData,
 │   │                           # theme init script, Analytics, ThemeProvider
 │   ├── page.tsx                # Hero → TrustStrip → Services → WorkTeaser →
-│   │                           # WhyUs → Stack → CTA → Footer
+│   │                           # Stack → CTA → Footer
 │   │                           # (no custom cursor — removed 2026-08-25,
 │   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
@@ -126,7 +126,6 @@ oakenit/
 │   ├── SiteEmbed.tsx           # Scaled, scrollable live-site iframe
 │   ├── CTA.tsx                 # Contact section (pitch left, form right)
 │   ├── InquiryForm.tsx         # 4 fields only — see § 6
-│   ├── WhyUs.tsx               # Sticky-left reasons-to-believe (4)
 │   ├── Footer.tsx
 │   ├── Logo.tsx                # mark.png + live-text wordmark
 │   ├── MoonLantern.tsx         # <MoonLantern>/<HangingLantern>/<MoonGlyph>
@@ -439,6 +438,12 @@ problem, and it is the one thing that cannot be written from the codebase.
 - **The "How we work" section** (`Process.tsx` — Understand / Scope / Deliver /
   Support) — replaced by the stack banner on 2026-09-01. Its nav and footer
   links now point at `#stack`.
+- **The "Why OakenIT" section** (`WhyUs.tsx` — senior by default, practical
+  engineering, modern tools, plain English) — removed 2026-09-01, along with
+  its nav link and sitemap anchor. Note this carried the *only* on-page
+  statement of the differentiator in § 1, and the design review rated
+  reasons-to-believe highly; don't reinstate it without asking, but be aware
+  the argument now lives nowhere on the page.
 - **Section headings and their supporting paragraphs.** Services and Stack are
   now label-only ("What we do", "Our stack"); Andy stripped the h2 line and the
   intro paragraph from both on 2026-09-01. Don't write copy back into them.

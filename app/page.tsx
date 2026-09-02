@@ -3,7 +3,6 @@ import { Hero } from '@/components/Hero';
 import { TrustStrip } from '@/components/TrustStrip';
 import { Services } from '@/components/Services';
 import { WorkTeaser } from '@/components/WorkTeaser';
-import { WhyUs } from '@/components/WhyUs';
 import { Stack } from '@/components/Stack';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
@@ -17,7 +16,6 @@ export default function Page() {
         <TrustStrip />
         <Services />
         <WorkTeaser />
-        <WhyUs />
         <Stack />
         <CTA />
       </main>
