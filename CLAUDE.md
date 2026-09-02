@@ -50,7 +50,7 @@ four, phrased as "Modern tools, responsible judgement". Keep it there.
 **Current hero** (no eyebrow, no response-time promises — both removed at
 Andy's request 2026-08-25; don't reinstate an SLA strip):
 - Headline: `We help businesses` / `kickstart their IT.` (leaf green)
-- Sub: "OakenIT helps businesses build software and improve infrastructure to solve common and niche business problems."
+- Sub: "Building from the ground up, or replacing something that's outdated."
 - Capability line: `Software · Infrastructure · Automation · Technical consulting`
 - Primary CTA: "Discuss a project" → `#contact`
 - Secondary CTA: "Check out our work" → `/work`

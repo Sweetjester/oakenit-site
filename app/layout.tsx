@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: '%s · OakenIT',
   },
   description:
-    'OakenIT helps businesses build software and improve infrastructure to solve common and niche business problems. Practical solutions in English, not CLI.',
+    'OakenIT helps businesses kickstart their IT — building from the ground up, or replacing something that is outdated. Software, infrastructure, automation and technical consulting for UK businesses.',
   keywords: [
     'AI consultancy UK',
     'software development UK',

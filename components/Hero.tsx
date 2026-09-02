@@ -69,11 +69,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 max-w-2xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
+          className="mt-8 max-w-xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
         >
-          Setting up from scratch, replacing something that has stopped working, or
-          building software that doesn&rsquo;t exist yet. We do the technical part, and
-          explain it in plain English.
+          Building from the ground up, or replacing something that&rsquo;s outdated.
         </motion.p>
 
         <motion.p
