@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Rocket, Code2, LifeBuoy } from 'lucide-react';
+import { Rocket, Code2, LifeBuoy, ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import { SectionLabel } from './SectionLabel';
 import { MoonGlyph } from './MoonLantern';
 
@@ -9,6 +10,7 @@ const pillars = [
   {
     icon: Rocket,
     tag: 'Kickstart',
+    href: '/services/it-setup',
     blurb:
       'For businesses setting up, or starting again after outgrowing whatever they started with. The foundations, done properly the first time.',
     includes: [
@@ -22,6 +24,7 @@ const pillars = [
   {
     icon: Code2,
     tag: 'Bespoke development',
+    href: '/services/software-development',
     blurb:
       'Software shaped around how your business actually works, rather than a product you have to reshape your business around.',
     includes: [
@@ -35,6 +38,7 @@ const pillars = [
   {
     icon: LifeBuoy,
     tag: 'Short & long-term support',
+    href: '/services/it-support',
     blurb:
       'A pair of hands for a fortnight, or a technical team on call for years. The same people either way, and no notice period dressed up as a contract.',
     includes: [
@@ -86,7 +90,7 @@ export function Services() {
                 {p.blurb}
               </p>
 
-              <ul className="relative mt-auto space-y-2.5 pt-6 border-t border-forest-900/10 dark:border-cream-100/10">
+              <ul className="relative space-y-2.5 pt-6 border-t border-forest-900/10 dark:border-cream-100/10">
                 {p.includes.map((item) => (
                   <li
                     key={item}
@@ -97,6 +101,14 @@ export function Services() {
                   </li>
                 ))}
               </ul>
+
+              <Link
+                href={p.href}
+                className="relative mt-7 inline-flex items-center gap-2 text-sm text-forest-600 dark:text-leaf-200 hover:text-leaf-600 dark:hover:text-leaf-100 transition-colors"
+              >
+                More on {p.tag.toLowerCase()}
+                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
             </motion.div>
           ))}
         </div>

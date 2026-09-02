@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { SERVICES } from '@/lib/services';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oakenit.com';
 
@@ -27,5 +28,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    ...SERVICES.map((svc) => ({
+      url: `${SITE_URL}/services/${svc.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
   ];
 }

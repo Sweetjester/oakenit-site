@@ -31,7 +31,7 @@ export function Footer() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16">
         <div className="grid md:grid-cols-12 gap-12">
-          <div className="md:col-span-7">
+          <div className="md:col-span-4">
             <div className="flex items-center gap-2.5">
               <div className="relative h-9 w-9 shrink-0">
                 <Image src="/mark.png" alt="OakenIT" fill sizes="36px" className="object-contain" />
@@ -44,6 +44,15 @@ export function Footer() {
               Senior technical expertise for UK businesses — software, infrastructure,
               and the difficult problems in between.
             </p>
+          </div>
+
+          <div className="md:col-span-3">
+            <h4 className="text-xs uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">Services</h4>
+            <ul className="space-y-3 text-forest-800/80 dark:text-cream-100/75">
+              <li><a href="/services/it-setup" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">IT setup</a></li>
+              <li><a href="/services/software-development" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">Bespoke development</a></li>
+              <li><a href="/services/it-support" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">IT support</a></li>
+            </ul>
           </div>
 
           <div className="md:col-span-2">

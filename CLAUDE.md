@@ -108,6 +108,7 @@ oakenit/
 │   ├── fonts/                  # Manrope/Prata/Inter TTFs for the OG card (satori
 │   │                           # can't use CSS fonts)
 │   ├── work/page.tsx           # /work — the case studies + live cvlive.io embed
+│   ├── services/<slug>/page.tsx # 3 service pages, content in lib/services.ts
 │   ├── icon.png                # Favicon (file convention)
 │   ├── apple-icon.png          # Apple touch icon (file convention)
 │   ├── robots.ts               # Dynamic /robots.txt
@@ -456,6 +457,21 @@ problem, and it is the one thing that cannot be written from the codebase.
 3. **oakenit.com DNS.** The review's closing point: a `*.up.railway.app`
    hostname reads as "unfinished demo", which is corrosive when what you're
    selling is IT professionalism. Do not send prospects to the Railway URL.
+
+### ✅ Service pages (added 2026-09-02)
+
+`/services/it-setup`, `/services/software-development`, `/services/it-support`.
+Content lives in `lib/services.ts`; `components/ServicePage.tsx` renders it.
+The sitemap derives from the same array, so adding a service adds its URL.
+
+- **Slugs are search terms, not brand names.** People type "IT support", never
+  "Kickstart". Card labels keep the brand wording; URLs and `<title>`s carry
+  the keywords.
+- The `signs` array ("You probably need this if…") is written as symptoms in
+  the visitor's own words. That is the part that earns search traffic — people
+  describe their problem, not the service that fixes it. Keep it that way.
+- Each page emits `Service` JSON-LD linked to the homepage `#organization`
+  node, so the three read as one firm's services.
 
 ### ❌ Not yet built (Phase 2)
 - Blog (`/insights/...`)
