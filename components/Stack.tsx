@@ -38,7 +38,7 @@ export function Stack() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="mb-8">
-          <SectionLabel>Our stack</SectionLabel>
+          <SectionLabel as="h2">Our stack</SectionLabel>
         </div>
 
         <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-px bg-forest-900/10 dark:bg-cream-100/10 border border-forest-900/10 dark:border-cream-100/10">

@@ -244,6 +244,8 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
   dropping into logo artwork. Regenerate it whenever `MoonLantern` changes, or
   it drifts out of step with the site.
 - `components/SectionLabel.tsx` — the shared eyebrow: glyph + rule + label.
+  Takes `as="h2"` where the label is a section's only heading (Services, Stack),
+  so the section still appears in the document outline.
 - `.canopy` (globals.css) — the soft green/gold light pooled behind the hero.
 - **Dark mode is lit by the lanterns.** `.lantern-light` (a radial wash) and
   `.lantern-pool` (the light falling below) are `mix-blend-mode: screen`, so
@@ -437,6 +439,9 @@ problem, and it is the one thing that cannot be written from the codebase.
 - **The "How we work" section** (`Process.tsx` — Understand / Scope / Deliver /
   Support) — replaced by the stack banner on 2026-09-01. Its nav and footer
   links now point at `#stack`.
+- **Section headings and their supporting paragraphs.** Services and Stack are
+  now label-only ("What we do", "Our stack"); Andy stripped the h2 line and the
+  intro paragraph from both on 2026-09-01. Don't write copy back into them.
 
 ### 🔜 Still open after the design review
 1. **About section** — photo + real biography. The review rated this highly for

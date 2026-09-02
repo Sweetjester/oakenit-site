@@ -51,21 +51,8 @@ export function Services() {
   return (
     <section id="services" className="relative py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-10 mb-10 lg:mb-14 items-end">
-          <div>
-            <div className="mb-5">
-              <SectionLabel>What we do</SectionLabel>
-            </div>
-            <h2 className="font-display font-bold text-[clamp(1.7rem,3.3vw,2.7rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100">
-              Start it. Build it. <span className="text-leaf">Keep it running.</span>
-            </h2>
-          </div>
-          <div className="flex items-end">
-            <p className="text-base lg:text-lg text-forest-800/75 dark:text-cream-100/65 max-w-md">
-              Most work falls into one of three shapes. Yours probably does too — and it
-              doesn’t need to be perfectly defined before you get in touch.
-            </p>
-          </div>
+        <div className="mb-8">
+          <SectionLabel as="h2">What we do</SectionLabel>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-5">
