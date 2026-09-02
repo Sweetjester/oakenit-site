@@ -36,7 +36,7 @@ export function Logo({ size = 36, withWordmark = true, className = '' }: Props) 
 
       {withWordmark && (
         <span
-          className="font-display leading-none tracking-[-0.01em] text-forest-700 dark:text-cream-100"
+          className="font-wordmark leading-none tracking-[-0.01em] text-forest-700 dark:text-cream-100"
           style={{ fontSize: size * 0.72 }}
         >
           OakenIT

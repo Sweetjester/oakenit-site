@@ -40,7 +40,7 @@ export function Marquee() {
           {[...items, ...items].map((item, i) => (
             <span
               key={i}
-              className="mx-8 font-display text-3xl md:text-5xl text-forest-900/30 dark:text-cream-100/30 hover:text-leaf-600 dark:hover:text-leaf-300 transition-colors whitespace-nowrap"
+              className="mx-8 font-display font-bold text-3xl md:text-5xl tracking-[-0.03em] text-forest-900/30 dark:text-cream-100/30 hover:text-leaf-600 dark:hover:text-leaf-300 transition-colors whitespace-nowrap"
             >
               {item}
               <span className="ml-8 text-leaf-500/60 dark:text-leaf-300/50">✦</span>

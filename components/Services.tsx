@@ -56,7 +56,7 @@ export function Services() {
             <div className="mb-5">
               <SectionLabel>What we do</SectionLabel>
             </div>
-            <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
+            <h2 className="font-display font-bold text-[clamp(1.7rem,3.3vw,2.7rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100">
               Start it. Build it. <span className="text-leaf">Keep it running.</span>
             </h2>
           </div>
@@ -90,7 +90,7 @@ export function Services() {
                 <div className="h-11 w-11 shrink-0 rounded-xl bg-leaf-400/12 border border-leaf-500/30 dark:border-leaf-300/25 flex items-center justify-center text-forest-600 dark:text-leaf-200 group-hover:bg-leaf-300 group-hover:text-forest-950 group-hover:border-leaf-300 transition-colors duration-500">
                   <p.icon size={19} strokeWidth={1.7} />
                 </div>
-                <h3 className="font-display text-2xl md:text-[1.75rem] leading-tight text-forest-800 dark:text-cream-100">
+                <h3 className="font-display font-bold text-xl md:text-2xl leading-snug tracking-[-0.02em] text-forest-800 dark:text-cream-100">
                   {p.tag}
                 </h3>
               </div>

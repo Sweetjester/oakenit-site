@@ -13,7 +13,8 @@ export default async function OGImage() {
 
   // next/og has no serif of its own — the display face is bundled in the repo
   // (app/fonts) so the card matches the site without a build-time network fetch.
-  const [display, sans] = await Promise.all([
+  const [display, wordmark, sans] = await Promise.all([
+    readFile(join(process.cwd(), 'app', 'fonts', 'Manrope-ExtraBold.ttf')),
     readFile(join(process.cwd(), 'app', 'fonts', 'Prata-Regular.ttf')),
     readFile(join(process.cwd(), 'app', 'fonts', 'Inter-Regular.ttf')),
   ]);
@@ -30,7 +31,7 @@ export default async function OGImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '76px',
-          fontFamily: 'Prata',
+          fontFamily: 'Manrope',
           position: 'relative',
         }}
       >
@@ -82,9 +83,9 @@ export default async function OGImage() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            fontSize: '70px',
-            lineHeight: 1.14,
-            letterSpacing: '-1.5px',
+            fontSize: '66px',
+            lineHeight: 1.12,
+            letterSpacing: '-3px',
             color: '#f3ece3',
           }}
         >
@@ -98,7 +99,7 @@ export default async function OGImage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={markSrc} alt="" width={64} height={64} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <span style={{ fontSize: '38px', color: '#f3ece3' }}>OakenIT</span>
+              <span style={{ fontFamily: 'Prata', fontSize: '38px', color: '#f3ece3' }}>OakenIT</span>
               <span
                 style={{
                   fontSize: '20px',
@@ -128,7 +129,8 @@ export default async function OGImage() {
     {
       ...size,
       fonts: [
-        { name: 'Prata', data: display, weight: 400, style: 'normal' },
+        { name: 'Manrope', data: display, weight: 800, style: 'normal' },
+        { name: 'Prata', data: wordmark, weight: 400, style: 'normal' },
         { name: 'Inter', data: sans, weight: 400, style: 'normal' },
       ],
     }

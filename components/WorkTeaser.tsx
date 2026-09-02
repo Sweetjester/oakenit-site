@@ -38,7 +38,7 @@ export function WorkTeaser() {
             <div className="mb-5">
               <SectionLabel>Our work</SectionLabel>
             </div>
-            <h2 className="font-display text-[clamp(1.9rem,3.9vw,3.2rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
+            <h2 className="font-display font-bold text-[clamp(1.7rem,3.3vw,2.7rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100">
               Things we have <span className="text-leaf">actually built.</span>
             </h2>
           </div>
@@ -75,7 +75,7 @@ export function WorkTeaser() {
                 {h.tag}
               </div>
               <div className="relative flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
-                <span className="font-display text-5xl leading-none text-leaf big-numeral">
+                <span className="font-display font-extrabold text-5xl leading-none tracking-[-0.03em] text-leaf big-numeral">
                   {h.metric}
                 </span>
                 <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-[14rem] leading-snug">
@@ -83,7 +83,7 @@ export function WorkTeaser() {
                 </span>
               </div>
               <div className="relative flex items-center justify-between gap-4 pt-5 border-t border-forest-900/10 dark:border-cream-100/10">
-                <span className="font-display text-xl text-forest-800 dark:text-cream-100">
+                <span className="font-display font-bold text-lg tracking-[-0.02em] text-forest-800 dark:text-cream-100">
                   {h.name}
                 </span>
                 <ArrowUpRight

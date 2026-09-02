@@ -57,7 +57,7 @@ export default function WorkPage() {
             <div className="mb-6">
               <SectionLabel>Our work</SectionLabel>
             </div>
-            <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-4xl">
+            <h1 className="font-display font-extrabold text-[clamp(2rem,4.4vw,3.9rem)] leading-[1.05] tracking-[-0.035em] text-forest-800 dark:text-cream-100 max-w-4xl">
               Things we have <span className="text-leaf">actually built.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg text-forest-800/75 dark:text-cream-100/70 leading-relaxed">
@@ -76,12 +76,12 @@ export default function WorkPage() {
                 <div className="text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
                   Our own product
                 </div>
-                <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
+                <h2 className="font-display font-bold text-[clamp(1.7rem,3.1vw,2.6rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100">
                   CV Live
                 </h2>
 
                 <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <span className="font-display text-5xl leading-none text-leaf big-numeral">
+                  <span className="font-display font-extrabold text-5xl leading-none tracking-[-0.03em] text-leaf big-numeral">
                     60s
                   </span>
                   <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
@@ -148,12 +148,12 @@ export default function WorkPage() {
                 <div className="text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
                   Recent build
                 </div>
-                <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
+                <h2 className="font-display font-bold text-[clamp(1.7rem,3.1vw,2.6rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100">
                   PhantomAxis Studios
                 </h2>
 
                 <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <span className="font-display text-5xl leading-none text-leaf big-numeral">
+                  <span className="font-display font-extrabold text-5xl leading-none tracking-[-0.03em] text-leaf big-numeral">
                     10
                   </span>
                   <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
@@ -202,14 +202,14 @@ export default function WorkPage() {
               <div className="text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
                 Client project
               </div>
-              <h2 className="font-display text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] text-forest-800 dark:text-cream-100">
+              <h2 className="font-display font-bold text-[clamp(1.5rem,2.6vw,2.1rem)] leading-[1.14] tracking-[-0.025em] text-forest-800 dark:text-cream-100">
                 Proof-of-posting platform
               </h2>
             </div>
 
             <div className="lg:col-span-7">
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-5">
-                <span className="font-display text-5xl md:text-6xl leading-none text-leaf big-numeral">
+                <span className="font-display font-extrabold text-5xl md:text-6xl leading-none tracking-[-0.03em] text-leaf big-numeral">
                   90%+
                 </span>
                 <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
@@ -241,14 +241,14 @@ export default function WorkPage() {
               <div className="text-[10px] uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">
                 Client project
               </div>
-              <h2 className="font-display text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] text-forest-800 dark:text-cream-100">
+              <h2 className="font-display font-bold text-[clamp(1.5rem,2.6vw,2.1rem)] leading-[1.14] tracking-[-0.025em] text-forest-800 dark:text-cream-100">
                 Field capture and client reporting
               </h2>
             </div>
 
             <div className="lg:col-span-7">
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-5">
-                <span className="font-display text-5xl md:text-6xl leading-none text-leaf big-numeral">
+                <span className="font-display font-extrabold text-5xl md:text-6xl leading-none tracking-[-0.03em] text-leaf big-numeral">
                   1 link
                 </span>
                 <span className="text-sm text-forest-800/70 dark:text-cream-100/60 max-w-xs leading-snug">
@@ -293,7 +293,7 @@ export default function WorkPage() {
         <section className="py-14 lg:py-20 border-t border-forest-900/10 dark:border-cream-100/10">
           <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">
-              <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100">
+              <h2 className="font-display font-bold text-[clamp(1.7rem,3.1vw,2.6rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100">
                 Selected <span className="text-leaf">experience.</span>
               </h2>
             </div>

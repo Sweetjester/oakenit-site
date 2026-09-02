@@ -32,7 +32,7 @@ export function WhyUs() {
             <div className="mb-5">
               <SectionLabel>Why OakenIT</SectionLabel>
             </div>
-            <h2 className="font-display text-[clamp(1.7rem,2.7vw,2.4rem)] leading-[1.14] tracking-[-0.01em] mb-6 text-forest-800 dark:text-cream-100">
+            <h2 className="font-display font-bold text-[clamp(1.5rem,2.4vw,2.1rem)] leading-[1.16] tracking-[-0.025em] mb-6 text-forest-800 dark:text-cream-100">
 Senior expertise, without the <span className="text-leaf">consultancy overhead.</span>
             </h2>
             <p className="text-forest-800/75 dark:text-cream-100/65 text-lg leading-relaxed max-w-md">
@@ -56,7 +56,7 @@ No layers of account management. No unnecessary platforms. No deliberately
                 <Check size={18} strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="font-display text-[1.4rem] leading-snug text-forest-800 dark:text-cream-100 mb-2">
+                <h3 className="font-display font-bold text-[1.2rem] leading-snug tracking-[-0.015em] text-forest-800 dark:text-cream-100 mb-2">
                   {p.h}
                 </h3>
                 <p className="text-forest-800/75 dark:text-cream-100/65 leading-relaxed">{p.p}</p>

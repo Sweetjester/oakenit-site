@@ -27,7 +27,7 @@ export function InquiryForm() {
         <div className="mx-auto h-14 w-14 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 flex items-center justify-center mb-6">
           <Check size={26} strokeWidth={2.5} />
         </div>
-        <h3 className="font-display text-3xl md:text-4xl text-forest-800 dark:text-cream-100 mb-3">
+        <h3 className="font-display font-bold text-2xl md:text-3xl tracking-[-0.03em] text-forest-800 dark:text-cream-100 mb-3">
           Message received.
         </h3>
         <p className="text-forest-800/75 dark:text-cream-100/70 max-w-md mx-auto leading-relaxed">

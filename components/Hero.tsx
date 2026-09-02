@@ -58,7 +58,7 @@ export function Hero() {
         style={{ y, opacity }}
         className="relative z-10 max-w-7xl w-full mx-auto px-6 lg:px-10 pt-32 pb-16"
       >
-        <h1 className="font-display text-[clamp(2.2rem,5vw,4.4rem)] leading-[1.06] tracking-[-0.015em] text-forest-800 dark:text-cream-100 max-w-5xl">
+        <h1 className="font-display font-extrabold text-[clamp(2rem,4.4vw,3.9rem)] leading-[1.05] tracking-[-0.035em] text-forest-800 dark:text-cream-100 max-w-5xl">
           <AnimatedLine delay={0.3}>We help businesses</AnimatedLine>
           <AnimatedLine delay={0.45}>
             <span className="text-leaf">kickstart their IT.</span>

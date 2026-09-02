@@ -35,7 +35,7 @@ export function Footer() {
               <div className="relative h-9 w-9 shrink-0">
                 <Image src="/mark.png" alt="OakenIT" fill sizes="36px" className="object-contain" />
               </div>
-              <span className="font-display text-2xl leading-none tracking-[-0.01em]">
+              <span className="font-wordmark text-2xl leading-none tracking-[-0.01em]">
                 OakenIT
               </span>
             </div>

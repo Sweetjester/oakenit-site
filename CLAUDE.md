@@ -67,7 +67,7 @@ Identical to SweetTech:
 - **Styling**: Tailwind v3 with `darkMode: 'class'`
 - **Motion**: Framer Motion 11
 - **Icons**: Lucide React
-- **Fonts** (`next/font/google`): Prata (display serif — the face in the logo lockup), Inter (sans), JetBrains Mono
+- **Fonts** (`next/font/google`): Manrope (headings), Inter (body/UI), Prata (wordmark only), JetBrains Mono (rare)
 - **Email**: Resend (zero-DNS path — see § 7)
 - **Analytics**: Plausible + Microsoft Clarity (both env-gated)
 - **Hosting**: Railway (Nixpacks, Node 20+, `npm start`)
@@ -105,7 +105,7 @@ oakenit/
 │   │                           #  it sat on top of the copy)
 │   ├── globals.css             # Base styles, theme custom-props, grain,
 │   │                           # scrollbar, marquee, .canopy, .text-leaf
-│   ├── fonts/                  # Prata + Inter TTFs for the OG card (satori
+│   ├── fonts/                  # Manrope/Prata/Inter TTFs for the OG card (satori
 │   │                           # can't use CSS fonts)
 │   ├── work/page.tsx           # /work — the case studies + live cvlive.io embed
 │   ├── icon.png                # Favicon (file convention)
@@ -196,15 +196,23 @@ className="bg-cream-50 dark:bg-forest-950 text-forest-800 dark:text-cream-100"
 
 ### Typography
 
-- **Display (Prata)**: all headlines and "feature" text. Prata ships **one
-  weight (400) and no italic** — never put `font-bold`, `font-semibold` or
-  `italic` on `font-display` text or the browser fakes it, which looks cheap on
-  a high-contrast face. Emphasis words are distinguished by `.text-leaf`
-  (gold gradient, theme-aware) **alone**.
-- Prata sets much larger than a Garamond at the same px — headline `clamp()`
-  values are tuned for it. Re-check sizes if the face ever changes.
-- **Sans (Inter)**: body, eyebrow labels, UI.
-- **Mono (JetBrains)**: rare — footer status line only.
+Overhauled 2026-09-01 on a type recommendation Andy commissioned.
+
+- **Display / headings (Manrope)** — `font-display`. Use `font-extrabold` (800)
+  for h1-scale, `font-bold` (700) for section and card headings. It needs
+  **noticeably tighter tracking than a serif**: `-0.035em` at hero scale,
+  `-0.03em` for h2, `-0.02em` for card headings. Untracked Manrope at display
+  size looks loose and generic.
+- **Body / UI (Inter)** — `font-sans`. Everything that isn't a heading.
+- **Wordmark (Prata)** — `font-wordmark`, and **only** the wordmark: the nav
+  lockup and the footer lockup. Prata is the face in Andy's actual logo
+  artwork, so the site's lockup matches his logo everywhere else it appears.
+  Do not use it for headings, and do not switch the wordmark to Manrope
+  without asking — that would desync the site from the logo.
+- Sizes came *down* when Manrope came in: a bold sans reads heavier and wider
+  than Prata did at the same px. If the display face ever changes again,
+  re-tune the `clamp()` values rather than assuming they carry over.
+- Emphasis words are `.text-leaf` (green gradient, theme-aware) alone.
 
 ### Motifs
 
@@ -534,7 +542,7 @@ Inherited from SweetTech, all still apply:
 4. **If oakenit.com is at a registrar that blocks apex CNAME**, use domain forwarding or HTTPS records for the apex; only `www` gets the CNAME. Same pattern as SweetTech's Squarespace workaround.
 5. **Resend free tier**: sender `onboarding@resend.dev` can only send TO the email the Resend account was registered with (until domain verification). Set `INQUIRY_TO_EMAIL` to that address.
 6. **Tailwind dark variants are explicit**, not auto. Every styled element needs `X dark:Y`.
-7. **Cormorant runs small and light.** Headlines need `font-semibold` and a larger `clamp()` than a normal serif; body-size display text needs `font-medium` minimum.
+7. **Manrope needs tight tracking at display sizes** — see § 5. The old rule about never bolding the display face applied to Prata (single weight) and no longer holds; Prata now survives only as `font-wordmark`.
 10. **Never use `-z-10` for full-bleed backdrops.** `html` has a background *and* `body` has an opaque background, so a negative-z child paints underneath the body background and vanishes. Use `z-0` on the backdrop + `relative z-10` on the content.
 8. **Background command exit code 143** is SIGTERM from `kill`, not a real failure.
 9. **`railway.json` buildCommand** = `npm run build`. Do not reintroduce `npm ci &&` — EBUSY race on Railway's cache.

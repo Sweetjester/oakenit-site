@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Prata, Inter, JetBrains_Mono } from 'next/font/google';
+import { Manrope, Prata, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider, themeInitScript } from '@/components/ThemeProvider';
 import { StructuredData } from '@/components/StructuredData';
@@ -7,11 +7,20 @@ import { Analytics } from '@/components/Analytics';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oakenit.com';
 
-// The face from the logo lockup. Single weight, no italic — never apply
-// font-bold/font-semibold or italic to display text, the browser will fake it.
-const display = Prata({
+// Headings. Geometric-ish sans with enough character to carry the brand
+// without reading as generic SaaS.
+const display = Manrope({
   subsets: ['latin'],
   variable: '--font-display',
+  display: 'swap',
+  weight: ['500', '600', '700', '800'],
+});
+
+// The face from the logo lockup, kept for the wordmark ALONE so the site's
+// lockup still matches Andy's actual logo artwork. Single weight, no italic.
+const wordmark = Prata({
+  subsets: ['latin'],
+  variable: '--font-wordmark',
   display: 'swap',
   weight: '400',
 });
@@ -100,7 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-GB"
-      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+      className={`${display.variable} ${wordmark.variable} ${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

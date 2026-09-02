@@ -39,7 +39,7 @@ export function CTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] tracking-[-0.015em] text-forest-800 dark:text-cream-100"
+              className="font-display font-bold text-[clamp(1.7rem,3.1vw,2.6rem)] leading-[1.1] tracking-[-0.03em] text-forest-800 dark:text-cream-100"
             >
               Let&rsquo;s build{' '}
               <span className="text-leaf whitespace-nowrap">something.</span>
