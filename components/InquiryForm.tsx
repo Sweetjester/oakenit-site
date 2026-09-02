@@ -4,6 +4,7 @@ import { useActionState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Loader2, ArrowRight, Mail } from 'lucide-react';
 import { submitInquiry, type InquiryState } from '@/app/actions/inquiry';
+import { Turnstile } from './Turnstile';
 
 const initial: InquiryState = { status: 'idle' };
 
@@ -82,6 +83,10 @@ export function InquiryForm() {
           error={fieldErrors.project}
         />
       </div>
+
+      {process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY && (
+        <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY} />
+      )}
 
       <AnimatePresence>
         {state.status === 'error' && state.message && (

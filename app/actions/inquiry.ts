@@ -2,6 +2,35 @@
 
 import { fileInquiry } from '@/lib/heartwood';
 
+/**
+ * Verify the Turnstile token. Returns true when the secret isn't configured,
+ * so a missing env var can never silently swallow real enquiries — the
+ * honeypot and time-trap still apply either way.
+ */
+async function passedTurnstile(token: string, ip: string | null): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true;
+  if (!token) return false;
+  try {
+    const body = new FormData();
+    body.append('secret', secret);
+    body.append('response', token);
+    if (ip) body.append('remoteip', ip);
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body,
+      signal: AbortSignal.timeout(5000),
+    });
+    const data = (await res.json()) as { success?: boolean; 'error-codes'?: string[] };
+    if (!data.success) console.warn('[inquiry] turnstile rejected:', data['error-codes']);
+    return Boolean(data.success);
+  } catch (err) {
+    // Don't lose a lead because Cloudflare is having a moment.
+    console.error('[inquiry] turnstile check failed open:', err);
+    return true;
+  }
+}
+
 export type InquiryState =
   | { status: 'idle' }
   | { status: 'success' }
@@ -42,6 +71,17 @@ export async function submitInquiry(
   const email = (formData.get('email') as string)?.trim();
   const company = (formData.get('company') as string)?.trim() || '—';
   const project = (formData.get('project') as string)?.trim();
+
+  const turnstileOk = await passedTurnstile(
+    (formData.get('cf-turnstile-response') as string) ?? '',
+    null
+  );
+  if (!turnstileOk) {
+    return {
+      status: 'error',
+      message: 'We could not verify that you are human. Please refresh and try again.',
+    };
+  }
 
   const fieldErrors: Record<string, string> = {};
   if (!name) fieldErrors.name = 'Tell us your name.';

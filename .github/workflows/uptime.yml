@@ -1,0 +1,43 @@
+# Free uptime check. A failing run emails whoever owns the repo, so there's no
+# extra account or subscription — the trade-off is GitHub's cron is best-effort
+# and can drift by several minutes. For tighter alerting, a dedicated monitor
+# (UptimeRobot free tier) is the upgrade.
+name: Uptime
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Homepage responds
+        run: |
+          for url in https://oakenit.com/ https://oakenit.com/work https://oakenit.com/privacy; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 25 --retry 2 --retry-delay 5 "$url")
+            echo "$url -> $code"
+            [ "$code" = "200" ] || { echo "::error::$url returned $code"; exit 1; }
+          done
+
+      - name: Contact form is present and hydratable
+        run: |
+          # Guards the specific failure that took the form down once: Cloudflare
+          # rewriting mailto: links, which breaks React hydration and makes the
+          # form disappear from the page while staying in view-source.
+          html=$(curl -sS --max-time 25 https://oakenit.com/)
+          echo "$html" | grep -q 'What can we help with' \
+            || { echo '::error::contact form missing from homepage HTML'; exit 1; }
+          if echo "$html" | grep -q '__cf_email__'; then
+            echo '::error::Cloudflare email obfuscation is back on — it breaks form hydration'
+            exit 1
+          fi
+
+      - name: TLS certificate not expiring soon
+        run: |
+          end=$(echo | openssl s_client -connect oakenit.com:443 -servername oakenit.com 2>/dev/null \
+                | openssl x509 -noout -enddate | cut -d= -f2)
+          days=$(( ( $(date -d "$end" +%s) - $(date +%s) ) / 86400 ))
+          echo "certificate expires in $days days ($end)"
+          [ "$days" -gt 10 ] || { echo "::error::certificate expires in $days days"; exit 1; }
