@@ -473,6 +473,27 @@ The sitemap derives from the same array, so adding a service adds its URL.
 - Each page emits `Service` JSON-LD linked to the homepage `#organization`
   node, so the three read as one firm's services.
 
+### ⚠️ Turnstile on the contact form (added 2026-09-02) — unconfirmed
+
+`components/Turnstile.tsx` renders **explicitly** into an empty ref, not via the
+implicit `class="cf-turnstile"`. Letting Cloudflare inject into a div React owns
+is the same fight as the email-obfuscation bug that hid this form.
+
+**It has never been observed issuing a token.** Every browser available here is
+automated, and Turnstile withholding a token from automation is arguably it
+working correctly — but that is a guess, not a verification. So
+`passedTurnstile()` **fails open in both directions**:
+
+- no token at all → allow, log a warning
+- Cloudflare unreachable or erroring → allow, log
+- token present but explicitly rejected → **block**
+
+A spam control that silently eats real leads is worse than the spam. The
+honeypot and 1.5s time-trap are unchanged underneath and catch naive bots on
+their own. **Andy was asked on 2026-09-02 to submit the form from his own
+browser**; if the logs then show tokens arriving, missing-token can be
+tightened to a rejection. Until someone confirms that, leave it permissive.
+
 ### ⚖️ Legal / compliance (added 2026-09-02)
 
 - `lib/company.ts` holds the statutory details, taken from the public register:

@@ -10,7 +10,15 @@ import { fileInquiry } from '@/lib/heartwood';
 async function passedTurnstile(token: string, ip: string | null): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret) return true;
-  if (!token) return false;
+  if (!token) {
+    // Deliberately permissive. A missing token means the widget never issued
+    // one — script blocked, slow network, privacy extension — and rejecting
+    // those costs real enquiries to stop bots the honeypot and time-trap
+    // already catch. Logged so we can see how often it actually happens
+    // before considering anything stricter.
+    console.warn('[inquiry] no turnstile token — allowing, honeypot/time-trap still apply');
+    return true;
+  }
   try {
     const body = new FormData();
     body.append('secret', secret);
