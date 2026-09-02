@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oakenit.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oakenit.com';
 
 /**
  * Sitemap index. As we add /services/* and /insights/* pages,

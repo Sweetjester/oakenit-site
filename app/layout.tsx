@@ -5,7 +5,7 @@ import { ThemeProvider, themeInitScript } from '@/components/ThemeProvider';
 import { StructuredData } from '@/components/StructuredData';
 import { Analytics } from '@/components/Analytics';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oakenit.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oakenit.com';
 
 // Headings. Geometric-ish sans with enough character to carry the brand
 // without reading as generic SaaS.

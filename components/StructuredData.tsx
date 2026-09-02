@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oakenit.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oakenit.com';
 
 /**
  * JSON-LD structured data so Google, Bing, and AI search understand

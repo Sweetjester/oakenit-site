@@ -478,7 +478,7 @@ Set in **Railway → OakenIT service → Variables**.
 | `INQUIRY_TO_EMAIL` | No | `hello@oakenit.com` | Recipient. On Resend free tier this must match the Resend account email; use the account owner's address until domain verification |
 | `HEARTWOOD_INGEST_TOKEN` | **Yes, for lead capture** | — (logs a failure) | Heartwood token, `ingest` scope only |
 | `HEARTWOOD_URL` | No | `https://heartwood-app-production.up.railway.app` | Heartwood base URL |
-| `NEXT_PUBLIC_SITE_URL` | No | `https://www.oakenit.com` | Used by sitemap/OG/schema |
+| `NEXT_PUBLIC_SITE_URL` | No | `https://oakenit.com` | Used by sitemap/OG/schema. **Apex is canonical** (decided 2026-09-02); Cloudflare 301s www to it. |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | No | unset | Enables Plausible. Value: `oakenit.com` |
 | `NEXT_PUBLIC_CLARITY_ID` | No | unset | Enables Microsoft Clarity |
 | `GOOGLE_SITE_VERIFICATION` | No | unset | Search Console meta tag |
