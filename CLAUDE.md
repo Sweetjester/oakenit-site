@@ -489,7 +489,7 @@ Set in **Railway → OakenIT service → Variables**.
 
 | Variable | Required? | Default | Purpose |
 |---|---|---|---|
-| `RESEND_API_KEY` | For email | — (logs only) | Resend API key |
+| `RESEND_API_KEY` | For email | — (logs only) | Resend API key. **Set on Railway as of 2026-09-02** |
 | `RESEND_FROM_EMAIL` | No | `OakenIT Inquiries <onboarding@resend.dev>` | Sender. Override once oakenit.com is verified in Resend |
 | `INQUIRY_TO_EMAIL` | No | `hello@oakenit.com` | Recipient. On Resend free tier this must match the Resend account email; use the account owner's address until domain verification |
 | `HEARTWOOD_INGEST_TOKEN` | **Yes, for lead capture** | — (logs a failure) | Heartwood token, `ingest` scope only |
@@ -513,12 +513,30 @@ TBD for OakenIT — most of these need to be set up. Track them here as they are
 | **Railway** | Andy | — | ✅ Project `oakenit-site`, service `web`, deploys from GitHub `main`. URL: https://web-production-5eb08.up.railway.app |
 | **GitHub** | Andy (`Sweetjester`) | — | ✅ `Sweetjester/oakenit-site` |
 | **Heartwood** | Andy | — | ✅ Railway project `heartwood`. Receives every inquiry as a sales-board card |
-| **Domain registrar for oakenit.com** | Andy | — | ⏳ Need to confirm which registrar |
+| **Cloudflare** | Andy | andrewhyslop903@gmail.com | ✅ Zone `oakenit.com` (id 3287e429befbedf05a44c18350fbfe8d), proxied. Also hosts `sweetsickle.com`. Apex is a **CNAME** to Railway (flattened) — never pin an A record, Railway rotates edge IPs |
+| **Resend** | Andy | — | ✅ Domain verified, region **eu-west-1**. Sends as `hello@oakenit.com` |
+| **Domain registrar for oakenit.com** | Andy | — | Squarespace Domains (nameservers now Cloudflare) |
 | **Google Workspace** | Andy | `hello@oakenit.com` / `andy@oakenit.com` | ⏳ Not yet set up for oakenit.com |
 | **Resend** | — | — | ⏳ Consider a separate Resend account for OakenIT, or reuse SweetTech's account (in which case `INQUIRY_TO_EMAIL` must be that account's registered email until domain is verified) |
 | **Plausible** | — | — | ⏳ Add oakenit.com as a second site (Plausible bills per site) |
 | **Microsoft Clarity** | — | — | ⏳ Create OakenIT project |
 | **Google Search Console** | — | — | ⏳ Verify oakenit.com |
+
+### ⚠️ Cloudflare gotcha that broke the contact form
+
+**Email Address Obfuscation must stay OFF** (zone setting `email_obfuscation`).
+It is on by default. It rewrites any `mailto:` in the HTML into a
+`<a class="__cf_email__" data-cfemail=...>` at the edge — *after* Next.js has
+rendered. `InquiryForm` contains a `mailto:hello@oakenit.com`, so the server
+HTML no longer matched what React expected, hydration failed, and React
+discarded the whole subtree: **the form vanished from the DOM entirely** while
+still being present in view-source.
+
+It broke silently the moment the domain started proxying through Cloudflare,
+and a local resolver still holding pre-migration records will *bypass* the
+proxy and show you a working form — so test against the real edge, not
+whatever your laptop resolves to. Rocket Loader and Mirage break React the same
+way; both confirmed off.
 
 ### DNS for oakenit.com
 
@@ -551,9 +569,11 @@ Andy to decide before Phase 2 content build starts. Ask.
 
 1. ~~Real logo artwork~~ ✅ done 2026-08-25.
 2. ~~Create GitHub repo~~ ✅ done.
-3. **Add `RESEND_API_KEY`** in Railway (and reconsider `INQUIRY_TO_EMAIL` based on which Resend account is used) — the form logs to console until then.
-4. **Point `oakenit.com` DNS** at Railway. Registrar-specific — steps depend on where the domain is registered.
-5. **Set up Google Workspace** email for `hello@oakenit.com` (if not already).
+3. ~~Add `RESEND_API_KEY`~~ ✅ done 2026-09-02. Form verified delivering end to end.
+4. ~~Point `oakenit.com` DNS at Railway~~ ✅ done. Apex is canonical; Cloudflare 301s www to it.
+5. **A real mailbox.** `hello@`/`andy@` currently *forward* to Andy's Gmail via
+   Cloudflare Email Routing — receive-only, so replies come from his personal
+   address. Andy leaned M365 Business Basic but chose free forwarding for now.
 6. **Answer the OakenIT vs SweetTech strategic question** (see § 9) before starting Phase 2 content work.
 
 ---
