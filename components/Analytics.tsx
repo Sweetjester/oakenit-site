@@ -1,21 +1,37 @@
 import Script from 'next/script';
 
 /**
- * Analytics scripts — both are no-ops until their respective env vars
- * are set, so safe to leave in tree on dev/preview.
+ * Analytics. Each is a no-op until its env var is set, so this is safe to
+ * leave in tree on dev and preview.
  *
- * - Plausible: privacy-friendly, GDPR-clean, no cookie banner needed.
- *   Set NEXT_PUBLIC_PLAUSIBLE_DOMAIN="oakenit.com".
+ * - Cloudflare Web Analytics: cookieless, no personal data, no consent banner
+ *   required. This is the one that's live.
+ *   Set NEXT_PUBLIC_CF_BEACON="<site tag>".
  *
- * - Microsoft Clarity: free session recording + heatmaps. Brutal feedback.
- *   Set NEXT_PUBLIC_CLARITY_ID="<your project id>".
+ * - Plausible: alternative, paid. NEXT_PUBLIC_PLAUSIBLE_DOMAIN="oakenit.com".
+ * - Microsoft Clarity: session recording + heatmaps. NEXT_PUBLIC_CLARITY_ID.
+ *   Note Clarity *does* set cookies and record sessions — switching it on means
+ *   the privacy notice needs updating and a consent banner becomes arguable.
+ *
+ * The beacon is injected here rather than by Cloudflare's auto-install: edge
+ * HTML rewriting is what broke the contact form on 2026-09-02 (see § 8).
  */
 export function Analytics() {
+  const cfBeacon = process.env.NEXT_PUBLIC_CF_BEACON;
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
   return (
     <>
+      {cfBeacon && (
+        <Script
+          defer
+          strategy="afterInteractive"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfBeacon}"}`}
+        />
+      )}
+
       {plausibleDomain && (
         <Script
           defer

@@ -2,7 +2,7 @@
 
 > This file is read automatically by Claude Code when working in this repo. It contains everything a fresh agent needs to resume development without re-discovering context.
 >
-> **Last updated**: 2026-08-27 (lantern reworked off the flag reading; dark-mode lighting; lit background tree)
+> **Last updated**: 2026-09-02 (Cloudflare live; email in/out working; legal disclosures + privacy notice)
 
 ---
 
@@ -473,6 +473,30 @@ The sitemap derives from the same array, so adding a service adds its URL.
 - Each page emits `Service` JSON-LD linked to the homepage `#organization`
   node, so the three read as one firm's services.
 
+### ⚖️ Legal / compliance (added 2026-09-02)
+
+- `lib/company.ts` holds the statutory details, taken from the public register:
+  **Oaken IT Ltd**, company number **17329880**, registered in England and
+  Wales, incorporated 9 July 2026. Change them there and the footer and privacy
+  notice both follow.
+- The footer carries the trading disclosures a UK limited company must show on
+  its website (registered name, number, place of registration, registered
+  office) under the Companies (Trading Disclosures) Regulations 2015. If Andy
+  registers for VAT, put the number in `COMPANY.vatNumber` — showing it becomes
+  mandatory too.
+- ⚠️ **The registered office is Andy's residential address.** It is already
+  public on Companies House and the law requires it on the site, but he was
+  flagged on 2026-09-02 that a registered-office service would replace it.
+- `/privacy` is written to match what the code *actually* does — the named
+  processors are Railway, Cloudflare, Resend (eu-west-1) and Google, because
+  that is genuinely the path an enquiry takes. If the data flow changes, the
+  notice is wrong until someone updates it. **It has not been reviewed by a
+  solicitor.**
+- Cloudflare Web Analytics is deliberately the analytics choice: cookieless, so
+  no consent banner is needed and the privacy notice can say there is nothing
+  to consent to. Turning on Clarity would break that — it records sessions and
+  sets cookies.
+
 ### ❌ Not yet built (Phase 2)
 - Blog (`/insights/...`)
 - Case studies
@@ -538,15 +562,26 @@ proxy and show you a working form — so test against the real edge, not
 whatever your laptop resolves to. Rocket Loader and Mirage break React the same
 way; both confirmed off.
 
-### DNS for oakenit.com
+### DNS for oakenit.com — ✅ live on Cloudflare
 
-Not yet configured. When it's set up:
-
-1. **Get Railway's CNAME target** (something like `xxxxxxxx.up.railway.app`) from the Railway custom-domain dialog.
-2. Add CNAME `www` → that target at whichever registrar hosts `oakenit.com`.
-3. If the registrar blocks apex CNAME (Squarespace does; some don't), use domain forwarding or an HTTPS record for the apex.
-4. Add the `_railway-verify.www` TXT record Railway shows.
-5. If email through Google Workspace is planned, add MX + SPF + DKIM as per Workspace's setup wizard.
+- Apex `oakenit.com` → **CNAME** `wwzxy1pt.up.railway.app`, proxied, flattened.
+  Never pin an A record: Railway rotates edge IPs and the apex dies silently.
+- `www` → CNAME to Railway, proxied, and a **redirect rule 301s it to the
+  apex**. Apex is canonical.
+- SSL/TLS mode is **Full**, not Full (Strict) — Strict breaks Railway's
+  certificate renewal. Min TLS 1.2. Always Use HTTPS on.
+- Security headers via a response-header transform rule: nosniff,
+  Referrer-Policy, Permissions-Policy, X-Frame-Options, COOP.
+- **Email in**: Cloudflare Email Routing. `hello@` and `andy@` plus a catch-all
+  forward to Andy's Gmail. Cloudflare owns the apex MX records — the API will
+  refuse to let you add MX there by hand.
+- **Email out**: Resend, domain verified, region eu-west-1. DKIM on
+  `resend._domainkey`; SPF and a bounce MX on the `send.` subdomain.
+- SPF at the apex is `v=spf1 include:_spf.mx.cloudflare.net ~all`. It was
+  `-all`, which would have made every *forwarded* enquiry fail SPF at Gmail.
+- DMARC is `p=reject` with **relaxed** alignment (`adkim=r; aspf=r`). It was
+  strict, which would have rejected our own Resend mail, since Resend bounces
+  via the `send.oakenit.com` subdomain.
 
 ---
 

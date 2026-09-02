@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { HangingLantern } from './MoonLantern';
 import { TreeCanopy } from './TreeCanopy';
+import { COMPANY } from '@/lib/company';
 
 /**
  * The footer follows the theme like everything else. It used to be night-side
@@ -85,11 +86,28 @@ export function Footer() {
         <div className="my-10 h-px bg-gradient-to-r from-transparent via-forest-900/15 dark:via-cream-100/15 to-transparent" />
 
         <div className="flex flex-col md:flex-row justify-between gap-4 text-sm text-forest-800/50 dark:text-cream-100/45">
-          <p>© {year} OakenIT. All rights reserved.</p>
-          <p className="font-mono text-xs">
-            <span className="text-leaf-600 dark:text-leaf-300 animate-flicker">●</span> All systems lit
-          </p>
+          <p>© {year} {COMPANY.tradingName}. All rights reserved.</p>
+          <div className="flex items-center gap-5">
+            <a
+              href="/privacy"
+              className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors"
+            >
+              Privacy
+            </a>
+            <p className="font-mono text-xs">
+              <span className="text-leaf-600 dark:text-leaf-300 animate-flicker">●</span> All
+              systems lit
+            </p>
+          </div>
         </div>
+
+        {/* Statutory trading disclosures — required on the website of a UK
+            limited company by the Companies (Trading Disclosures) Regulations. */}
+        <p className="mt-6 text-xs leading-relaxed text-forest-800/40 dark:text-cream-100/35 max-w-3xl">
+          {COMPANY.legalName} is a company registered in {COMPANY.placeOfRegistration},
+          company number {COMPANY.number}. Registered office: {COMPANY.registeredOffice}.
+          {COMPANY.vatNumber ? ` VAT registration number ${COMPANY.vatNumber}.` : ''}
+        </p>
       </div>
     </footer>
   );
