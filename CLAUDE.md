@@ -161,7 +161,7 @@ Sampled directly off the logo mark: the canopy greens and the lantern golds.
 
 | Token | Hex | Use |
 |---|---|---|
-| `forest-950` | `#031507` | Dark-mode bg; footer bg in **both** themes |
+| `forest-950` | `#031507` | Dark-mode bg |
 | `forest-900` | `#06200d` | Dark-mode card bg |
 | `forest-800` | `#0a2e12` | Body text (light mode), headings |
 | `forest-700` | `#0f3f18` | **Light-mode primary button**, wordmark |

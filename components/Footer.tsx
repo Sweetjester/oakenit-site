@@ -3,21 +3,22 @@ import { HangingLantern } from './MoonLantern';
 import { TreeCanopy } from './TreeCanopy';
 
 /**
- * The footer is night-side in both themes — the canopy after dark, lanterns
- * still lit. It anchors the page and lets the mark sit on its natural ground.
+ * The footer follows the theme like everything else. It used to be night-side
+ * in both, as an anchor — but a dark slab under a light page reads as a bug
+ * rather than a decision, so it went (2026-09-01).
  */
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-forest-950 text-cream-100">
+    <footer className="relative overflow-hidden bg-cream-100 dark:bg-forest-950 text-forest-800 dark:text-cream-100 border-t border-forest-900/10 dark:border-cream-100/10">
       {/* canopy glow + ghosted mark */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-leaf-400/10 blur-[130px] rounded-full" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[420px] rounded-full blur-[130px] bg-transparent dark:bg-leaf-400/10" />
         <TreeCanopy
           idPrefix="foottree"
           className="absolute right-[-6%] -bottom-24 w-[420px] aspect-square"
-          treeClassName="opacity-[0.5]"
+          treeClassName="opacity-[0.14] dark:opacity-[0.5]"
         />
       </div>
 
@@ -39,32 +40,32 @@ export function Footer() {
                 OakenIT
               </span>
             </div>
-            <p className="mt-6 text-cream-100/60 max-w-sm leading-relaxed">
+            <p className="mt-6 text-forest-800/70 dark:text-cream-100/60 max-w-sm leading-relaxed">
               Senior technical expertise for UK businesses — software, infrastructure,
               and the difficult problems in between.
             </p>
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">Site</h4>
-            <ul className="space-y-3 text-cream-100/75">
-              <li><a href="/#services" className="hover:text-leaf-200 transition-colors">What we do</a></li>
-              <li><a href="/work" className="hover:text-leaf-200 transition-colors">Our work</a></li>
-              <li><a href="/#stack" className="hover:text-leaf-200 transition-colors">Our stack</a></li>
-              <li><a href="/#contact" className="hover:text-leaf-200 transition-colors">Discuss a project</a></li>
+            <h4 className="text-xs uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">Site</h4>
+            <ul className="space-y-3 text-forest-800/80 dark:text-cream-100/75">
+              <li><a href="/#services" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">What we do</a></li>
+              <li><a href="/work" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">Our work</a></li>
+              <li><a href="/#stack" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">Our stack</a></li>
+              <li><a href="/#contact" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">Discuss a project</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="text-xs uppercase tracking-[0.25em] text-cream-100/45 mb-5">Contact</h4>
-            <ul className="space-y-3 text-cream-100/75">
+            <h4 className="text-xs uppercase tracking-[0.25em] text-forest-800/50 dark:text-cream-100/45 mb-5">Contact</h4>
+            <ul className="space-y-3 text-forest-800/80 dark:text-cream-100/75">
               <li>
-                <a href="mailto:hello@oakenit.com" className="hover:text-leaf-200 transition-colors">
+                <a href="mailto:hello@oakenit.com" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">
                   hello@oakenit.com
                 </a>
               </li>
               <li>
-                <a href="https://oakenit.com" className="hover:text-leaf-200 transition-colors">
+                <a href="https://oakenit.com" className="hover:text-leaf-600 dark:hover:text-leaf-200 transition-colors">
                   oakenit.com
                 </a>
               </li>
@@ -72,12 +73,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="my-10 h-px bg-gradient-to-r from-transparent via-cream-100/15 to-transparent" />
+        <div className="my-10 h-px bg-gradient-to-r from-transparent via-forest-900/15 dark:via-cream-100/15 to-transparent" />
 
-        <div className="flex flex-col md:flex-row justify-between gap-4 text-sm text-cream-100/45">
+        <div className="flex flex-col md:flex-row justify-between gap-4 text-sm text-forest-800/50 dark:text-cream-100/45">
           <p>© {year} OakenIT. All rights reserved.</p>
           <p className="font-mono text-xs">
-            <span className="text-leaf-300 animate-flicker">●</span> All systems lit
+            <span className="text-leaf-600 dark:text-leaf-300 animate-flicker">●</span> All systems lit
           </p>
         </div>
       </div>
