@@ -3,17 +3,19 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
-import { SiteEmbed } from './SiteEmbed';
+import Image from 'next/image';
 
 /**
  * Homepage teaser. The work itself lives at /work — this exists so the
  * homepage carries a credibility signal without duplicating the page.
  *
- * Where a product is public, the card shows the *live site* as a thumbnail:
- * a real page beats a described one. `height` is 800 against SiteEmbed's
- * 1280 design width, which lands the preview at exactly 16:10 whatever the
- * card width. The client project has no public URL (NDA), so its preview slot
- * carries the metric instead — the grid stays uniform either way.
+ * These were live iframes of each product. Measured on throttled mobile that
+ * cost the homepage 36 extra requests across six third-party hosts (both
+ * sites, plus SoundCloud's four) and helped push LCP to 4.7s — Core Web Vitals
+ * are a ranking factor, so the homepage is the worst place to pay it. They are
+ * now static 1280x800 screenshots, captured from the real sites and refreshed
+ * with `scripts/thumbs.js`. The genuinely-live embeds stay on /work, where the
+ * visitor has already chosen to look.
  */
 const highlights = [
   {
@@ -21,14 +23,14 @@ const highlights = [
     label: 'from uploaded CV to a live hosted site',
     name: 'CV Live',
     tag: 'Our own product',
-    src: 'https://www.cvlive.io/',
+    shot: '/shot-cvlive.jpg',
   },
   {
     metric: '10',
     label: 'cues playing from the page, not a pasted-in widget',
     name: 'PhantomAxis Studios',
     tag: 'Recent build',
-    src: 'https://phantomaxis-production.up.railway.app/',
+    shot: '/shot-phantomaxis.jpg',
   },
   {
     metric: '90%+',
@@ -69,21 +71,17 @@ export function WorkTeaser() {
             >
               {/* preview */}
               <div className="relative border-b border-forest-900/10 dark:border-cream-100/10 bg-cream-50 dark:bg-forest-950">
-                {h.src ? (
-                  <>
-                    <SiteEmbed
-                      src={h.src}
-                      label={h.name}
-                      title={`${h.name} — live site`}
-                      height={800}
-                      desktopOnly
-                      chrome={false}
-                      interactive={false}
+                {h.shot ? (
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={h.shot}
+                      alt={`${h.name} — homepage`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top"
                     />
-                    {/* a wash so the thumbnails read as one set rather than
-                        three different colour schemes competing */}
-                    <div className="absolute inset-0 bg-cream-100/10 dark:bg-forest-950/25 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
-                  </>
+                    <div className="absolute inset-0 bg-cream-100/10 dark:bg-forest-950/25 group-hover:bg-transparent transition-colors duration-500" />
+                  </div>
                 ) : (
                   <div className="aspect-[16/10] flex items-center justify-center px-6">
                     <div className="text-center">
@@ -113,7 +111,7 @@ export function WorkTeaser() {
                   />
                 </div>
                 <p className="text-sm text-forest-800/70 dark:text-cream-100/60 leading-snug mt-auto">
-                  {h.src && (
+                  {h.shot && (
                     <span className="font-display font-bold text-leaf mr-1.5 big-numeral">
                       {h.metric}
                     </span>
