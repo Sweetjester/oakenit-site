@@ -10,9 +10,14 @@ type Props = {
 };
 
 /**
- * The lockup: the lantern-tree mark (real artwork, /public/mark.png — it has a
- * transparent background so it sits on either theme) plus the wordmark set in
- * the display serif to match the supplied logo.
+ * The lockup: the illustrated mark plus the wordmark in the display serif.
+ *
+ * ⚠️ The mark is requested at **4x** its display size, at high quality.
+ * `sizes={`${size}px`}` made Next serve a 32px-wide, q=75 re-encode of the
+ * artwork, which threw away the stroke work that makes a watercolour drawing
+ * legible small — the logo turned to mush and read as the old mark. A detailed
+ * illustration shown at 38px needs real pixels behind it; do not "optimise"
+ * this back down.
  */
 export function Logo({ size = 36, withWordmark = true, className = '' }: Props) {
   return (
@@ -27,10 +32,12 @@ export function Logo({ size = 36, withWordmark = true, className = '' }: Props) 
         <Image
           src="/mark.png"
           alt="OakenIT"
-          fill
+          width={size * 4}
+          height={size * 4}
+          quality={92}
           priority
-          sizes={`${size}px`}
-          className="object-contain"
+          sizes={`${size * 4}px`}
+          className="h-full w-full object-contain"
         />
       </motion.div>
 

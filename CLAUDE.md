@@ -371,19 +371,24 @@ The pipeline that produces the assets, all from one source image:
 - The mark needs **no dark-mode filter**: the mid-green leaves read on both
   grounds as they are.
 - ⚠️ **The nav lockup uses a boldened variant** of the drawing, not the raw
-  file: strokes dilated and faint ink lifted (`MaxFilter(3)`, alpha gamma 0.72,
-  brightness 0.92) before scaling, or the watercolour hairlines vanish at 38px.
-- **The favicon is a separate, purpose-drawn mark** — `app/icon.svg`, added
-  2026-09-03. The illustration cannot work at 16px: hairlines disappear, and a
-  solid silhouette of it merges the leaf gaps into a blob and loses the tree.
-  The SVG is the same idea in four shapes: a canopy built as a *union of
-  overlapping discs* (a single circle reads as a lollipop), a tapered trunk, a
-  ground line, and a gold lantern — the one detail that distinguishes it from
-  any tree logo. Canopy is mid green `#2b6b36`, deliberately lighter than the
-  brand forest, so it holds on a **dark** browser tab as well as a light one.
-  It is SVG so it stays crisp at every size; `app/apple-icon.png` is rendered
-  from it on an opaque cream ground, because iOS ignores transparency and would
-  composite it on black. There is no longer an `app/icon.png`.
+  file: strokes dilated and faint ink lifted (`MaxFilter(3)`, alpha gamma ~0.7)
+  before scaling, or the watercolour hairlines vanish at 38px.
+- ⚠️ **`Logo` must request the mark at 4x its display size** with high
+  `quality`. With `sizes={`${size}px`}` Next served a **32px-wide, q=75**
+  re-encode, which destroyed the stroke work and made the logo look like the
+  old mark — Andy reported the new tree "still isn't here in the top left"
+  when the file on disk was already correct. A detailed illustration shown at
+  38px needs real pixels behind it. Don't optimise this back down.
+- **The favicon is the real artwork on a cream disc.** A simplified four-shape
+  SVG mark was built and rejected — Andy: "too basic". Two things were tried
+  and failed first: a solid silhouette (merges the leaf gaps into a blob) and
+  a tighter crop (clips the canopy, so it reads as a rectangle of foliage
+  rather than a tree). What *does* work is the full tree, boldened, sitting on
+  a cream disc: without a ground the dark ink all but vanishes on a **dark**
+  browser tab. `app/apple-icon.png` uses a full-bleed cream square instead,
+  since iOS applies its own rounded mask.
+- ⚠️ Quantise the icons hard (96 colours). Straight out of the pipeline
+  `icon.png` was **366KB** for something viewed at 16px; it is 71KB now.
 
 ### Logo (previous artwork)
 
