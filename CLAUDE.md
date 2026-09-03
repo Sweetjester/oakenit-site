@@ -615,9 +615,29 @@ Same locked strategy as SweetTech:
 - **Primary channel**: Organic SEO + content
 - **Secondary channel** (later): LinkedIn founder-led
 
-**Open strategic question**: is OakenIT competing with SweetTech for the same buyers, or targeting a different segment / different geography / different vertical? If they're targeting the same market, content and keyword strategy should differentiate — otherwise the two sites cannibalise each other in search.
+**✅ Resolved 2026-09-02 — SweetTech is deprecated. OakenIT is the future.**
 
-Andy to decide before Phase 2 content build starts. Ask.
+There is no longer a two-brand question. Do not hedge copy, keywords or
+positioning to avoid competing with SweetTech, and do not split effort across
+both. Everything points at OakenIT.
+
+Practical consequences:
+- No keyword cannibalisation to design around. Go after the strongest terms
+  directly rather than the ones SweetTech wasn't using.
+- The `~/Documents/Vibe/sweettech` repo is now a *historical reference* for
+  shared architecture only. Don't port changes back to it.
+- If sweettech.co.uk still resolves, it should eventually 301 to oakenit.com so
+  any accumulated authority transfers rather than competing. Worth raising with
+  Andy — not yet actioned.
+
+**Channel reality check (2026-09-02).** The domain was registered 2 July 2026.
+For a two-month-old domain with no backlinks, national terms like "IT support
+UK" are unwinnable this year. Organic is the right long game and the wrong
+answer to "how do I get enquiries now". The near-term channels are:
+1. **Google Business Profile** — local pack sits above organic, and local terms
+   (Wembley / Brent / North West London) are winnable in weeks.
+2. **Founder-led outbound** — the first clients come from Andy's network.
+3. Content targeting *symptoms*, not service names, for the long game.
 
 ---
 
