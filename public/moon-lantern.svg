@@ -1,1 +1,53 @@
-<svg viewBox="0 0 100 166" fill="none" role="img" aria-label="OakenIT crescent lantern" xmlns="http://www.w3.org/2000/svg" width="400" color="#b8860b"><defs><radialGradient id="glass-p1" cx="0.5" cy="0.52" r="0.55"><stop offset="0%" stop-color="#fff6de" stop-opacity="0.95"></stop><stop offset="55%" stop-color="#f7c04a" stop-opacity="0.4"></stop><stop offset="100%" stop-color="#d4820c" stop-opacity="0.06"></stop></radialGradient><radialGradient id="halo-p1" cx="0.5" cy="0.5" r="0.5"><stop offset="0%" stop-color="#ffdb8a" stop-opacity="0.45"></stop><stop offset="100%" stop-color="#ffdb8a" stop-opacity="0"></stop></radialGradient></defs><g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="50" y1="0" x2="50" y2="10" stroke-width="1" opacity="0.65"></line><circle cx="50" cy="13" r="2.4" stroke-width="1" opacity="0.9" fill="currentColor" fill-opacity="0.25"></circle><line x1="50" y1="15.399999999999999" x2="50" y2="18" stroke-width="1" opacity="0.65"></line><circle cx="50" cy="22.4" r="4.4" stroke-width="1.2" opacity="0.9"></circle><line x1="50" y1="26.8" x2="50" y2="39" stroke-width="1" opacity="0.65"></line><g transform="translate(0 2)"><path d="M77.29 48.76 A40 40 0 1 0 77.29 107.24 A33 33 0 1 1 77.29 48.76 Z" stroke-width="1.5" opacity="0.95"></path><path d="M75.5 52.5 A36.4 36.4 0 1 0 75.5 103.5" stroke-width="0.7" opacity="0.4"></path><g transform="rotate(235 50 78)" stroke-width="0.85" opacity="0.75"><path d="M40 47.5 q 9 -3.4 18 -1.4"></path><path d="M45.6 46.6 q 1.8 -4 5.4 -3.4 q -1.4 3.8 -5.4 3.4 Z"></path><path d="M51.4 45.8 q 1.9 -4 5.4 -3.2 q -1.5 3.8 -5.4 3.2 Z"></path><path d="M47.8 48.4 q 1.5 3.4 4.9 3.6 q -0.9 -3.6 -4.9 -3.6 Z"></path></g><ellipse cx="70" cy="96" rx="27" ry="28" fill="url(#halo-p1)" stroke="none"></ellipse><line x1="70" y1="50" x2="70" y2="56" stroke-width="0.9" opacity="0.7"></line><circle cx="70" cy="58" r="2" stroke-width="0.9" opacity="0.8"></circle><line x1="70" y1="60" x2="70" y2="63" stroke-width="0.9" opacity="0.7"></line><path d="M70 63 v3" stroke-width="1" opacity="0.85"></path><path d="M60.5 80 C 60.5 72, 64.5 68.5, 70 66 C 75.5 68.5, 79.5 72, 79.5 80 Z" stroke-width="1.2" opacity="0.92"></path><path d="M66.5 79.6 q 3.5 -6 3.5 -9.6 q 0 3.6 3.5 9.6" stroke-width="0.7" opacity="0.45"></path><path d="M58.5 80 H81.5 M60.5 83.4 H79.5" stroke-width="1.1" opacity="0.9"></path><path d="M60.5 83.4 C 54 90, 54 103, 60.5 110 H79.5 C 86 103, 86 90, 79.5 83.4 Z" fill="url(#glass-p1)" stroke="none"></path><path d="M60.5 83.4 C 54 90, 54 103, 60.5 110 H79.5 C 86 103, 86 90, 79.5 83.4 Z" stroke-width="1.3" opacity="0.95"></path><path d="M70 84.2 C 64.6 88, 63.6 103, 66.4 110" stroke-width="0.8" opacity="0.55"></path><path d="M70 84.2 C 75.4 88, 76.4 103, 73.6 110" stroke-width="0.8" opacity="0.55"></path><path d="M63.4 89 q 6.6 -5 13.2 0" stroke-width="0.7" opacity="0.4"></path><path d="M59.5 110 H80.5 M62 113.4 H78" stroke-width="1.1" opacity="0.9"></path><path d="M65.6 113.4 L70 121 L74.4 113.4" stroke-width="1.1" opacity="0.85"></path><path d="M70 117.2 l1.7 2.1 -1.7 2.1 -1.7 -2.1 Z" stroke-width="0.7" opacity="0.6"></path><circle cx="50" cy="122.5" r="2.6" stroke-width="1" opacity="0.85"></circle><path d="M50 127 C 50.6 130.2, 51.6 131.2, 54.6 131.8 C 51.6 132.4, 50.6 133.4, 50 136.6 C 49.4 133.4, 48.4 132.4, 45.4 131.8 C 48.4 131.2, 49.4 130.2, 50 127 Z" stroke-width="0.9" opacity="0.85"></path><path d="M50 138 c 4.6 3, 5.4 8, 0 12.4 c -5.4 -4.4, -4.6 -9.4, 0 -12.4 Z" stroke-width="1.1" opacity="0.9"></path><line x1="50" y1="140" x2="50" y2="148.6" stroke-width="0.7" opacity="0.5"></line></g></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OakenIT hanging lantern — standalone asset, for dropping into logo artwork.
+  Kept in step with components/MoonLantern.tsx; regenerate this whenever that
+  component changes. Redrawn 2026-09-03 from a brass hoop-and-globe to the
+  hexagonal carriage lantern that matches the tree illustration.
+  Stroke is a fixed gold rather than currentColor, since this is used outside
+  the site where currentColor has nothing to inherit from.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="22 14 56 136" fill="none">
+  <defs>
+    <linearGradient id="glass" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#f7c04a" stop-opacity="0.16"/>
+      <stop offset="55%" stop-color="#fff6de" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#d4820c" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ffdb8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ffdb8a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flame" cx="0.5" cy="0.62" r="0.55">
+      <stop offset="0%" stop-color="#fffaeb" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#ffd479" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f7c04a" stop-opacity="0.15"/>
+    </radialGradient>
+  </defs>
+
+  <g stroke="#c8890f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="50" cy="22" r="5" stroke-width="1.2" opacity="0.9"/>
+    <line x1="50" y1="27" x2="50" y2="38.5" stroke-width="1" opacity="0.65"/>
+
+    <ellipse cx="50" cy="96" rx="31" ry="35" fill="url(#halo)" stroke="none"/>
+
+    <circle cx="50" cy="42" r="3.5" stroke-width="1.2" opacity="0.95" fill="#c8890f" fill-opacity="0.22"/>
+
+    <path d="M50 45.8 C 58.5 50.5, 66 56, 69.5 61.5 H30.5 C 34 56, 41.5 50.5, 50 45.8 Z"
+          stroke-width="1.3" opacity="0.95" fill="#c8890f" fill-opacity="0.14"/>
+    <path d="M50 46.4 V61.2 M50 46.4 L61.5 61.2 M50 46.4 L38.5 61.2" stroke-width="0.7" opacity="0.4"/>
+    <path d="M27 61.5 H73 L70.5 66 H29.5 Z" stroke-width="1.2" opacity="0.92"/>
+
+    <path d="M29.5 66 H70.5 L67 126 H33 Z" fill="url(#glass)" stroke="none"/>
+    <path d="M29.5 66 H70.5 L67 126 H33 Z" stroke-width="1.35" opacity="0.95"/>
+    <path d="M42.8 66.6 L41.4 125.4 M57.2 66.6 L58.6 125.4" stroke-width="0.8" opacity="0.6"/>
+    <path d="M30.6 77 H69.4" stroke-width="0.7" opacity="0.35"/>
+
+    <path d="M50 87 c 5.4 7, 5.4 13.4, 0 19.4 c -5.4 -6, -5.4 -12.4, 0 -19.4 Z" fill="url(#flame)" stroke="none"/>
+    <path d="M50 92.5 c 2.6 3.6, 2.6 6.8, 0 9.8 c -2.6 -3, -2.6 -6.2, 0 -9.8 Z" fill="#fffdf5" fill-opacity="0.7" stroke="none"/>
+
+    <path d="M31.5 126 H68.5 L66 131 H34 Z" stroke-width="1.2" opacity="0.92"/>
+    <path d="M42 131 L50 143.5 L58 131" stroke-width="1.1" opacity="0.85"/>
+    <path d="M50 138.4 l 2 2.5 -2 2.5 -2 -2.5 Z" stroke-width="0.7" opacity="0.6"/>
+  </g>
+</svg>

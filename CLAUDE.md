@@ -218,23 +218,24 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
 
 - `components/MoonLantern.tsx` — the motif, replacing the earlier plain
   lantern on 2026-08-27 from artwork Andy supplied:
-  - `<MoonLantern>` — a brass **hoop** with jade inlay and filigree, a lit
-    globe hanging inside it, oak-leaf pendant below.
-    ⚠️ **Do not put the crescent back.** The first version was a deep upright
-    crescent with a five-pointed star finial and a crescent pendant; Andy
-    flagged on 2026-08-27 that it read as the Pakistani flag rather than a
-    lantern, which is not a reading a UK IT consultancy wants. It is now a
-    closed, gently tapered ring (outer r40 at 50,78; inner r34 nudged to
-    52,78, `fillRule="evenodd"`), tilted 24° off vertical, with a brass knop
-    where the star was and a leaf where the pendant crescent was. The lantern,
-    not the ring, should read first.
-    **Geometry traps**: anything laid inside the hoop must be clipped to it;
-    and an arc drawn along the hoop needs endpoints genuinely on its radius,
-    or the SVG arc solver invents its own centre and the band lands elsewhere.
-    A `clipPath` resolves in the *referencing element's* user space, which
-    already carries the group translate — do not translate the clip path too,
-    or long-corded lanterns lose their inlay entirely (this shipped broken
-    once and was invisible at preview cord lengths).
+  - `<MoonLantern>` — a hexagonal **carriage lantern** on a corded ring: ball
+    finial, peaked roof with a brim, faceted glass with a flame inside, base
+    rim and drop finial. **Redrawn 2026-09-03.**
+    ⚠️ **Do not go back to the hoop**, and definitely not the crescent before
+    it. The hoop was a tilted brass ring with a jade inlay, a filigree leaf
+    sprig and a globe hung inside the opening. It was fine on its own, but once
+    the background tree became Andy's illustration — which carries its own
+    drawn carriage lanterns — the hoop was the only thing left on the site in a
+    different shape. Andy spotted it in the footer on 2026-09-03: "still some
+    lanterns here!". The crescent that preceded the hoop read as the Pakistani
+    flag, which is not a reading a UK IT consultancy wants.
+    ⚠️ **The glass centre must stay at local (50, 96).** `HangingLantern`
+    places the cast light at `(size * 0.5, size * (cord + 58) / 100)`, which is
+    that point once the group is shifted by `cord - 38`. Move the glass and the
+    glow drifts off the fixture.
+    ⚠️ `glassX` was `size * 0.68`, correct for the hoop because its globe hung
+    *off-centre* inside the ring. Left unchanged on the centred carriage
+    lantern it threw every glow visibly to the right of the lantern.
   - `<HangingLantern>` — a lantern plus the light it throws. Rendered cord
     length is `size * cord / 100`, so hero cords are in the hundreds to clear
     the 80px nav.
@@ -252,12 +253,6 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
     It is monochrome `currentColor` at varying opacity, not fixed colours, so
     one glyph works on cream and on near-black. Detail is tuned so the
     *silhouette* carries it at 12-14px; the interior is a bonus at larger sizes.
-  - ⚠️ **The footer still hangs the old hoop `<HangingLantern>`** (three of
-    them, `Footer.tsx`). It is now the only place on the site still in the
-    pre-2026-09-03 shape — the glyph and the background tree both moved to the
-    carriage form. Andy was flagged on 2026-09-03; not changed without his say
-    because he'd already chosen to keep the footer when the hero lanterns came
-    out.
 - `public/moon-lantern.svg` — the same lantern as a standalone asset, for
   dropping into logo artwork. Regenerate it whenever `MoonLantern` changes, or
   it drifts out of step with the site.

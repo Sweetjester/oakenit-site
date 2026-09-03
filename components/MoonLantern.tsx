@@ -1,26 +1,26 @@
 'use client';
 
 /**
- * The moon lantern: a brass crescent with a jade inlay and filigree, a
- * star-lit globe hanging inside it, and a small crescent pendant below.
+ * The hanging lantern: a hexagonal carriage lantern on a corded ring — ball
+ * finial, peaked roof with a brim, faceted glass with a flame inside, base rim
+ * and a drop finial.
  *
  * Drawn as SVG so it scales, tints and — the point of it — glows. In dark mode
  * each lantern casts a warm pool of light onto the page (see `.lantern-light`
  * in globals.css); the SVG only carries the light *source*.
  *
- * Geometry note: the crescent is the difference of two circles —
- * outer r40 at (50,78), inner r30 at (62,78) — which meet at (85.17, 58.94)
- * and (85.17, 97.06). Those are the tips. Everything laid inside the crescent
- * is clipped to that same path so nothing spills over the edges.
+ * ⚠️ **This replaced a brass hoop-and-globe design on 2026-09-03.** That one
+ * was a tilted ring with a jade inlay, a filigree leaf sprig and a globe hung
+ * inside the opening. Once the background tree became Andy's illustration —
+ * which carries its own drawn carriage lanterns — the hoop was the only thing
+ * left on the site in a different shape, and Andy flagged it in the footer.
+ * Do not reinstate the hoop; and definitely not the crescent that preceded it
+ * (it read as the Pakistani flag — see CLAUDE.md).
+ *
+ * ⚠️ **The glass centre must stay at local y = 96.** `HangingLantern` places
+ * the light at `size * (cord + 58) / 100`, which is that point once the group
+ * is shifted by `cord - 38`. Move the glass and the glow drifts off it.
  */
-
-/**
- * An open crescent: outer circle r40 at (50,78) minus inner r33 at (62,78),
- * meeting at (77.29, 48.76) and (77.29, 107.24). Thick on the left, opening to
- * the right, with the lantern hung in the opening.
- */
-const CRESCENT =
-  'M77.29 48.76 A40 40 0 1 0 77.29 107.24 A33 33 0 1 1 77.29 48.76 Z';
 
 type Props = {
   /** Cord length above the lantern, in viewBox units. */
@@ -35,7 +35,7 @@ type Props = {
 
 export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, uid = 'a' }: Props) {
   const top = cord;
-  // shift so the crescent's top edge (local y=38) lands exactly at `top`
+  // shift so the lantern's top edge (local y=38) lands exactly at `top`
   const shift = top - 38;
   const H = top + 126;
   const id = (n: string) => `${n}-${uid}`;
@@ -54,14 +54,19 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
     >
       <defs>
         {/* the lit glass — the only fill in an otherwise drawn piece */}
-        <radialGradient id={id('glass')} cx="0.5" cy="0.52" r="0.55">
-          <stop offset="0%" stopColor="#fff6de" stopOpacity="0.95" />
-          <stop offset="55%" stopColor="#f7c04a" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#d4820c" stopOpacity="0.06" />
-        </radialGradient>
+        <linearGradient id={id('glass')} x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stopColor="#f7c04a" stopOpacity="0.16" />
+          <stop offset="55%" stopColor="#fff6de" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#d4820c" stopOpacity="0.2" />
+        </linearGradient>
         <radialGradient id={id('halo')} cx="0.5" cy="0.5" r="0.5">
           <stop offset="0%" stopColor="#ffdb8a" stopOpacity="0.45" />
           <stop offset="100%" stopColor="#ffdb8a" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id={id('flame')} cx="0.5" cy="0.62" r="0.55">
+          <stop offset="0%" stopColor="#fffaeb" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="#ffd479" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#f7c04a" stopOpacity="0.15" />
         </radialGradient>
       </defs>
 
@@ -79,78 +84,49 @@ export function MoonLantern({ cord = 40, className = '', sway = 7, delay = 0, ui
         <line x1="50" y1={top - 13.2} x2="50" y2={top - 1} strokeWidth="1" opacity="0.65" />
 
         <g transform={`translate(0 ${shift})`}>
-          {/* ---- crescent ------------------------------------------------ */}
-          <path d={CRESCENT} strokeWidth="1.5" opacity="0.95" />
-          {/* an inner contour, so the band reads as drawn rather than cut */}
+          {/* the light the glass throws, inside the SVG so it sits under the
+              frame rather than washing over it */}
+          <ellipse cx="50" cy="96" rx="31" ry="35" fill={`url(#${id('halo')})`} stroke="none" />
+
+          {/* ---- ball finial --------------------------------------------- */}
+          <circle cx="50" cy="42" r="3.5" strokeWidth="1.2" opacity="0.95" fill="currentColor" fillOpacity="0.22" />
+
+          {/* ---- peaked roof with a brim --------------------------------- */}
           <path
-            d="M75.5 52.5 A36.4 36.4 0 1 0 75.5 103.5"
-            strokeWidth="0.7"
-            opacity="0.4"
+            d="M50 45.8 C 58.5 50.5, 66 56, 69.5 61.5 H30.5 C 34 56, 41.5 50.5, 50 45.8 Z"
+            strokeWidth="1.3"
+            opacity="0.95"
+            fill="currentColor"
+            fillOpacity="0.14"
           />
+          {/* hips, so the roof reads as faceted rather than as a cone */}
+          <path d="M50 46.4 V61.2 M50 46.4 L61.5 61.2 M50 46.4 L38.5 61.2" strokeWidth="0.7" opacity="0.4" />
+          {/* brim */}
+          <path d="M27 61.5 H73 L70.5 66 H29.5 Z" strokeWidth="1.2" opacity="0.92" />
 
-          {/* leaf sprig laid along the band */}
-          <g transform="rotate(235 50 78)" strokeWidth="0.85" opacity="0.75">
-            <path d="M40 47.5 q 9 -3.4 18 -1.4" />
-            <path d="M45.6 46.6 q 1.8 -4 5.4 -3.4 q -1.4 3.8 -5.4 3.4 Z" />
-            <path d="M51.4 45.8 q 1.9 -4 5.4 -3.2 q -1.5 3.8 -5.4 3.2 Z" />
-            <path d="M47.8 48.4 q 1.5 3.4 4.9 3.6 q -0.9 -3.6 -4.9 -3.6 Z" />
-          </g>
-
-          {/* ---- the hanging lantern ------------------------------------- */}
-          <ellipse cx="70" cy="96" rx="27" ry="28" fill={`url(#${id('halo')})`} stroke="none" />
-
-          {/* chain from the upper limb */}
-          <line x1="70" y1="50" x2="70" y2="56" strokeWidth="0.9" opacity="0.7" />
-          <circle cx="70" cy="58" r="2" strokeWidth="0.9" opacity="0.8" />
-          <line x1="70" y1="60" x2="70" y2="63" strokeWidth="0.9" opacity="0.7" />
-
-          {/* onion dome + finial */}
-          <path d="M70 63 v3" strokeWidth="1" opacity="0.85" />
+          {/* ---- glass ---------------------------------------------------- */}
           <path
-            d="M60.5 80 C 60.5 72, 64.5 68.5, 70 66 C 75.5 68.5, 79.5 72, 79.5 80 Z"
-            strokeWidth="1.2"
-            opacity="0.92"
-          />
-          <path d="M66.5 79.6 q 3.5 -6 3.5 -9.6 q 0 3.6 3.5 9.6" strokeWidth="0.7" opacity="0.45" />
-          {/* collar */}
-          <path d="M58.5 80 H81.5 M60.5 83.4 H79.5" strokeWidth="1.1" opacity="0.9" />
-
-          {/* glass body */}
-          <path
-            d="M60.5 83.4 C 54 90, 54 103, 60.5 110 H79.5 C 86 103, 86 90, 79.5 83.4 Z"
+            d="M29.5 66 H70.5 L67 126 H33 Z"
             fill={`url(#${id('glass')})`}
             stroke="none"
           />
-          <path
-            d="M60.5 83.4 C 54 90, 54 103, 60.5 110 H79.5 C 86 103, 86 90, 79.5 83.4 Z"
-            strokeWidth="1.3"
-            opacity="0.95"
-          />
-          {/* pointed-arch panels */}
-          <path d="M70 84.2 C 64.6 88, 63.6 103, 66.4 110" strokeWidth="0.8" opacity="0.55" />
-          <path d="M70 84.2 C 75.4 88, 76.4 103, 73.6 110" strokeWidth="0.8" opacity="0.55" />
-          <path d="M63.4 89 q 6.6 -5 13.2 0" strokeWidth="0.7" opacity="0.4" />
+          <path d="M29.5 66 H70.5 L67 126 H33 Z" strokeWidth="1.35" opacity="0.95" />
+          {/* corner posts and a muntin bar */}
+          <path d="M42.8 66.6 L41.4 125.4 M57.2 66.6 L58.6 125.4" strokeWidth="0.8" opacity="0.6" />
+          <path d="M30.6 77 H69.4" strokeWidth="0.7" opacity="0.35" />
 
-          {/* base + finial */}
-          <path d="M59.5 110 H80.5 M62 113.4 H78" strokeWidth="1.1" opacity="0.9" />
-          <path d="M65.6 113.4 L70 121 L74.4 113.4" strokeWidth="1.1" opacity="0.85" />
-          <path d="M70 117.2 l1.7 2.1 -1.7 2.1 -1.7 -2.1 Z" strokeWidth="0.7" opacity="0.6" />
+          {/* ---- flame ---------------------------------------------------- */}
+          <path
+            d="M50 87 c 5.4 7, 5.4 13.4, 0 19.4 c -5.4 -6, -5.4 -12.4, 0 -19.4 Z"
+            fill={`url(#${id('flame')})`}
+            stroke="none"
+          />
+          <path d="M50 92.5 c 2.6 3.6, 2.6 6.8, 0 9.8 c -2.6 -3, -2.6 -6.2, 0 -9.8 Z" fill="#fffdf5" fillOpacity="0.7" stroke="none" />
 
-          {/* ---- pendant below the crescent ------------------------------ */}
-          <circle cx="50" cy="122.5" r="2.6" strokeWidth="1" opacity="0.85" />
-          {/* four-pointed star */}
-          <path
-            d="M50 127 C 50.6 130.2, 51.6 131.2, 54.6 131.8 C 51.6 132.4, 50.6 133.4, 50 136.6 C 49.4 133.4, 48.4 132.4, 45.4 131.8 C 48.4 131.2, 49.4 130.2, 50 127 Z"
-            strokeWidth="0.9"
-            opacity="0.85"
-          />
-          {/* leaf */}
-          <path
-            d="M50 138 c 4.6 3, 5.4 8, 0 12.4 c -5.4 -4.4, -4.6 -9.4, 0 -12.4 Z"
-            strokeWidth="1.1"
-            opacity="0.9"
-          />
-          <line x1="50" y1="140" x2="50" y2="148.6" strokeWidth="0.7" opacity="0.5" />
+          {/* ---- base rim and drop finial --------------------------------- */}
+          <path d="M31.5 126 H68.5 L66 131 H34 Z" strokeWidth="1.2" opacity="0.92" />
+          <path d="M42 131 L50 143.5 L58 131" strokeWidth="1.1" opacity="0.85" />
+          <path d="M50 138.4 l 2 2.5 -2 2.5 -2 -2.5 Z" strokeWidth="0.7" opacity="0.6" />
         </g>
       </g>
     </svg>
@@ -176,8 +152,14 @@ type HangingProps = {
  * screen-blend with whatever is behind it — in dark mode the lanterns are
  * genuinely lighting the page, not just glowing at it.
  *
- * The globe's centre sits at local y = 96 with the crescent shifted by
- * (cord - 38), so in rendered pixels it lands at size * (cord + 58) / 100.
+ * The glass centre sits at local (50, 96) with the group shifted by
+ * (cord - 38), so in rendered pixels it lands at
+ * (size * 0.5, size * (cord + 58) / 100).
+ *
+ * ⚠️ `glassX` was `size * 0.68` until 2026-09-03. That was right for the old
+ * hoop design, where the globe hung off-centre inside the ring's opening — on
+ * the centred carriage lantern it threw the glow visibly to the right of the
+ * fixture. If the lantern art is ever re-centred, move this with it.
  */
 export function HangingLantern({
   left,
@@ -189,8 +171,8 @@ export function HangingLantern({
   uid,
 }: HangingProps) {
   const light = size * reach;
-  const globeX = size * 0.68;
-  const globeY = (size * (cord + 58)) / 100;
+  const glassX = size * 0.5;
+  const glassY = (size * (cord + 58)) / 100;
 
   return (
     <div className="absolute top-0" style={{ left, width: size }}>
@@ -199,8 +181,8 @@ export function HangingLantern({
         style={{
           width: light,
           height: light,
-          left: globeX - light / 2,
-          top: globeY - light / 2,
+          left: glassX - light / 2,
+          top: glassY - light / 2,
           animationDelay: `${delay}s`,
         }}
       />
