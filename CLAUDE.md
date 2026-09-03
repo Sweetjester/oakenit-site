@@ -322,7 +322,37 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
 - Lantern-gold word = the **transformation** or **value**, not the action.
 - Headline pattern: `[plain statement]. [gold-gradient promise].`
 
-### Logo
+### Logo — new artwork 2026-09-03
+
+Andy supplied a new tree: loose ink-and-watercolour line work with six drawn
+lanterns, on cream paper, inside a sketched circular halo.
+
+The pipeline that produces the assets, all from one source image:
+
+- **Paper keyed to alpha, not thresholded.** Alpha is derived from each pixel's
+  distance from the paper colour (sampled from a corner), which preserves the
+  antialiasing on hairline ink. A hard threshold shreds it.
+- **`public/mark.png` is cropped to the *dense* ink**, not the bounding box.
+  The faint circular halo extends well past the canopy, and trimming to the
+  bbox left the tree floating in whitespace — illegible at nav size. The crop
+  keeps the box containing 98.5% of the ink mass by column/row. Nav logo went
+  30px → 38px because this art carries more detail than the old solid mark.
+- **`public/tree-lines.png` is the full composition** including the halo — the
+  background wants the whole drawing. It is the artwork's own alpha as **LA**,
+  with no Sobel pass: the previous mark was solid fill and needed edge
+  detection to become line work, this one already *is* line work.
+- ⚠️ **The drawn lanterns are kept and are not replaced by `<MoonLantern>`.**
+  `TreeCanopy` now places only *light* at the six anchors. Hanging detailed
+  vector lanterns on a hand-drawn tree reads as two illustrations sharing a
+  page. The `MoonLantern` SVG still serves the hero and footer, where it hangs
+  in space rather than on the drawing.
+- Anchors are the centroids of the warm-hued blobs, filtered by aspect ratio
+  (0.4–1.8) and height (above 65%) — without that filter the ochre on the
+  trunk and the ground wash register as lanterns.
+- The mark needs **no dark-mode filter**: the mid-green leaves read on both
+  grounds as they are.
+
+### Logo (previous artwork)
 
 Real artwork, delivered 2026-08-25: a deep-green tree hung with gold lanterns.
 
