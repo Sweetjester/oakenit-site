@@ -215,22 +215,60 @@ export function HangingLantern({
   );
 }
 
-/** ~1em hanging lantern, used as the list bullet. Deliberately *not* a
- *  crescent-and-star: that pairing reads as a flag, not a lantern. */
+/**
+ * ~1em hanging lantern, used as the list bullet.
+ *
+ * Redrawn 2026-09-03 to match the lanterns in Andy's illustration: ball
+ * finial, shallow peaked roof with a brim, tapered hexagonal glass with corner
+ * posts, a flame, and a finial below. The previous glyph was a plain ovoid and
+ * read as a little vase.
+ *
+ * ⚠️ The viewBox is **square (34×34)** with the lantern centred, even though
+ * the lantern itself is tall and narrow. Every caller sizes this with equal
+ * width and height classes (`h-3.5 w-3.5`), so a tall viewBox would letterbox
+ * and shrink it. Keep it square, or fix all the call sites.
+ *
+ * Everything is `currentColor` at varying opacity rather than fixed colours,
+ * so one glyph works on cream and on near-black. The frame is solid because at
+ * 14px the silhouette carries it — the interior detail is a bonus at larger
+ * sizes, not what does the work.
+ */
 export function MoonGlyph({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" className={className}>
-      {/* hanger */}
-      <circle cx="7" cy="1.5" r="1" stroke="currentColor" strokeWidth="0.9" />
-      <line x1="7" y1="2.5" x2="7" y2="3.4" stroke="currentColor" strokeWidth="0.9" />
-      {/* cap */}
-      <path d="M4.4 4.6 h5.2 l-1.1 -1.4 h-3 Z" fill="currentColor" />
-      {/* glass */}
-      <ellipse cx="7" cy="7.9" rx="3.3" ry="3.4" fill="currentColor" opacity="0.3" />
-      <ellipse cx="7" cy="7.9" rx="3.3" ry="3.4" stroke="currentColor" strokeWidth="1" />
-      <ellipse cx="7" cy="7.9" rx="1.4" ry="3.4" stroke="currentColor" strokeWidth="0.7" opacity="0.75" />
-      {/* finial */}
-      <path d="M5.2 11 h3.6 l-1.8 2.6 Z" fill="currentColor" />
+    <svg viewBox="0 0 34 34" fill="none" aria-hidden="true" className={className}>
+      {/* cord and hanging ball */}
+      <path d="M17 1 V4.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      <circle cx="17" cy="6.1" r="1.5" fill="currentColor" />
+
+      {/* peaked roof with a brim */}
+      <path d="M17 7.6 L21.6 11.4 H12.4 Z" fill="currentColor" />
+      <path d="M9.6 11.4 H24.4 L23 13.3 H11 Z" fill="currentColor" />
+
+      {/* glass, tapering in toward the base */}
+      <path d="M11.2 13.3 H22.8 L21.4 25.8 H12.6 Z" fill="currentColor" opacity="0.26" />
+      <path
+        d="M11.2 13.3 H22.8 L21.4 25.8 H12.6 Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      {/* corner posts */}
+      <path
+        d="M15.1 13.8 L14.6 25.3 M18.9 13.8 L19.4 25.3"
+        stroke="currentColor"
+        strokeWidth="0.9"
+        opacity="0.7"
+      />
+      {/* flame */}
+      <path
+        d="M17 17 c1.5 1.9 1.5 3.6 0 5.1 c-1.5 -1.5 -1.5 -3.2 0 -5.1 Z"
+        fill="currentColor"
+        opacity="0.95"
+      />
+
+      {/* base rim and finial */}
+      <path d="M11.4 25.8 H22.6 L21.6 27.8 H12.4 Z" fill="currentColor" />
+      <path d="M15.4 27.8 H18.6 L17 31.6 Z" fill="currentColor" />
     </svg>
   );
 }

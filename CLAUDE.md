@@ -240,6 +240,24 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
     the 80px nav.
   - `<MoonGlyph>` — ~1em hanging lantern, the list bullet. Deliberately not
     a crescent-and-star, for the same reason.
+    **Redrawn 2026-09-03** to match the carriage lanterns in the new tree
+    artwork: ball finial, peaked roof with a brim, tapered hexagonal glass with
+    corner posts, flame, base rim and drop finial. It was a plain ovoid before
+    and read as a little vase next to the drawn lanterns.
+    ⚠️ Its **viewBox is square (34x34)** with a tall narrow lantern centred in
+    it. Every call site sizes it with equal width/height classes (`h-3.5 w-3.5`),
+    so a tall viewBox letterboxes and shrinks it. Keep the viewBox square, or
+    change all six call sites (`SectionLabel`, `Services`, `ServicePage`,
+    `TrustStrip`, `CTA`, `app/work/page.tsx`).
+    It is monochrome `currentColor` at varying opacity, not fixed colours, so
+    one glyph works on cream and on near-black. Detail is tuned so the
+    *silhouette* carries it at 12-14px; the interior is a bonus at larger sizes.
+  - ⚠️ **The footer still hangs the old hoop `<HangingLantern>`** (three of
+    them, `Footer.tsx`). It is now the only place on the site still in the
+    pre-2026-09-03 shape — the glyph and the background tree both moved to the
+    carriage form. Andy was flagged on 2026-09-03; not changed without his say
+    because he'd already chosen to keep the footer when the hero lanterns came
+    out.
 - `public/moon-lantern.svg` — the same lantern as a standalone asset, for
   dropping into logo artwork. Regenerate it whenever `MoonLantern` changes, or
   it drifts out of step with the site.
