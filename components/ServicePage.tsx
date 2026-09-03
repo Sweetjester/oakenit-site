@@ -21,6 +21,16 @@ export type Service = {
    */
   signs: string[];
   steps: { n: string; title: string; body: string }[];
+  /**
+   * Questions prospects actually ask, answered honestly. Rendered on the page
+   * *and* emitted as FAQPage schema — this is the realistic route to a "People
+   * also ask" placement, which a two-month-old domain can win where a head
+   * term is out of reach.
+   *
+   * ⚠️ These are commercial statements published in Andy's name. Do not invent
+   * prices, response times, guarantees or contract terms here.
+   */
+  faqs: { q: string; a: string }[];
 };
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oakenit.com';
@@ -49,11 +59,26 @@ export function ServicePage({ service, others }: { service: Service; others: Ser
     },
   };
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${SITE_URL}/services/${service.slug}#faq`,
+    mainEntity: service.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Nav />
       <main>
@@ -135,6 +160,27 @@ export function ServicePage({ service, others }: { service: Service; others: Ser
             <p className="mt-6 text-sm text-forest-800/60 dark:text-cream-100/55">
               No unnecessary retainers, and no vendor lock-in.
             </p>
+          </div>
+        </section>
+
+        {/* Common questions */}
+        <section className="py-14 lg:py-20 border-t border-forest-900/10 dark:border-cream-100/10 bg-forest-50/60 dark:bg-forest-900/40">
+          <div className="max-w-3xl mx-auto px-6 lg:px-10">
+            <div className="mb-8">
+              <SectionLabel as="h2">Common questions</SectionLabel>
+            </div>
+            <dl className="divide-y divide-forest-900/10 dark:divide-cream-100/10">
+              {service.faqs.map((f) => (
+                <div key={f.q} className="py-5 first:pt-0">
+                  <dt className="font-display font-bold text-lg leading-snug tracking-[-0.02em] text-forest-800 dark:text-cream-100">
+                    {f.q}
+                  </dt>
+                  <dd className="mt-2 text-forest-800/75 dark:text-cream-100/65 leading-relaxed">
+                    {f.a}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 

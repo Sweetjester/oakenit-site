@@ -38,6 +38,28 @@ export const SERVICES: Service[] = [
       { n: '02', title: 'Scope', body: 'We recommend an approach, explain the trade-offs, and give you a clear proposal with a price.' },
       { n: '03', title: 'Set up', body: 'We build it, move you across with as little disruption as we can manage, and show you how it works.' },
     ],
+    faqs: [
+      {
+        q: "How long does it take to set up IT for a new business?",
+        a: "For a small team starting from scratch, usually days rather than weeks — accounts, devices, email, file storage, backups. Moving an existing business off something it has outgrown takes longer, because the work is in migrating what you already have without losing anything or stopping trading. We tell you which one you are before you commit.",
+      },
+      {
+        q: "Should we use Microsoft 365 or Google Workspace?",
+        a: "Most UK small businesses end up on Microsoft 365, largely because their accountants, clients and industry software assume it. Google Workspace is genuinely good and often simpler if you have no such constraints. It is worth ten minutes of conversation rather than a default — switching later is possible but tedious.",
+      },
+      {
+        q: "What happens to our existing email and files?",
+        a: "They come with you. Email, calendars, contacts and files are migrated across, and we keep the old system available until you are satisfied nothing is missing. Nobody should be asked to trust a migration on the day it happens.",
+      },
+      {
+        q: "Do we need to buy new hardware?",
+        a: "Often not. Plenty of setups work fine on the machines you already have, and we would rather spend your money on the things that actually fix the problem. Where hardware genuinely needs replacing we will say so and explain why.",
+      },
+      {
+        q: "Can you set things up so we are not dependent on one person’s account?",
+        a: "That is usually the main reason people call. Company data should live in company accounts, with more than one person able to reach it, and a backup somebody has actually tested. It is one of the first things we put right.",
+      },
+    ],
   },
   {
     slug: 'software-development',
@@ -65,6 +87,28 @@ export const SERVICES: Service[] = [
       { n: '02', title: 'Scope', body: 'The smallest thing that solves it, priced, with the trade-offs spelled out before anyone commits.' },
       { n: '03', title: 'Build', body: 'Small releases you can see and use, with regular communication rather than a reveal at the end.' },
     ],
+    faqs: [
+      {
+        q: "Is bespoke software cheaper than off-the-shelf?",
+        a: "Not up front — it is almost always more expensive to build than to subscribe. It becomes cheaper when an off-the-shelf product nearly fits and the gap costs real time every week, or when you are paying per seat for a platform you use a fraction of. If a product genuinely fits, we will tell you to buy the product.",
+      },
+      {
+        q: "How long does a bespoke build take?",
+        a: "It depends entirely on scope, which is why we scope before quoting. What we will commit to is that you see working software early and often, in small releases, rather than waiting months for a reveal at the end.",
+      },
+      {
+        q: "Who owns the software when it is finished?",
+        a: "Ownership is agreed in writing before any work starts and set out in the proposal. We think you should own what you paid for, and we are happy to say so in the contract.",
+      },
+      {
+        q: "What if we need changes after it is built?",
+        a: "Most systems need them — the business changes and the software should follow. You can come back to us as things come up, or not. There is no retainer you have to keep paying to stay eligible.",
+      },
+      {
+        q: "Can it work with the systems we already use?",
+        a: "Usually. Most modern platforms have an API, and joining things up is often the highest-value part of the job — a lot of manual copying between systems exists only because nobody has connected them.",
+      },
+    ],
   },
   {
     slug: 'it-support',
@@ -91,6 +135,28 @@ export const SERVICES: Service[] = [
       { n: '01', title: 'Triage', body: 'What is broken, what is urgent, and what only looks urgent. Usually a call and some access.' },
       { n: '02', title: 'Stabilise', body: 'Fix the immediate problem, then write down what caused it so it is not a mystery next time.' },
       { n: '03', title: 'Stay or go', body: 'Hand it over, keep us on call, or keep improving it. Whichever suits — cancel whenever.' },
+    ],
+    faqs: [
+      {
+        q: "Do we have to sign a long contract?",
+        a: "No. Some clients want one problem fixed and never need us again; others keep us available for years. Both are fine, and neither requires a notice period dressed up as a partnership.",
+      },
+      {
+        q: "Can you help with a single problem rather than ongoing support?",
+        a: "Yes. A good deal of our work is exactly that — something is broken or badly set up, we fix it, and you get on with running the business.",
+      },
+      {
+        q: "We already have an IT provider. Is that a problem?",
+        a: "No. We are often brought in alongside an existing provider for something specific, or for a second opinion before a decision. We will tell you honestly if we think your current arrangement is fine as it is.",
+      },
+      {
+        q: "Do you support Macs as well as Windows?",
+        a: "Yes, and mixed environments — which is what most small businesses actually have, whatever the policy says.",
+      },
+      {
+        q: "What sort of things do you take on?",
+        a: "Infrastructure and cloud that needs managing, Microsoft 365 and account problems, networks, security and compliance work, and the awkward technical decisions where a business wants an experienced opinion before spending money.",
+      },
     ],
   },
 ];
