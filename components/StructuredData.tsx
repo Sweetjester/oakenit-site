@@ -1,3 +1,5 @@
+import { COMPANY } from '@/lib/company';
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oakenit.com';
 
 /**
@@ -13,13 +15,29 @@ export function StructuredData() {
     '@type': 'Organization',
     '@id': `${SITE_URL}#organization`,
     name: 'OakenIT',
-    legalName: 'OakenIT',
+    legalName: COMPANY.legalName,
     url: SITE_URL,
     logo: `${SITE_URL}/mark.png`,
     image: `${SITE_URL}/mark.png`,
     description:
       'OakenIT helps UK businesses build software, improve infrastructure and solve difficult IT problems, without the cost and complexity of a traditional consultancy.',
-    foundingDate: '2025',
+    foundingDate: '2026-07-09',
+    // Companies House number. A verifiable registration is a genuine trust
+    // signal and distinguishes us from the many unregistered "IT guys".
+    identifier: {
+      '@type': 'PropertyValue',
+      name: 'Companies House company number',
+      value: COMPANY.number,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Flat 133 Uncle Apartments, 3 Park Lane',
+      addressLocality: 'Wembley',
+      addressRegion: 'Greater London',
+      postalCode: 'HA9 7FG',
+      addressCountry: 'GB',
+    },
+    email: COMPANY.email,
     areaServed: { '@type': 'Country', name: 'United Kingdom' },
     contactPoint: {
       '@type': 'ContactPoint',
@@ -68,7 +86,21 @@ export function StructuredData() {
       'Infrastructure modernisation',
       'Technical consulting',
     ],
-    areaServed: { '@type': 'Country', name: 'United Kingdom' },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Flat 133 Uncle Apartments, 3 Park Lane',
+      addressLocality: 'Wembley',
+      addressRegion: 'Greater London',
+      postalCode: 'HA9 7FG',
+      addressCountry: 'GB',
+    },
+    // National, but weighted to where we actually are — local intent is the
+    // only search a two-month-old domain can realistically win.
+    areaServed: [
+      { '@type': 'Country', name: 'United Kingdom' },
+      { '@type': 'City', name: 'London' },
+      { '@type': 'AdministrativeArea', name: 'Greater London' },
+    ],
     priceRange: '££',
     provider: { '@id': `${SITE_URL}#organization` },
   };
