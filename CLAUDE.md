@@ -59,7 +59,7 @@ Andy's request 2026-08-25; don't reinstate an SLA strip):
 
 ## 2. Tech stack
 
-Identical to SweetTech:
+Inherited from the retired SweetTech build:
 
 - **Framework**: Next.js 16 (App Router, Turbopack)
 - **Language**: TypeScript (strict)
@@ -339,7 +339,7 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
 - The logo mark (`mark.png`) keeps its original lanterns — that's Andy's
   artwork, and it is what the favicon and OG card use.
 
-### Voice rules (same as SweetTech)
+### Voice rules
 
 - Plain English. No "leverage", "synergize", "robust", "scalable solutions".
 - Short declarative sentences. Full stops. Confident.
@@ -423,7 +423,6 @@ was off-brand.
 
 ## 6. Feature state — what's built
 
-All features carry over from SweetTech identical:
 
 ### ✅ Theme system
 - Class-based dark mode, default = dark
@@ -438,15 +437,14 @@ problem, and it is the one thing that cannot be written from the codebase.
 - **Case-study entries are factual claims about real client work.** Never
   invent, embellish, or round a figure to fill the grid. One real case study
   beats three plausible ones.
-- The 90%+ field-reporting / proof-of-posting entry came from Andy's designer.
-  **It still needs Andy's explicit sign-off** — flagged to him on 2026-08-25.
-- **PhantomAxis Studios** (added 2026-08-27) — a site built for a games/film
-  composer, embedded live from
-  https://phantomaxis-production.up.railway.app. Source lives at
-  `~/Documents/DEV/phantomaxis`, deployed on Andy's *personal* Railway.
-  ⚠️ It is tagged **"Recent build"**, deliberately: it was built for a friend
-  and the commercial arrangement is unknown, so it does not claim
-  "Client project". Ask Andy before upgrading that label.
+- ⛔ **The Build Hollywood work is off the site permanently** (removed
+  2026-09-02). The proof-of-posting platform and the field-capture/reporting
+  build were both for the OOH operator Andy works for **full time**. Citing an
+  employer's systems as consultancy case studies is an employment and
+  conflict-of-interest problem, not a copy decision. Do not reinstate them, and
+  do not write new copy that alludes to them — no "high-volume outdoor
+  advertising", no posting-run examples. Andy's decision, and the right one.
+- That also retires the unverified 90%+ figure, which had never been signed off.
 - CV Live is *our own product*, not client work, and is labelled as such. It is
   embedded live via `SiteEmbed` — cvlive.io sends no `X-Frame-Options` or CSP
   `frame-ancestors`, so it frames cleanly. If that ever changes the frame will
@@ -689,8 +687,6 @@ way; both confirmed off.
 
 ## 9. Marketing & SEO strategy
 
-Same locked strategy as SweetTech:
-
 - **ICP**: UK SMBs, 10–200 employees
 - **Geo**: UK-wide (national)
 - **Primary channel**: Organic SEO + content
@@ -737,7 +733,7 @@ answer to "how do I get enquiries now". The near-term channels are:
 
 ## 11. Known quirks & gotchas
 
-Inherited from SweetTech, all still apply:
+All still apply:
 
 1. **OG image fonts are bundled TTFs in `app/fonts/`**, read with `node:fs` (so the route must stay on the Node runtime), along with `public/mark.png` as a base64 data URI. Two gotchas if you ever add faces: satori resolves one family name carrying two styles unpredictably — register each style under its own family name; and Google's `css2` response lists the **italic** face first, so verify a downloaded TTF's name table before trusting the filename you gave it.
 2. **`overflow-y-hidden` on AnimatedLine (Hero)** — not `overflow-hidden` — so italic glyph flourishes extend horizontally freely while the vertical slide-up animation still clips.
@@ -765,7 +761,7 @@ Inherited from SweetTech, all still apply:
 
 ## 12. Working with Andy
 
-Same style as SweetTech project:
+
 
 - **Direct, decisive feedback.** "I don't like this" = ship a new version + 1–2 alternatives, not a clarifying question.
 - **Iteration speed matters.** Multiple hero versions per session is normal.

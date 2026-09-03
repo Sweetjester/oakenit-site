@@ -32,12 +32,6 @@ const highlights = [
     tag: 'Recent build',
     shot: '/shot-phantomaxis.jpg',
   },
-  {
-    metric: '90%+',
-    label: 'field reporting captured on a live deployment',
-    name: 'Proof-of-posting platform',
-    tag: 'Client project',
-  },
 ];
 
 export function WorkTeaser() {
@@ -58,7 +52,7 @@ export function WorkTeaser() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           {highlights.map((h, i) => (
             <motion.a
               key={h.name}
