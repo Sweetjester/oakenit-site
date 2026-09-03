@@ -263,8 +263,21 @@ Overhauled 2026-09-01 on a type recommendation Andy commissioned.
   carried a hard horizontal seam across it, visible as a rectangle once you
   brightened the page. Any glow layer must reach fully transparent *inside* its
   own box: centred `closest-side` radials are safe, edge-anchored ones are not.
-- `components/Fireflies.tsx` — points of life around the canopy, themed to the
-  time of day. Same positions and drift in both, **opposite physics**:
+- `components/FireflySwarm.tsx` — swarms of fireflies orbiting as a ball,
+  across the top of the hero. **They replaced the strung `<HangingLantern>`
+  row on 2026-09-03**: once the drawn tree carried its own lanterns, vector
+  ones hanging above it read as two illustrations sharing a page.
+  - Each swarm is a centre wandering a slow Lissajous path with its flies on a
+    *sphere* around it — two angles, and the depth term drives size and
+    brightness. That is what gives it volume: the ones at the back are small
+    and dim and they trade places as the ball turns. A flat ring looks like a
+    ring.
+  - ⚠️ The blink is **gentler than `Fireflies`** on purpose (`0.3 + 0.7·sin²`
+    rather than `sin⁴`). A lone firefly should be dark more often than lit, but
+    if most of a swarm is dark at any instant the ball never resolves as a
+    shape. Don't "fix" this to match.
+- `components/Fireflies.tsx` — single points of life around the canopy, themed
+  to the time of day. Same positions and drift in both, **opposite physics**:
   - **Dark — fireflies.** Additive (`lighter`) warm glow, blink shaped by
     `pow(sin, 6)` so they are dark far more often than lit. That asymmetry is
     what sells them; a steady twinkle reads as fairy lights.
@@ -357,6 +370,13 @@ The pipeline that produces the assets, all from one source image:
   trunk and the ground wash register as lanterns.
 - The mark needs **no dark-mode filter**: the mid-green leaves read on both
   grounds as they are.
+- ⚠️ **The small sizes get a boldened variant**, not the raw drawing: strokes
+  dilated and faint ink lifted (`MaxFilter(3)`, alpha gamma 0.72, brightness
+  0.92) before scaling. Watercolour hairlines vanish at 16-38px otherwise.
+  A **solid silhouette was tried first and was worse** — closing the gaps
+  between leaves merges the canopy into a blob and loses the tree entirely.
+  Be honest about the ceiling here: a drawing this detailed will never be crisp
+  at 16px, and a purpose-drawn simple mark is the real fix if it ever matters.
 
 ### Logo (previous artwork)
 

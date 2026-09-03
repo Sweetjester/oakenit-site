@@ -2,18 +2,9 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { HangingLantern } from './MoonLantern';
+import { FireflySwarm } from './FireflySwarm';
 import { TreeCanopy } from './TreeCanopy';
 
-/** Lanterns strung across the top of the hero, at hand-picked offsets. */
-const strung = [
-  { left: '7%', cord: 239, size: 44, sway: 7, delay: 0, reach: 6.5 },
-  { left: '19%', cord: 276, size: 58, sway: 9, delay: 1.4, reach: 7 },
-  { left: '40%', cord: 294, size: 34, sway: 6.5, delay: 0.6, reach: 5.5 },
-  { left: '60%', cord: 462, size: 40, sway: 8, delay: 2.1, reach: 6 },
-  { left: '77%', cord: 190, size: 62, sway: 6, delay: 0.3, reach: 7.5 },
-  { left: '90%', cord: 539, size: 38, sway: 9.5, delay: 1.1, reach: 6 },
-];
 
 
 export function Hero() {
@@ -47,11 +38,9 @@ export function Hero() {
           treeClassName="opacity-[0.3] dark:opacity-[0.62]"
         />
 
-        <div className="absolute inset-x-0 top-0 h-[52vh] hidden sm:block pointer-events-none">
-          {strung.map((l, i) => (
-            <HangingLantern key={l.left} uid={`hero${i}`} {...l} />
-          ))}
-        </div>
+        {/* Swarms of fireflies where the strung lanterns used to be — the
+            drawn tree carries the lanterns now. */}
+        <FireflySwarm className="absolute inset-x-0 top-0 hidden h-[56vh] w-full sm:block" />
       </div>
 
       <motion.div
