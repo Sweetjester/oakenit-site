@@ -370,13 +370,20 @@ The pipeline that produces the assets, all from one source image:
   trunk and the ground wash register as lanterns.
 - The mark needs **no dark-mode filter**: the mid-green leaves read on both
   grounds as they are.
-- ⚠️ **The small sizes get a boldened variant**, not the raw drawing: strokes
-  dilated and faint ink lifted (`MaxFilter(3)`, alpha gamma 0.72, brightness
-  0.92) before scaling. Watercolour hairlines vanish at 16-38px otherwise.
-  A **solid silhouette was tried first and was worse** — closing the gaps
-  between leaves merges the canopy into a blob and loses the tree entirely.
-  Be honest about the ceiling here: a drawing this detailed will never be crisp
-  at 16px, and a purpose-drawn simple mark is the real fix if it ever matters.
+- ⚠️ **The nav lockup uses a boldened variant** of the drawing, not the raw
+  file: strokes dilated and faint ink lifted (`MaxFilter(3)`, alpha gamma 0.72,
+  brightness 0.92) before scaling, or the watercolour hairlines vanish at 38px.
+- **The favicon is a separate, purpose-drawn mark** — `app/icon.svg`, added
+  2026-09-03. The illustration cannot work at 16px: hairlines disappear, and a
+  solid silhouette of it merges the leaf gaps into a blob and loses the tree.
+  The SVG is the same idea in four shapes: a canopy built as a *union of
+  overlapping discs* (a single circle reads as a lollipop), a tapered trunk, a
+  ground line, and a gold lantern — the one detail that distinguishes it from
+  any tree logo. Canopy is mid green `#2b6b36`, deliberately lighter than the
+  brand forest, so it holds on a **dark** browser tab as well as a light one.
+  It is SVG so it stays crisp at every size; `app/apple-icon.png` is rendered
+  from it on an opaque cream ground, because iOS ignores transparency and would
+  composite it on black. There is no longer an `app/icon.png`.
 
 ### Logo (previous artwork)
 

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="OakenIT">
+  <!--
+    Purpose-drawn favicon. The illustrated mark cannot survive 16px — its
+    watercolour hairlines disappear and a solid silhouette of it turns the
+    canopy into a blob. This is the same idea in four shapes.
+
+    Canopy is a union of overlapping discs, which gives a lobed foliage
+    outline where a single circle would read as a lollipop. Mid green (#2b6b36)
+    rather than the darker brand forest, so it holds on a dark browser tab as
+    well as a light one. The gold lantern is the one detail that says OakenIT
+    rather than "a tree", and gold on green is the highest-contrast pairing in
+    the palette.
+  -->
+  <g fill="#2b6b36">
+    <circle cx="32" cy="25" r="17.5"/>
+    <circle cx="17" cy="21" r="9"/>
+    <circle cx="47" cy="21" r="9"/>
+    <circle cx="22" cy="33" r="8.5"/>
+    <circle cx="42" cy="33" r="8.5"/>
+    <circle cx="32" cy="11" r="9.5"/>
+  </g>
+
+  <path d="M28.4 30 h7.2 l1.9 20.5 c0.1 1.2 1.2 2.1 3.4 2.8 h-17.8 c2.2-0.7 3.3-1.6 3.4-2.8 Z"
+        fill="#1e5127"/>
+  <rect x="15" y="53.6" width="34" height="3.2" rx="1.6" fill="#1e5127"/>
+
+  <!-- Lantern: hanger, cap, glass, finial. Kept narrow so it reads as a
+       hanging lamp and not a cup. -->
+  <g fill="#f7c04a">
+    <path d="M32 13.2 v2.6" stroke="#f7c04a" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M26.4 18.6 h11.2 l-1.7 2.2 h-7.8 Z"/>
+    <path d="M28.1 20.8 h7.8 l-1 9.4 h-5.8 Z"/>
+    <path d="M30 30.2 h4 l-2 3.1 Z"/>
+  </g>
+  <path d="M29.6 22.6 h4.8 l-0.7 6.2 h-3.4 Z" fill="#fff8dc"/>
+</svg>
