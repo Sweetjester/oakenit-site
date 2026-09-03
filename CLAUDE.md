@@ -665,6 +665,17 @@ Inherited from SweetTech, all still apply:
 5. **Resend free tier**: sender `onboarding@resend.dev` can only send TO the email the Resend account was registered with (until domain verification). Set `INQUIRY_TO_EMAIL` to that address.
 6. **Tailwind dark variants are explicit**, not auto. Every styled element needs `X dark:Y`.
 7. **Manrope needs tight tracking at display sizes** — see § 5. The old rule about never bolding the display face applied to Prata (single weight) and no longer holds; Prata now survives only as `font-wordmark`.
+11. **Never gate above-the-fold content on Framer Motion.** The hero used
+    `initial={{opacity:0}}` + `animate`, so nothing was visible until React
+    hydrated and the animation ran. On throttled mobile that put LCP at **4.6s
+    on a plain text element** — and showed a blank hero to anyone on a slow
+    connection. It is CSS keyframes now (`.rise`, `.rise-line` in globals.css),
+    which paint without JS: **LCP 4.6s → 1.5s**. `whileInView` below the fold is
+    fine; the hero is not.
+12. **`public/tree-lines.png` is a CSS mask, so only its ALPHA channel matters.**
+    Converting it to greyscale to save bytes silently destroys it — with no
+    alpha the mask is opaque everywhere and the tree becomes a filled box. Store
+    it as **LA** (grey + alpha), never L or RGB.
 10. **Never use `-z-10` for full-bleed backdrops.** `html` has a background *and* `body` has an opaque background, so a negative-z child paints underneath the body background and vanishes. Use `z-0` on the backdrop + `relative z-10` on the content.
 8. **Background command exit code 143** is SIGTERM from `kill`, not a real failure.
 9. **`railway.json` buildCommand** = `npm run build`. Do not reintroduce `npm ci &&` — EBUSY race on Railway's cache.

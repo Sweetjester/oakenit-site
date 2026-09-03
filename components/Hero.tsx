@@ -59,36 +59,21 @@ export function Hero() {
         className="relative z-10 max-w-7xl w-full mx-auto px-6 lg:px-10 pt-32 pb-16"
       >
         <h1 className="font-display font-extrabold text-[clamp(2rem,4.4vw,3.9rem)] leading-[1.05] tracking-[-0.035em] text-forest-800 dark:text-cream-100 max-w-5xl">
-          <AnimatedLine delay={0.3}>We help businesses</AnimatedLine>
-          <AnimatedLine delay={0.45}>
+          <AnimatedLine step="d1">We help businesses</AnimatedLine>
+          <AnimatedLine step="d2">
             <span className="text-leaf">kickstart their IT.</span>
           </AnimatedLine>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 max-w-xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed"
-        >
+        <p className="rise d3 mt-8 max-w-xl text-lg lg:text-xl text-forest-800/75 dark:text-cream-100/70 leading-relaxed">
           Building from the ground up, or replacing something that&rsquo;s outdated.
-        </motion.p>
+        </p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 1 }}
-          className="mt-6 text-sm tracking-[0.08em] text-forest-800/60 dark:text-cream-100/55"
-        >
+        <p className="rise d4 mt-6 text-sm tracking-[0.08em] text-forest-800/60 dark:text-cream-100/55">
           Software · Infrastructure · Automation · Technical consulting
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-wrap items-center gap-4"
-        >
+        <div className="rise d5 mt-10 flex flex-wrap items-center gap-4">
           <a
             href="#contact"
             className="group inline-flex items-center gap-3 rounded-full bg-forest-700 dark:bg-leaf-300 text-cream-50 dark:text-forest-950 px-7 py-4 text-base font-medium hover:bg-forest-600 dark:hover:bg-leaf-200 transition-colors leaf-glow"
@@ -102,24 +87,23 @@ export function Hero() {
           >
             Check out our work
           </a>
-        </motion.div>
+        </div>
 
       </motion.div>
     </section>
   );
 }
 
-function AnimatedLine({ children, delay }: { children: React.ReactNode; delay: number }) {
+/**
+ * A headline line that slides up behind a clip. CSS, not Framer Motion: this is
+ * the largest text on the page and gating its visibility on hydration is what
+ * put LCP at 4.6s. `overflow-y-hidden` (not `overflow-hidden`) so descenders
+ * clip vertically while glyphs can still extend sideways.
+ */
+function AnimatedLine({ children, step }: { children: React.ReactNode; step: 'd1' | 'd2' }) {
   return (
     <span className="block overflow-y-hidden pb-[0.06em]">
-      <motion.span
-        initial={{ y: '110%' }}
-        animate={{ y: '0%' }}
-        transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
-        className="block"
-      >
-        {children}
-      </motion.span>
+      <span className={`rise-line ${step}`}>{children}</span>
     </span>
   );
 }
