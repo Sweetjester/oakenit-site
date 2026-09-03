@@ -337,10 +337,16 @@ The pipeline that produces the assets, all from one source image:
   bbox left the tree floating in whitespace — illegible at nav size. The crop
   keeps the box containing 98.5% of the ink mass by column/row. Nav logo went
   30px → 38px because this art carries more detail than the old solid mark.
-- **`public/tree-lines.png` is the full composition** including the halo — the
-  background wants the whole drawing. It is the artwork's own alpha as **LA**,
-  with no Sobel pass: the previous mark was solid fill and needed edge
-  detection to become line work, this one already *is* line work.
+- **`public/tree.png` is the full composition in full colour**, and the
+  background renders it as an `<Image>` — not through a mask.
+  ⚠️ The mask-and-paint approach (`tree-lines.png` + gradient stack) was built
+  for the *previous* mark, which was solid green fill and had to be
+  edge-detected before it could be lit. Applying it to this artwork replaced
+  the drawing's own green washes, ochre trunk and six gold lanterns with a flat
+  colour, leaving a faint pencil ghost — Andy's first reaction on 2026-09-03
+  was "where is new tree??", which was fair. **Don't reintroduce the mask for
+  artwork that already carries its own colour.** `tree-lines.png` is retained
+  only as a source artefact.
 - ⚠️ **The drawn lanterns are kept and are not replaced by `<MoonLantern>`.**
   `TreeCanopy` now places only *light* at the six anchors. Hanging detailed
   vector lanterns on a hand-drawn tree reads as two illustrations sharing a
