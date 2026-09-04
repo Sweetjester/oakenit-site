@@ -495,6 +495,20 @@ problem, and it is the one thing that cannot be written from the codebase.
   supporting paragraph. Andy stripped those on 2026-09-01 — don't add copy
   back to it.
 
+### ⛔ Google Analytics 4 — deliberately not installed
+
+Andy created a GA4 property (`G-B436R9BPWJ`) on 2026-09-02 and then decided
+**not** to install it. Don't paste the gtag snippet in.
+
+Reason: GA4 sets cookies, so under UK GDPR/PECR it needs consent *before* it
+loads — meaning a cookie banner. The site has none, because Cloudflare Web
+Analytics is cookieless and needs none. Adding GA4 without a banner would put a
+firm that sells "Security and compliance" in breach on its own site.
+
+Revisit only if Google Ads happens and conversion tracking is genuinely needed.
+Then it's Consent Mode v2 defaulting to `denied` plus a real banner — not a
+pasted script.
+
 ### ✅ SEO foundation
 - `/robots.txt`, `/sitemap.xml` (dynamic)
 - JSON-LD `<script>`: Organization + WebSite + ProfessionalService + OfferCatalog
